@@ -1,9 +1,9 @@
 {
     "id": "58A86C46",
-    "path": null,
-    "project_path": null,
+    "path": "~/Documents/MACE/DAS/Bulls-project/bulls-project/Bulls_Player_Report_u125511.Rmd",
+    "project_path": "Bulls_Player_Report_u125511.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "456314163",
     "contents": "",
     "dirty": false,
     "created": 1618934960820.0,
@@ -17,11 +17,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 140236072092928,
-    "encoding": "",
+    "lastKnownWriteTime": 1618937510,
+    "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1618934960820,
+    "last_content_update": 1618937510232,
     "read_only": false,
     "read_only_alternatives": []
 }

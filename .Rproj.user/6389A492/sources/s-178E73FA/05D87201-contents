@@ -1,4 +1,14 @@
-# bulls-project
+# Bulls Project: Player Analysis and Recomendations.
+### u125511
+
+### <span style="color: blue;">The following is information required for the Chicago Bulls player analysis and report.</span>
+* This file covers the following:
+  * Variable definitions from respective data sources
+  * Data sources
+  * Relevant calculations, 
+
+`r colorize("some words in red", "red")
+<span style="color: red;">>text</span>
 
 ## Observations defitions:
 
