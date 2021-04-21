@@ -124,7 +124,10 @@ From Wikipedia, the free encyclopedia
 Jump to navigationJump to search
 In basketball, effective field goal percentage (abbreviated eFG%) is a statistic that adjusts field goal percentage to account for the fact that three-point field goals count for three points while field goals only count for two points. [1] Its goal is to show what field goal percentage a two-point shooter would have to shoot at to match the output of a player who also shoots three-pointers. [2]
 
-It is calculated by: {\displaystyle eFG\%={\frac {FG+(0.5*3P)}{FGA}}}{\displaystyle eFG\%={\frac {FG+(0.5*3P)}{FGA}}}
+It is calculated by: 
+$$
+eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
+$$
 
 where:
 
@@ -134,7 +137,10 @@ FGA = field goal attempts,
 [3]
 
 
-A rough approximation can also be had by: {\displaystyle eFG\%={\frac {\frac {PPG-FT}{2}}{FGA}}}{\displaystyle eFG\%={\frac {\frac {PPG-FT}{2}}{FGA}}}
+A rough approximation can also be had by: 
+$$
+eFG(\%) =\frac{\frac{PPG-FT}{2}}{FGA}
+$$
 
 where:
 
@@ -146,7 +152,10 @@ The advantage of this second formula is that it highlights the aforementioned lo
 
 An additional formula that seems to be more in use by the statistics actually displayed on websites (but less cited by said websites) is:
 
-{\displaystyle eFG\%={\frac {2FG+(1.5*3FG)}{FGA}}}{\displaystyle eFG\%={\frac {2FG+(1.5*3FG)}{FGA}}}
+
+$$
+eFG(\%) =\frac{2FG + (1.5*3FG)}{FGA}
+$$
 
 where:
 
