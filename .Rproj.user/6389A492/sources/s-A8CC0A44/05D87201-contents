@@ -152,11 +152,10 @@ The advantage of this second formula is that it highlights the aforementioned lo
 
 An additional formula that seems to be more in use by the statistics actually displayed on websites (but less cited by said websites) is:
 
-```{r eFG equations, include=TRUE}
+
 $$
 eFG(\%) =\frac{2FG + (1.5*3FG)}{FGA}
 $$
-```
 
 where:
 
