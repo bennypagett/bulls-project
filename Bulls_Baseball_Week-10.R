@@ -1,38 +1,144 @@
-## Baseball - Multiple linear regressions
+## Chicago Bulls - Multiple linear regressions
+## Using df_nonTOT_clean
 
 
-library(Lahman)
 library(tidyverse)
-library(broom)
+library(ggplot2)
+library(readr)
 library(dplyr)
+library(broom)
 library(performance)
 library(psych)
+library(ggrepel)
 
-Lahman::Teams
 
-data(Teams)
+##Read in data
+df_nonTOT_clean <- read_csv("data/tidy_data/df_nonTOT_clean.csv")
+view(df_nonTOT_clean)
 
-## create new df "dat" and create variables/game
-dat <- Teams %>% filter(between(yearID, 1996, 2015)) %>%
-  mutate(HR_per_game = HR / G,
-         R_per_game = R / G,
-         SB_per_game = SB / G,
-         BB_per_game = BB / G,
-         S_per_game = (H-HR-X2B-X3B)/G,
-         D_per_game = X2B / G,
-         T_per_game = X3B / G)
+## relocate PTS_per_MP and PTS_per_game
+df_nonTOT_clean <- df_nonTOT_clean %>%
+  relocate(PTS_per_MP, .after = eFGp)
+df_nonTOT_clean <- df_nonTOT_clean %>%
+  relocate(PTS_per_game, .after = PTS_per_MP)
 
-summary(dat$yearID)
+## create new df "datC" and create variables/game
+datC <- df_nonTOT_clean %>% filter(df_nonTOT_clean$Pos == "C")
 
-## stolen bases and runs
-ggplot(dat, aes(x = SB_per_game, y = R_per_game)) +
+## create new df "datPF" 
+datPF <- df_nonTOT_clean %>% filter(df_nonTOT_clean$Pos == "PF")
+
+## create new df "datPG" 
+datPG <- df_nonTOT_clean %>% filter(df_nonTOT_clean$Pos == "PG") 
+
+## create new df "datSF" 
+datSF <- df_nonTOT_clean %>% filter(df_nonTOT_clean$Pos == "SF")
+
+## create new df "datSG" 
+datSG <- df_nonTOT_clean %>% filter(df_nonTOT_clean$Pos == "SG") 
+
+## Write_csv data file for each Pos
+write_csv(datC, file = "data/tidy_data/datC.csv")
+write_csv(datPF, file = "data/tidy_data/datPF.csv")
+write_csv(datPG, file = "data/tidy_data/datPG.csv")
+write_csv(datSF, file = "data/tidy_data/datSF.csv")
+write_csv(datSG, file = "data/tidy_data/datSG.csv")
+
+summary(df_nonTOT_clean$Pos)
+
+head(df_nonTOT_clean, 20)
+
+df_nonTOT_clean <- df_nonTOT_clean %>%
+  filter(df_nonTOT_clean$G >= 10)
+
+## Change Pos to factor (C = 1, PF = 2, PG = 3, SF = 4, SG = 5)
+df_nonTOT_clean$Pos <- as.factor(df_nonTOT_clean$Pos)
+str(df_nonTOT_clean$Pos)
+
+table(df_nonTOT_clean$Pos)
+levels(df_nonTOT_clean$Pos)
+
+  ## eFG and Team Wins
+ggplot(df_nonTOT_clean, aes(x = eFGp, y = W)) +
   geom_point(alhpa = 0.5, colour = "purple") +
   geom_smooth(method = "lm")
 
-## walks vs runs
-ggplot(dat, aes(x = BB_per_game, y = R_per_game)) +
+## PTS_per_MP vs W
+ggplot(df_nonTOT_clean, aes(x = PTS_per_MP, y = W)) +
   geom_point(alhpa = 0.5, colour = "magenta") +
   geom_smooth(method = "lm")
+
+### eFG% vs PTS_per_MP
+ggplot(df_nonTOT_clean, aes(x = PTS_per_MP, y = eFGp)) +
+  geom_point(alhpa = 0.5, colour = "magenta") +
+  geom_smooth(method = "lm")
+
+### TrV vs PTS_per_MP
+ggplot(df_nonTOT_clean, aes(x = PTS_per_MP, y = TrV)) +
+  geom_point(alhpa = 0.5, colour = "dodgerblue") +
+  geom_smooth(method = "lm")
+
+### eFF vs W
+ggplot(df_nonTOT_clean, aes(x = EFF, y = W)) +
+  geom_point(alhpa = 0.5, colour = "magenta") +
+  geom_smooth(method = "lm")
+
+### Tm_use_total vs W
+ggplot(df_nonTOT_clean, aes(x = Tm_use_total, y = W)) +
+  geom_point(alhpa = 0.5, colour = "magenta") +
+  geom_smooth(method = "lm")
+
+## PTS_per_game vs W
+ggplot(df_nonTOT_clean, aes(x = PTS_per_game, y = W)) +
+  geom_point(alhpa = 0.5, colour = "green") +
+  geom_smooth(method = "lm")
+
+### STL_MP vs W
+ggplot(df_nonTOT_clean, aes(x = STL_MP, y = W)) +
+  geom_point(alhpa = 0.5, fill = "red") +
+  geom_smooth(method = "lm")
+
+### TOV_MP vs W
+ggplot(df_nonTOT_clean, aes(x = TOV_MP, y = W)) +
+  geom_point(alhpa = 0.5, colour = "magenta") +
+  geom_smooth(method = "lm")
+
+## Age vs EFF
+ggplot(df_nonTOT_clean, aes(x = Age, y = EFF)) +
+  geom_point(alhpa = 0.5, colour = "magenta") +
+  geom_smooth(method = "lm")
+
+## Age vs eFGp
+ggplot(df_nonTOT_clean, aes(x = Age, y = eFGp)) +
+  geom_point(alhpa = 0.5, colour = "magenta") +
+  geom_smooth(method = "lm")
+
+## Age vs Tm_use_total
+ggplot(df_nonTOT_clean, aes(x = Age, y = Tm_use_total)) +
+  geom_point(alhpa = 0.5, colour = "magenta") +
+  geom_smooth(method = "lm")
+
+##Box plot of position vs PTS_per_MP
+ggplot(data = df_nonTOT_clean, aes(x = Pos, y = PTS_per_MP)) +
+  geom_boxplot(aes(fill = Pos)) +
+  scale_fill_discrete(name = "Pos", labels = c("1 = C", "2 = PF", "3 = PG","4 = SF", "5 = SG"))
+
+## 
+ggplot(data = df, aes(x = weight, y = vo2_max, colour = gender)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_fill_discrete(name = "Gender", labels = c("O = Female", "1 = Male"))
+
+
+##
+
+## Variables that show slight significance to increased Wins : TM_use_total, EFF, PTS_per_MP (possible leverage point with game)
+## Variables that show increase in TrV: PTS_per_MP,
+## Increased PTS_per_MP shows positive trend/increase eFGp 
+## Increased Age ~up to 30 shows increased trend of EFF, slight decrease trend in Tm_use_total with increasing Age
+
+
+
 
 # more walks per game are seeing greater total runs per game. Showing a moderate strength relationship.
 ##Could use correlation coefficient to find figure
