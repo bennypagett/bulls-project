@@ -45,6 +45,12 @@ It is calculated by:
 $$
 eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
 $$
+```{r pressure, echo=FALSE, fig.cap="eDG% calculation", out.width = '100%'}
+knitr::include_graphics(rep("figs/CodeCogsEqn.gif"))
+```
+
+
+
 
 where:
 

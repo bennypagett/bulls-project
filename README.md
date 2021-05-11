@@ -129,8 +129,13 @@ $$
 eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
 $$
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=$$&space;eFG(\%)&space;=\frac{FG&plus;(0.5*3P)}{FGA}&space;$$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$$&space;eFG(\%)&space;=\frac{FG&plus;(0.5*3P)}{FGA}&space;$$" title="$$ eFG(\%) =\frac{FG+(0.5*3P)}{FGA} $$" /></a>
-
+```{r pressure, echo=FALSE, fig.cap="eDG% calculation", out.width = '100%'}
+knitr::include_graphics("CodeCogsEqn.gif")
+```
+\begin{equation} 
+  eFG(%)\left = \frac{FG+(0.5*3P)}{FGA}
+  (\#eq:frac)
+\end{equation} 
 
 where:
 
