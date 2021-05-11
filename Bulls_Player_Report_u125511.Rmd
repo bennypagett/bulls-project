@@ -1,6 +1,7 @@
 ---
 title: "bulls_project_u125511"
 author: "Benny Pagett"
+student ID: "u125511"
 date: "20/04/2021"
 output: html_document
 ---
