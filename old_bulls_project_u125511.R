@@ -78,7 +78,109 @@ view(df_ind_stats)
 
 
 
+## Variables at MP
+## summarise and fix duplicates
+df_MP_clean <- df_joined %>%
+  group_by(player_id, player_name, Age) %>%
+  summarise(Pos = Pos,
+            Tm = Tm,
+            G = G,
+            GS = GS,
+            MP = MP,
+            FG = (FG / MP),
+            FGA = (FGA / MP),
+            FGp = (FG/FGA),
+            X3P = (X3P/ MP),
+            X3PA = (X3PA/ MP),
+            X3Pp = (X3P/X3PA),
+            X2P = (X2P/ MP),
+            X2PA = (X2PA/ MP),
+            X2Pp = (X2P/X2PA),
+            FT = (FT/ MP),
+            FTA = (FTA / MP),
+            FTp = (FT/FTA),
+            ORB = (ORB / MP),
+            DRB = (DRB / MP),
+            TRB = (TRB / MP),
+            AST = (AST / MP),
+            STL = (STL / MP),
+            BLK = (BLK/ MP),
+            TOV = (TOV / MP),
+            PF = (PF / MP),
+            PTS = (PTS / MP),
+            FTF = (FTA/FGA),
+            PTS_per_min = (PTS / MP),
+            ASTTOVR = (AST / TOV)/ MP,
+            EFF = EFF / MP,
+            eFGpMP = (X2P + (1.5*X3P))/ FGA,
+  )
 
+view(df_MP_clean)  
+
+ungroup(df_MP_clean)
+
+df_MP_clean <- df_MP_clean %>%
+  mutate(across(c(7:33), round, 4))
+
+view(df_MP_clean)
+
+
+df_clean[match(dfsal$player_name, df_clean$player_name), ] <- dfsal
+df_clean
+
+duplicated(df_clean$player_name)
+which(duplicated(df_clean$player_name), arr.ind = TRUE)
+
+
+view(df_ind_stats)
+
+
+## Tm_var join
+df_clean <- df_joined %>%
+  select(Tm, Tm_MP, Tm_FGA, Tm_FTA, Tm_TOV, Tm_G, Tm_use, salary) %>%
+  left_join(df_clean, by="Tm")
+
+duplicated(df_joined$player_name)
+which(duplicated(df_joined$player_name), arr.ind = TRUE)
+
+df_clean_no_doubles <- df_clean[!duplicated(df_clean$player_name),]
+
+duplicated(df_clean_no_doubles$player_name)
+which(duplicated(df_clean_no_doubles$player_name), arr.ind = TRUE)
+
+
+## left join Tm_var to clean
+df_clean_final <- full_join(x = df_clean, y = df_joined,
+                            by = c("player_name"))
+rm(df_clean_combined)
+df_clean <- df_joined %>%
+  select(player_name, salary) %>%
+  left_join(df_clean, by = "player_name")
+
+df_clean <- df_joined %>%
+  select(Tm, Tm_MP, Tm_FGA, Tm_FTA, Tm_TOV, Tm_G) %>%
+  left_join(df_clean, by="Tm")
+
+view(df_clean_combined)
+
+df_clean_no_doubles <- df_clean_no_doubles %>%
+  relocate(Tm, .before = salary)
+df_clean_no_doubles <- df_clean_no_doubles %>%
+  relocate(Tm_MP, .after = PTS)
+df_clean_no_doubles <- df_clean_no_doubles %>%
+  relocate(Tm_FGA, .after = Tm_MP)
+df_clean_no_doubles <- df_clean_no_doubles %>%
+  relocate(Tm_FTA, .after = Tm_FGA)
+df_clean_no_doubles <- df_clean_no_doubles %>%
+  relocate(Tm_TOV, .after = Tm_FTA)
+df_clean_no_doubles <- df_clean_no_doubles %>%
+  relocate(Tm_G, .after = PTS)
+df_clean_no_doubles <- df_clean_no_doubles %>%
+  relocate(Tm, .after = player_id)
+df_clean_no_doubles <- df_clean_no_doubles %>%
+  relocate(salary, .after = player_name)
+df_clean_no_doubles <- df_clean_no_doubles %>%
+  relocate(Tm_use, .after = eFGp)
 
 
 data_NA <-data_full %>%

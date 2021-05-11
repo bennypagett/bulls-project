@@ -349,7 +349,6 @@ df_clean <- df_joined %>%
             PTS = sum(PTS),
             FTF = (FTA/FGA),
             PTS_per_game = (PTS / G),
-            ASTTOVR = (AST / TOV),
             FG_MP = (sum(FG)/ MP),
             FGA_MP = (sum(FGA)/ MP),
             FGp_MP = ((FG/FGA)/ MP),
@@ -362,8 +361,6 @@ df_clean <- df_joined %>%
             FT_MP = (sum(FT)/ MP),
             FTA_MP = (sum(FTA)/ MP),
             FTp_MP = ((FT/FTA)/ MP),
-            ORB_MP = (sum(ORB)/ MP),
-            DRB_MP = (sum(DRB)/ MP),
             TRB_MP = (sum(TRB)/ MP),
             AST_MP = (sum(AST)/ MP),
             STL_MP = (sum(STL)/ MP),
@@ -371,7 +368,6 @@ df_clean <- df_joined %>%
             TOV_MP = (sum(TOV)/ MP),
             PF_MP = (sum(PF)/ MP),
             PTS_per_MP = (sum(PTS)/ MP),
-            FTF_MP = (FTA/FGA) / MP,
             Tm_use_total = sum(Tm_use))
             
 view(df_clean)  
@@ -466,10 +462,3 @@ duplicated(df_clean_no_doubles$player_name)
 which(duplicated(df_clean_no_doubles$player_name), arr.ind = TRUE)
 
 write_csv(df_clean_no_doubles, file = "data/tidy_data/player_stats_tidy.csv")
-write_csv(df_TOT_players, file = "data/tidy_data/df_TOT_players.csv")
-write_csv(df_team_Stats2, file = "data/tidy_data/df_team_Stats2.csv")
-write_csv(df_team_Stats1, file = "data/tidy_data/df_team_Stats1.csv")
-
-
-
-

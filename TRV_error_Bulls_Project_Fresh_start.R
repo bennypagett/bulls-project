@@ -11,6 +11,8 @@ library(broom)
 library(performance)
 library(psych)
 library(ggrepel)
+library(tibble)
+library(vctrs)
 
 ## Reading in data
 ## 18-19 Player salaries
@@ -124,7 +126,7 @@ view(df_ind_stats)
 
 
 #### Prep for Usage ratio: 
-## rename team stats with T_var
+## rename team stats with T_var in Stats2
   df_team_Stats2[df_team_Stats2$Team == "Milwaukee Bucks", "Team"] <- "MIL"
   df_team_Stats2[df_team_Stats2$Team == "Golden State Warriors", "Team"] <- "GSW"
   df_team_Stats2[df_team_Stats2$Team == "Philadelphia 76ers", "Team"] <- "PHI"
@@ -164,6 +166,49 @@ names(df_team_Stats2)[6] <- "Tm_FGA"
 names(df_team_Stats2)[15] <- "Tm_FTA"
 names(df_team_Stats2)[23] <- "Tm_TOV"
 names(df_team_Stats2)[3] <- "Tm_G"
+
+## rename team stats with T_var in Stats2
+df_team_Stats1[df_team_Stats1$Team == "Milwaukee Bucks", "Team"] <- "MIL"
+df_team_Stats1[df_team_Stats1$Team == "Golden State Warriors", "Team"] <- "GSW"
+df_team_Stats1[df_team_Stats1$Team == "Philadelphia 76ers", "Team"] <- "PHI"
+df_team_Stats1[df_team_Stats1$Team == "Los Angeles Clippers", "Team"] <- "LAC"
+df_team_Stats1[df_team_Stats1$Team == "Portland Trail Blazers", "Team"] <-"POR"
+df_team_Stats1[df_team_Stats1$Team == "Oklahoma City Thunder", "Team"] <- "OKC"
+df_team_Stats1[df_team_Stats1$Team == "Toronto Raptors", "Team"] <-"TOR"
+df_team_Stats1[df_team_Stats1$Team == "Sacramento Kings", "Team"] <- "SAC"
+df_team_Stats1[df_team_Stats1$Team == "Washington Wizards", "Team"] <- "WAS"
+df_team_Stats1[df_team_Stats1$Team == "Houston Rockets", "Team"] <- "HOU"
+df_team_Stats1[df_team_Stats1$Team == "Atlanta Hawks", "Team"] <- "ATL"
+df_team_Stats1[df_team_Stats1$Team == "Minnesota Timberwolves", "Team"] <-"MIN"
+df_team_Stats1[df_team_Stats1$Team == "Boston Celtics", "Team"] <- "BOS"
+df_team_Stats1[df_team_Stats1$Team == "Brooklyn Nets", "Team"] <- "BRK"
+df_team_Stats1[df_team_Stats1$Team == "Los Angeles Lakers", "Team"] <- "LAL"
+df_team_Stats1[df_team_Stats1$Team == "Utah Jazz", "Team"] <- "UTA"
+df_team_Stats1[df_team_Stats1$Team == "San Antonio Spurs", "Team"] <- "SAS"
+df_team_Stats1[df_team_Stats1$Team == "Charlotte Hornets", "Team"] <- "CHO"
+df_team_Stats1[df_team_Stats1$Team == "Denver Nuggets", "Team"] <- "DEN"
+df_team_Stats1[df_team_Stats1$Team == "Dallas Mavericks", "Team"] <- "DAL"
+df_team_Stats1[df_team_Stats1$Team == "Indiana Pacers", "Team"] <-  "IND"
+df_team_Stats1[df_team_Stats1$Team == "Phoenix Suns", "Team"] <- "PHO"
+df_team_Stats1[df_team_Stats1$Team == "Orlando Magic", "Team"] <- "ORL"
+df_team_Stats1[df_team_Stats1$Team == "Detroit Pistons", "Team"] <- "DET"
+df_team_Stats1[df_team_Stats1$Team == "Miami Heat", "Team"] <- "MIA"
+df_team_Stats1[df_team_Stats1$Team == "Chicago Bulls", "Team"] <- "CHI"
+df_team_Stats1[df_team_Stats1$Team == "New York Knicks", "Team"] <- "NYK"
+df_team_Stats1[df_team_Stats1$Team == "Cleveland Cavaliers", "Team"] <- "CLE"
+df_team_Stats1[df_team_Stats1$Team == "Memphis Grizzlies", "Team"] <- "MEM"
+df_team_Stats1[df_team_Stats1$Team == "New Orleans Pelicans", "Team"] <- "NOP"
+view(df_team_Stats1)
+
+##Create right join for further joining below
+##Create right join from Stats 1 W and L, 
+##Right join Stats1 W, L, and create W and Tm_L
+## Change team variable name
+names(df_team_Stats1)[2] <- "Tm"
+
+df_ind_stats <- df_team_Stats1 %>%
+  select(Tm, W, L) %>%
+  right_join(df_ind_stats, by="Tm")
 
 ## Right join Tm data to facilitate Usage analysis
 df_ind_stats <- df_team_Stats2 %>%
@@ -304,10 +349,10 @@ which(duplicated(df_joined$player_name), arr.ind = TRUE)
 
  
 ## rename df_joined Tidy coloumn = 3P, 2P, 3PA, 2PA
-names(df_joined)[13] <- "X3P"
-names(df_joined)[14] <- "X3PA"
-names(df_joined)[16] <- "X2P"
-names(df_joined)[17] <- "X2PA"
+names(df_joined)[15] <- "X3P"
+names(df_joined)[16] <- "X3PA"
+names(df_joined)[18] <- "X2P"
+names(df_joined)[19] <- "X2PA"
 
 view(df_joined)
 
@@ -349,7 +394,6 @@ df_clean <- df_joined %>%
             PTS = sum(PTS),
             FTF = (FTA/FGA),
             PTS_per_game = (PTS / G),
-            ASTTOVR = (AST / TOV),
             FG_MP = (sum(FG)/ MP),
             FGA_MP = (sum(FGA)/ MP),
             FGp_MP = ((FG/FGA)/ MP),
@@ -405,7 +449,9 @@ df_clean <- df_clean %>%
 
 # Trade Value
 df_clean <- df_clean %>%
-  mutate(TrV = ((df_clean$ApproxV - 27 - 0.75 * df_clean$Age)^2*(27 - 0.75 * df_clean$Age + 1) * df_clean$ApproxV) / 190 + (df_clean$ApproxV) * 2 /13)
+  mutate(TradeV = ((df_clean$ApproxV - 27 - 0.75 * df_clean$Age)^2*(27 - 0.75 * df_clean$Age + 1) * df_clean$ApproxV) / 190 + (df_clean$ApproxV) * 2 /13,  size = 531, replace = TRUE)
+
+vec_size(df_clean)
 
 ### round to 4 digits
 
@@ -420,7 +466,7 @@ sum(is.na(df_clean))
 
 df_clean[is.na(df_clean)] = 0
 
-## merge ##COME BACK TO DO AFTER CLEAN UP
+## merge
 
 df_clean  <- df_joined %>%
   select(player_name, player_id, salary, Age, Tm_G, Tm_MP, Tm_FGA, Tm_FTA, Tm_TOV) %>%
@@ -466,10 +512,50 @@ duplicated(df_clean_no_doubles$player_name)
 which(duplicated(df_clean_no_doubles$player_name), arr.ind = TRUE)
 
 write_csv(df_clean_no_doubles, file = "data/tidy_data/player_stats_tidy.csv")
-write_csv(df_TOT_players, file = "data/tidy_data/df_TOT_players.csv")
-write_csv(df_team_Stats2, file = "data/tidy_data/df_team_Stats2.csv")
-write_csv(df_team_Stats1, file = "data/tidy_data/df_team_Stats1.csv")
+
+
+df_new_TOT_joined <- full_join(x = df_TOT_players_Tm_W, y = player_stats_tidy,
+                               by = c("player_name", "Age"))
+view(df_new_TOT_joined)
 
 
 
+sum(is.na(df_new_TOT_joined))
 
+## remove retired/stood down players
+
+
+df_new_TOT_joined<- df_new_TOT_joined %>%
+  select(-c(1:7,8:35))
+
+
+df_new_TOT_joined <- replace_na(df_new_TOT_joined, list(TOT = "TOT")
+                                
+                                
+                                df_new_TOT_joined[is.na(df_new_TOT_joined)] = "nonTOT"
+                                
+                                df_new_TOT_joined <- df_new_TOT_joined %>%  # or add in whatever your data objects are that you want to round, and what you want to save to
+                                  mutate(across(c(1:7,8:35), ~replace_na(.x, "nonTOT")))
+                                
+                                
+                                
+                                
+                                
+                                player_stats_tidy <- player_stats_tidy %>%
+                                  mutate(TOT = "")
+                                player_stats_tidy <- player_stats_tidy %>%
+                                  relocate(TOT, .after = Tm)
+                                
+                                player_stats_tidy %>% mutate(TOT = case_when(a == 2 | a == 5 | a == 7 | (a == 1 & b == 4) ~ 2,
+                                                                             a == 0 | a == 1 | a == 4 | a == 3 |  c == 4 ~ 3,
+                                                                             TRUE ~ NA_real_))
+                                
+                                view()
+                                ## duplicate    
+                                
+                                duplicated(df_new_TOT_joined$player_name)
+                                which(duplicated(df_new_TOT_joined$player_name), arr.ind = TRUE)
+                                
+                                
+                                
+                                
