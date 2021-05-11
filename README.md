@@ -129,6 +129,9 @@ $$
 eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
 $$
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=$$&space;eFG(\%)&space;=\frac{FG&plus;(0.5*3P)}{FGA}&space;$$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?$$&space;eFG(\%)&space;=\frac{FG&plus;(0.5*3P)}{FGA}&space;$$" title="$$ eFG(\%) =\frac{FG+(0.5*3P)}{FGA} $$" /></a>
+
+
 where:
 
 FG = field goals made
