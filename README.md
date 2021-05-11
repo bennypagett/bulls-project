@@ -136,7 +136,7 @@ knitr::include_graphics("CodeCogsEqn.gif")
   eFG(%)\left = \frac{FG+(0.5*3P)}/{FGA}
 \end{equation}`
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" target="_blank"><img src="https://latex.codecogs.com/gif.latex?eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" title="eFG% = (FG+(0.5*3P))/FGA" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\bg_white&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\bg_white&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" title="eFG% = (FG+(0.5*3P))/FGA" /></a>
 
  `$$eFG(%) = \{FG+(0.5*3P)}/{FGA}$$`
 
