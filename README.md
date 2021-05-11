@@ -137,6 +137,8 @@ knitr::include_graphics("CodeCogsEqn.gif")
   (\#eq:frac)
 \end{equation} 
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" target="_blank"><img src="https://latex.codecogs.com/gif.latex?eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" title="eFG% = (FG+(0.5*3P))/FGA" /></a>
+
 where:
 
 FG = field goals made
