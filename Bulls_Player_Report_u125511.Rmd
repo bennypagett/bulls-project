@@ -22,6 +22,17 @@ knitr::opts_chunk$set(echo = TRUE,
 [@Fromal2012-yb]
 
 
+Player and Team  | Position | Salary  | Trade Value  | Points/min |
+---------------- | -------- | ------  | -----------  | ---------- |
+---------------- | -------- | ------  | -----------  | ---------- |
+Benny Pagett     | Cell 2
+Cell 3           | Cell 4
+-------------    | -------------
+Mel Crunkhorn    | Cell 2
+Cell 3           | Cell 4
+
+
+
 1. Introduction
 
 This section should provide relevant background information and justification for the project, including:
