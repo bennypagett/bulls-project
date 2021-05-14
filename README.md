@@ -1,14 +1,11 @@
---- 
-title: "Bulls Project: Player Analysis and Recommendations"
+# Bulls Project: Player Analysis and Recomendations.
 ### u125511
 
----
-
+\r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
                       error = FALSE,
-                      echo = TRUE,
-                      message = FALSE)
+                      echo = TRUE)
 
 
 # Introduction
