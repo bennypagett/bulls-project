@@ -12,7 +12,7 @@
   * Relevant calculations
   *
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;TRB_MP&space;=&space;(ORB&space;&plus;&space;DRB)&space;/&space;MP)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;TRB_MP&space;=&space;(ORB&space;&plus;&space;DRB)&space;/&space;MP)" title="TRB_MP = (ORB + DRB) / MP)" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\bg_white&space;TRB_MP&space;=&space;(ORB&space;&plus;&space;DRB)&space;/&space;MP)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\bg_white&space;TRB_MP&space;=&space;(ORB&space;&plus;&space;DRB)&space;/&space;MP)" title="TRB_MP = (ORB + DRB) / MP)" /></a>
 
 
 ## Data sources
