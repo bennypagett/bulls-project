@@ -4,11 +4,23 @@ author: "Benny Pagett"
 student ID: "u125511"
 date: "20/04/2021"
 output: html_document
+bibliography: references_copy.bib 
+csl: sage-vancouver.csl
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      error = FALSE,
+                      echo = TRUE)
 ```
+
+[@NBA_Season_2018-19_data]
+
+
+
+[@Fromal2012-yb]
+
 
 1. Introduction
 
@@ -81,7 +93,7 @@ $$
 eFG(\%) =\frac{2FG + (1.5*3FG)}{FGA}
 $$
 
-where:
+# where:
 
 2FG = 2-point field goals made
 3FG = 3-point field goals made
@@ -173,8 +185,7 @@ summary(cars)
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+
+
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
