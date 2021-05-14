@@ -1,5 +1,27 @@
-# Bulls Project: Player Analysis and Recomendations.
+--- 
+title: "Bulls Project: Player Analysis and Recommendations"
 ### u125511
+
+---
+
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      error = FALSE,
+                      echo = TRUE,
+                      message = FALSE)
+
+
+# Introduction
+
+# This Readme covers the following:
+
+  * File locations
+  * Data sources
+  * Variable definitions from respective data sources
+  * Relevant calculations
+  *
+
+## Data sources
 
 1. [NBA 2018-19 Season Stats](https://www.basketball-reference.com/leagues/NBA_2019_totals.html)
 
@@ -101,10 +123,7 @@ Dev Docs
 
 
 ### <span style="color: blue;">The following is information required for the Chicago Bulls player analysis and report.</span>
-* This file covers the following:
-  * Variable definitions from respective data sources
-  * Data sources
-  * Relevant calculations, 
+
 
 `r colorize("some words in red", "red")
 <span style="color: red;">>text</span>
