@@ -4,21 +4,16 @@
 
 # Introduction
 
-# This Readme covers the following:
+# This file covers the following:
 
   * File locations
   * Data sources
-  * Variable definitions from respective data sources
+  * Definitions used for each data base
   * Relevant calculations
   *
 
-Player and Team  | Position | Salary  | Trade Value 
----------------- | -------- | ------  | -----------
-Table Cell       | Cell 2
-Cell 3           | Cell 4
--------------    | -------------
-Table Cell      | Cell 2
-Cell 3        | Cell 4
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;TRB_MP&space;=&space;(ORB&space;&plus;&space;DRB)&space;/&space;MP)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;TRB_MP&space;=&space;(ORB&space;&plus;&space;DRB)&space;/&space;MP)" title="TRB_MP = (ORB + DRB) / MP)" /></a>
+
 
 ## Data sources
 
