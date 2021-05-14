@@ -1,12 +1,6 @@
 # Bulls Project: Player Analysis and Recomendations.
 ### u125511
 
-\r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-                      warning = FALSE,
-                      error = FALSE,
-                      echo = TRUE)
-
 
 # Introduction
 
@@ -17,6 +11,11 @@ knitr::opts_chunk$set(echo = TRUE,
   * Variable definitions from respective data sources
   * Relevant calculations
   *
+
+Table Header  | Second Header
+------------- | -------------
+Table Cell    | Cell 2
+Cell 3        | Cell 4
 
 ## Data sources
 
