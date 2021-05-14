@@ -1,6 +1,7 @@
 ## Chicago Bulls - Multiple linear regressions
 ## Using df_nonTOT_clean looking at PTS_per_MP
 
+install.packages(plotly)
 
 library(tidyverse)
 library(ggplot2)
@@ -11,6 +12,8 @@ library(performance)
 library(psych)
 library(ggrepel)
 library(plotly)
+library(GGally, quietly = TRUE)
+
 
 
 ##Read in data
@@ -351,8 +354,6 @@ sqrt(car::vif(fit))
 
 ## can use model to then fit into model.
 
-
-
 model_testing <- df_nonTOT_clean[c(1:20)]
 
 summary(PGmodel_testing)
@@ -364,7 +365,7 @@ model_testing <- model_testing %>%
   relocate(exp_PTS_per_MP, .after = WinP_Tm)
 
 ## model testing
-ggplot(model_testing, aes(exp_PTS_per_MP, PTS_per_MP, label = Tm, colour = Pos)) +
+ggplot(model_testing, aes(exp_PTS_per_MP, PTS_per_MP, label = "", colour = Pos)) +
   geom_point(alpha = 0.5) +
   geom_text(nudge_x = 0.105, cex = 3) +
   geom_abline(linetype = "dashed", colour = "magenta")
@@ -391,12 +392,13 @@ model_testing  <- model_Tm_test %>%
 
 ggplot(model_testing, aes(x = Tm_exp_Pts_per_MP, y = WinP_Tm, label = Tm)) +
   geom_point(colour = "dodgerblue") +
-  geom_text(nudge_x = .002, cex = 3)
+  geom_text(nudge_x = .00002, nudge_y = 1, cex = 3)
 
 ggplot(model_testing, aes(x = Tm_Pts_per_MP, y = WinP_Tm, label = Tm)) +
   geom_point(colour = "red") +
-  geom_text(nudge_x = .002, cex = 3)
+  geom_text(nudge_x = .00002, nudge_y = 1, cex = 3)
 
+## model testing plot trial
 model_testingTM_plot <- model_testing %>%
   select("Tm", "Tm_Pts_per_MP", "WinP_Tm")
 
@@ -426,65 +428,113 @@ model_testing %>%
   select(player_name, Tm, Age, Pos, salary, TrV, EFF, Tm_use_total,PTS_per_MP, TRB_MP, exp_PTS_per_MP) %>% 
   arrange(desc(exp_PTS_per_MP), salary) %>%
   top_n(20)
-print(model_testing)
 
-## scatter plot with salary
 
-model_testing %>% ggplot(aes(x = salary/1000000, y = exp_PTS_per_MP, color = Pos)) + 
-  geom_point() +
-  xlab("Salary (Millions)")
-
+## Plotly scatter plot with salary
 
 ### Interactive graphs
-install.packages("plotly")
 library(plotly)
-## create scatterplot first and save to the object gg
+## create scatterplot first and save to the object gg2
 
-
-gg <- ggplot(model_testing, aes(x = Tm_exp_Pts_per_MP, y = WinP_Tm, label = Tm)) +
-  geom_point(alpha = 0.3) +
-  geom_point(data = model_testingTM_plot, aes(x = Tm_Pts_per_MP, y = WinP_Tm, colour = "", fill = "")) +
+gg2 <- ggplot(data = model_testing, aes(x = Tm_exp_Pts_per_MP, y = WinP_Tm, label = Tm, group = 1,
+                                        text = paste("Team: =", Tm,
+                                                     "<br>Win%: ", round(WinP_Tm, digits = 4),
+                                                     "<br>Actual Points: ", round(Tm_Pts_per_MP, digits = 4),"Pts/min",
+                                                     "<br>Expected Points: ", round(Tm_exp_Pts_per_MP, digits = 4), "Pts/min")
+        )) +
+  geom_point(colour = "black", aes(Tm_Pts_per_MP, WinP_Tm)) +
+  geom_point(colour = "hotpink") +
   geom_text(nudge_x = .00002, nudge_y = 1, cex = 3) +
   labs(title = "Team Win Percentage vs Expected points/minute", 
-       subtitle = "Teams have increased winning % with an increased pts/min", 
-       caption = "Data sourced from the fNBA stats package....",
+       subtitle = "Teams with increased pts/min have a higher winning % ", 
+       caption = "Data sourced from the NBA stats packages, see reference list",
        colour = "Actual pts/min",
        fill = "Expected pts/min") +
   xlab("Pts per minute (Expected/Actual)") +
   ylab("Win Percentage") +
-  scale_colour_manual(values = c("hotpink")) +
-  scale_fill_manual(values = c("dodgerblue")) +
-  theme_light() 
+  theme_light()
 
-ggplotly(gg)
+ggplotly(gg2, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", 
+                                       "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
 
-rm(tips)
-
-ggAlly <- full_join(x = model_testing, y = model_testingTM_plot,
-                                      by = c("player_name"))
-
-library(GGally, quietly = TRUE)
-#> Registered S3 method overwritten by 'GGally':
-#>   method from   
-#>   +.gg   ggplot2
-data(tips, package = "reshape")
-
-ggally_autopoint(model_testing, aes(x = total_bill, y = tip, colour = time))
+gg2 +
+  guides(colour = guide_legend("Points per/min"),
+         fill = guide_legend("Points per/min"))
 
 
+## Salary and player finder
 
-gg <- model_testing %>% 
-  ggplot(aes(x = salary/1000000, y = exp_PTS_per_MP, color = Pos, label = "Salary (Millions)")) + 
+gg <- ggplot(data = model_testing, aes(x = salary/1000000, y = exp_PTS_per_MP, color = Pos, label = Tm, group = 1,
+                                       text = paste("Name:", player_name,
+                                                    "<br>Team: =", Tm,
+                                                    "<br>Salary: ", salary,
+                                                    "<br>Trade Value: ", TrV,
+                                                    "<br>Efficiency: ", EFF,
+                                                    "<br>Expected Points: ", round(Tm_exp_Pts_per_MP, digits = 4), "Pts/min",
+                                                    "<br>Team Usage %:", Tm_use_total,
+                                                    "<br>Total Rebounds/min:", TRB_MP))) + 
+  labs(title = "Player Salary vs Expected points/minute", 
+       subtitle = "Teams have increased winning % with an increased pts/min", 
+       caption = "Data sourced from the fNBA stats package....",
+       colour = "Position") +
   geom_point() +
-  
-  ggplotly(gg)
+  xlab("Salary (Millions)") +
+  ylab("Expected Points/min")
+
+ggplotly(gg, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", 
+                                       "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
 
 
-model_testing %>% ggplot(aes(x = salary/1000000, y = TrV, color = Pos)) + 
+
+gg3 <- ggplot(data = model_testing, aes(x = salary/1000000, y = TrV, color = Pos, label = Tm, group = 1,
+                                        text = paste("Name:", player_name,
+                                                     "<br>Team: =", Tm,
+                                                     "<br>Salary: ", salary,
+                                                     "<br>Trade Value: ", TrV,
+                                                     "<br>Efficiency: ", EFF,
+                                                     "<br>Expected Points: ", round(Tm_exp_Pts_per_MP, digits = 4), "Pts/min",
+                                                     "<br>Team Usage %:", Tm_use_total,
+                                                     "<br>Total Rebounds/min:", TRB_MP))) + 
+  labs(title = "Player Trade Value vs Player Salary", 
+       subtitle = "Teams have increased winning % with an increased pts/min", 
+       caption = "Data sourced from the fNBA stats package....",
+       colour = "Position") +
   geom_point() +
-  xlab("Salary (Millions)")
+  xlab("Salary (Millions)") +
+  ylab("Trade Value")
 
-model_testing %>% ggplot(aes(x = salary/1000000, y = EFF, color = Pos)) + 
+ggplotly(gg, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", 
+                                       "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
+
+
+gg4 <- ggplot(data = model_testing, aes(x = salary/1000000, y = EFF, color = Pos, label = Tm, group = 1,
+                                        text = paste("Name:", player_name,
+                                                     "<br>Team: =", Tm,
+                                                     "<br>Salary: ", salary,
+                                                     "<br>Trade Value: ", TrV,
+                                                     "<br>Efficiency: ", EFF,
+                                                     "<br>Expected Points: ", round(Tm_exp_Pts_per_MP, digits = 4), "Pts/min",
+                                                     "<br>Team Usage %:", Tm_use_total,
+                                                     "<br>Total Rebounds/min:", TRB_MP))) + 
+  labs(title = "Player Efficiency Rating vs Player Salary", 
+       subtitle = "Teams have increased winning % with an increased pts/min", 
+       caption = "Data sourced from the fNBA stats package....",
+       colour = "Position") +
   geom_point() +
-  xlab("Salary (Millions)")
+  xlab("Salary (Millions)") +
+  ylab("Expected Points/min")
 
+ggplotly(gg, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", 
+                                       "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))

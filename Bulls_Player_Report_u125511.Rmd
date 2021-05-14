@@ -8,10 +8,10 @@ output:
   df_print: knitr::kable
   theme: united
   highlight: tango
-bibliography: references_copy.bib 
-csl: sage-vancouver.csl
+bibliography: references_copy.bibtex 
+csl: vancouver-superscript.csl
 ---
-
+##cardiff-university-vancouver.csl
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
@@ -19,10 +19,11 @@ knitr::opts_chunk$set(echo = TRUE,
                       echo = TRUE)
 ```
 
-## Chicago Bulls NBA 2019-2020 Prospetive Player Report {#nextsteps .emphasized}
+## Chicago Bulls NBA 2019-2020 Prospetive Player Report {#nextsteps .emphasized}  
 
 ## Test
 
+[@Xie2020-dl]
 
 [@NBA_Season_2018-19_data]
 
@@ -44,9 +45,9 @@ Cell 3           | Cell 4
 
 1. Introduction
 
-This section should provide relevant background information and justification for the project, including:
+This section should provide relevant background information and justification for the project, including:  
 
-a) relevant background information of basketball, including key metrics, position requirements etc
+a) relevant background information of basketball, including key metrics, position requirements etc  
 
 Key metrics:
 * Minutes played
@@ -214,3 +215,6 @@ You can also embed plots, for example:
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## References:
+

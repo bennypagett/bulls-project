@@ -1,8 +1,24 @@
+----
 # Bulls Project: Player Analysis and Recomendations.
 ### u125511
 
 
 # Introduction
+<br/>
+<br/>
+<br/>
+<br/>
+
+This GitHub repo makes up a reproducible data analysis project, which is part of the Data Analysis in Sport course at the University of Canberra.
+This project is based around the "Moneyball" theory of using statistical analysis to provide a greater insight into sport performances, in this case the selection/purchase of players from the 2018-19 season of the NBA who would help produce greater results for the Chicago Bulls organisation to improve on their past season result (finishing 13th in the Eastern Conference, and 27th overall for Win-Loss ration) and provide an improved result for the upcoming 2019-2020 NBA season.  \
+<br/>  
+\
+The task detailed the following:
+  * The assessment of potential players to purchase or retain for the Chicago Bulls organisation for the 2019-20 NBA season.
+  * Projection of expected results with selected players.
+  * Selection of 5 players, one from each position (Centre, Power Forward, Small Forward, Shooting Guard, Point Guard).
+  * Ensure purchase of the 5 players was within the allotted budget of $118 million dollars.
+  * The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total)
 
 # This file covers the following:
 
@@ -11,8 +27,6 @@
   * Definitions used for each data base
   * Relevant calculations
   *
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\bg_white&space;TRB_MP&space;=&space;(ORB&space;&plus;&space;DRB)&space;/&space;MP)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\bg_white&space;TRB_MP&space;=&space;(ORB&space;&plus;&space;DRB)&space;/&space;MP)" title="TRB_MP = (ORB + DRB) / MP)" /></a>
 
 
 ## Data sources
