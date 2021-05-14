@@ -12,9 +12,12 @@
   * Relevant calculations
   *
 
-Table Header  | Second Header
-------------- | -------------
-Table Cell    | Cell 2
+Player and Team  | Position | Salary  | Trade Value 
+---------------- | -------- | ------  | -----------
+Table Cell       | Cell 2
+Cell 3           | Cell 4
+-------------    | -------------
+Table Cell      | Cell 2
 Cell 3        | Cell 4
 
 ## Data sources
