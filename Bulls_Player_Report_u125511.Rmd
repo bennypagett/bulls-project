@@ -3,7 +3,11 @@ title: "bulls_project_u125511"
 author: "Benny Pagett"
 student ID: "u125511"
 date: "20/04/2021"
-output: html_document
+output: 
+  html_document:
+  df_print: knitr::kable
+  theme: united
+  highlight: tango
 bibliography: references_copy.bib 
 csl: sage-vancouver.csl
 ---
@@ -14,6 +18,11 @@ knitr::opts_chunk$set(echo = TRUE,
                       error = FALSE,
                       echo = TRUE)
 ```
+
+## Chicago Bulls NBA 2019-2020 Prospetive Player Report {#nextsteps .emphasized}
+
+## Test
+
 
 [@NBA_Season_2018-19_data]
 
@@ -69,11 +78,16 @@ It is calculated by:
 $$
 eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
 $$
-```{r pressure, echo=FALSE, fig.cap="eDG% calculation", out.width = '100%'}
+```{r eFG equation, echo=FALSE, fig.cap="eDG% calculation", out.width = '100%'}
 knitr::include_graphics(rep("figs/CodeCogsEqn.gif"))
 ```
-
-
+<br/>
+<br/>
+<br/>
+<br/>
+```{r TRB_MP equaiton, echo=FALSE, fig.cap="Total Rebounds/Minute", out.width = '100%'}
+knitr::include_graphics(rep("images/CodeCogsEqn_TRB.gif"))
+```
 
 
 where:

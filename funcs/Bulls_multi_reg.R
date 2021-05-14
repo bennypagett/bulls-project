@@ -426,7 +426,7 @@ model_testing %>%
   select(player_name, Tm, Age, Pos, salary, TrV, EFF, Tm_use_total,PTS_per_MP, TRB_MP, exp_PTS_per_MP) %>% 
   arrange(desc(exp_PTS_per_MP), salary) %>%
   top_n(20)
-
+print(model_testing)
 
 ## scatter plot with salary
 
@@ -457,6 +457,21 @@ gg <- ggplot(model_testing, aes(x = Tm_exp_Pts_per_MP, y = WinP_Tm, label = Tm))
   theme_light() 
 
 ggplotly(gg)
+
+rm(tips)
+
+ggAlly <- full_join(x = model_testing, y = model_testingTM_plot,
+                                      by = c("player_name"))
+
+library(GGally, quietly = TRUE)
+#> Registered S3 method overwritten by 'GGally':
+#>   method from   
+#>   +.gg   ggplot2
+data(tips, package = "reshape")
+
+ggally_autopoint(model_testing, aes(x = total_bill, y = tip, colour = time))
+
+
 
 gg <- model_testing %>% 
   ggplot(aes(x = salary/1000000, y = exp_PTS_per_MP, color = Pos, label = "Salary (Millions)")) + 
