@@ -1,11 +1,11 @@
 # Bulls Project: Player Analysis and Recomendations.
 ### u125511
 
-[NBA 2018-19 Season Stats](https://www.basketball-reference.com/leagues/NBA_2019_totals.html)
+1. [NBA 2018-19 Season Stats](https://www.basketball-reference.com/leagues/NBA_2019_totals.html)
 
-https://en.wikipedia.org/wiki/Basketball_positions
+2. [Basteball Positions](https://en.wikipedia.org/wiki/Basketball_positions)
 
-https://www.basketball-reference.com/about/glossary.html
+3. [Glossary of NBA Statistics](https://www.basketball-reference.com/about/glossary.html)
 
 
 
