@@ -433,7 +433,7 @@ model_testing %>%
 ## Plotly scatter plot with salary
 
 ### Interactive graphs
-
+library(plotly)
 ## create scatterplot first and save to the object gg2
 
 gg2 <- ggplot(data = model_testing, aes(x = Tm_exp_Pts_per_MP, y = WinP_Tm, label = Tm, group = 1,

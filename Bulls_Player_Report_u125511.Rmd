@@ -1,27 +1,111 @@
 ---
-title: "bulls_project_u125511"
+title: "Chicago Bulls Prospective Player Analysis `19-20"
 author: "Benny Pagett"
 student ID: "u125511"
-date: "20/04/2021"
+date: "16/05/2021"
 output: 
-  html_document:
-  df_print: knitr::kable
-  theme: united
-  highlight: tango
-bibliography: references_copy.bibtex 
-csl: vancouver-superscript.csl
+    rmdformats::readthedown:
+      highlight: kate
+      df_print: knitr::kable
+
+     bibliography: references_copy.bibtex 
+     csl: sage-vancouver.csl
+      css: Css_background.css
+      toc: true
+      toc_depth: 2
+      toc_float:
+      collapsed: false
+      smooth_scroll: false
+      number_section: true
+     df_print: knitr::kable
+      highlight: tango
+      code_download: true
 ---
+
+
+
+```{css, eval= TRUE, echo=FALSE, include = FALSE}
+#header {
+  background: url(data:image/png;base64,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);
+}
+```
+
 ##cardiff-university-vancouver.csl
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE,
                       error = FALSE,
                       echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(broom)
+library(performance)
+library(psych)
+library(ggrepel)
+library(rmdformats)
 ```
 
-## Chicago Bulls NBA 2019-2020 Prospetive Player Report {#nextsteps .emphasized}  
 
-## Test
+```{r project data loading, include=FALSE}
+## NBA 18-19 Player stats and salaries
+player_stats_tidy <- readr::read_csv("data/tidy_data/player_stats_tidy.csv")
+## NBA 18-19 Transfer Player Stats
+df_ind_stats <- readr::read_csv("data/tidy_data/df_TOT_players.csv")
+## 18-19 NBA Stats 1
+df_team_Stats1 <- readr::read_csv("data/tidy_data/df_team_Stats2.csv")
+## 18-19 NBA Stats 2
+df_team_Stats2 <- readr::read_csv("data/tidy_data/df_team_Stats1.csv")
+## 2019-20 Pay roll team
+dfPay <- readr::read_csv("data/project-data/2019-20_nba_team-payroll.csv")# runs code but not in final document
+```
+
+```{r processed_data, cache = TRUE, dependson = "raw_data", include=FALSE}
+## player_stats_tidy
+player_stats_tidy <- readr::read_csv("data/tidy_data/player_stats_tidy.csv")
+## Teams Stas for Win percentage 
+df_Stats1_Tm_W <- readr::read_csv("data/tidy_data/df_team_Stats1.csv")
+## 18-19 Stats 1
+df_Stats2_Tm_W <- readr::read_csv("data/tidy_data/df_team_Stats2.csv")
+## df_nonTOT_players
+df_nonTOT_players_clean <- read_csv("data/tidy_data/df_nonTOT_clean.csv")
+```
+
+```{r Bulls logo7G, echo=FALSE, fig.cap="", out.width = '30%',fig.width = 6, fig.asp = 0.618, fig.align = "center"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+ may need to re-add data frames between steps. If so, using cache = TRUe, dependson = "....") allows that 
+{r figure, include=FALSE}
+fig.width = 6 (6") and fig.asp = 0.618
+out.width = "70%" and fig.align = "center"
+```
+Roses are $\color{red}{\text{beautiful red}}$, 
+violets are $\color{blue}{\text{lovely blue}}$.
+
+<span style="color: red;">text</span> 
+To put multiple plots in a single row I set the out.width to 50% for two plots, 33% for 3 plots, or 25% to 4 plots, and set fig.align = "default". Depending on what I’m trying to illustrate (e.g. show data or show plot variations), I’ll also tweak fig.width, as discussed below.
+
+If you find that you’re having to squint to read the text in your plot, you need to tweak fig.width. If fig.width is larger than the size the figure is rendered in the final doc, the text will be too small; if fig.width is smaller, the text will be too big
+
+fig.show = "hold"
+fig.cap = "" this will give caption and change figure to floating rather than inline
+
+##```{r Table1 test, echo=FALSE}
+knitr::kable((model_testing),
+  select(player_name, Tm, Age, Pos, salary, TrV, EFF, Tm_use_total,PTS_per_MP, TRB_MP, exp_PTS_per_MP) %>% 
+  arrange(desc(exp_PTS_per_MP), salary) %>%
+  top_n(20), caption = "Top 20 player selections.") # initial table
+```
+
+
+# Chicago Bulls NBA 2019-2020 Prospetive Player Report {.emphasized}  
+
+# Introduction:
+
+## Introduction {.tabset .tabset-pills}
+
+[@Vaz_de_Melo2008-bg]
 
 [@Xie2020-dl]
 
@@ -41,31 +125,31 @@ Cell 3           | Cell 4
 Mel Crunkhorn    | Cell 2
 Cell 3           | Cell 4
 
+<br>
 
-
-1. Introduction
+# 1. Introduction:
 
 This section should provide relevant background information and justification for the project, including:  
 
-a) relevant background information of basketball, including key metrics, position requirements etc  
+  a) relevant background information of basketball, including key metrics, position requirements etc  
 
 Key metrics:
-* Minutes played
-* Offensive value
-* Deffensive value (Rebounds)
-* Offensive value vs Defensive value
-* Assists
-* Points
-* Points per minute played
-* Rebounds
-* Offensive rebound %
-* Deffensive rebound %
-* Turnovers
-* Free Throw attempts
-* Free throw percentage
-* Attempts in the paint
-* Fouls
-* Regular season vs post season
+  * Minutes played
+  * Offensive value
+  * Deffensive value (Rebounds)
+  * Offensive value vs Defensive value
+  * Assists
+  * Points
+  * Points per minute played
+  * Rebounds
+  * Offensive rebound %
+  * Deffensive rebound %
+  * Turnovers
+  * Free Throw attempts
+  * Free throw percentage
+  * Attempts in the paint
+  * Fouls
+  * Regular season vs post season
 
 ** PER = Player efficiency rating
 *
@@ -127,29 +211,37 @@ FGA = field goal attempts
 
 
 
-b) description of the scenario
+# 2. Report scenario:
   This report forms the tangible component of a reproducible data analysis project of a task given to the data analytics team by the Chicago Bulls GM . The task detailed the assessment of potential players to join/retain for the Chicago Bulls organisation for the 2019-20 NBA season. 
   
   The projected budget for player contracts for the 2019-20 season is $118 million dollars. 
 
-c) the aim of the project
+# The aim of the project
 
   This report and analysis aims to provide five starting players (PG, C, SG, PF & SF) of the highest value based upon a cost-benefit analysis. The purchase of the proposed athletes/players still allows sufficient budget to complete the remaining roster.
 
-d) justification and importance
+## Justification and importance
   
   The previous 2018-19 season saw the Chicago Bulls finish 27th out of 30 teams in the NBA (on win-loss record). The Chicago Bulls organisation has aspirations to rebuild their line-up and field a team with championship title potential for the upcoming 2019-20 season.
 
 Note that you may choose a different order to present each of the elements listed above. 
 
- 
+```{r Bulls logo small7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
 
-2. Reading and cleaning the raw data
+ ***
+<br>
+## 2. Reading and cleaning the raw data
 
 This section should document the process used to read and clean the raw data. It should also include a description of the data sets used and variables in each. For brevity, you could provide a link to the specific variable descriptions, rather than writing these out in full within your report. 
 
- 
+```{r Bulls logo small-2-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
 
+ ***
+<br>
 3. Exploratory analysis
 
 This section should document your exploratory data analysis and may include but is not limited to:
@@ -164,57 +256,49 @@ d) justification for decisions made about data modelling
 
 Note that this section and the data cleaning section may be an iterative process, as you might find things about the data that need to be 'cleaned up' once you have explored the data further. 
 
- 
+```{r Bulls logo small-3-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
 
-4. Data modelling and results
+ ***
+<br>
+# 4. Data modelling and results:
 
-This section may include but is not limited to:
+## This section may include but is not limited to:
 
-a) data modelling (e.g. creating a linear regression)
+  a) data modelling (e.g. creating a linear regression)
 
-b) assumption checking
+  b) assumption checking
 
-c) model output and interpretation of your model
+  c) model output and interpretation of your model
 
- 
+```{r Bulls logo small-4-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+ ***
 
 5. Player recommendations
 
 This section will be the key part that is presented to the general manager. Here you should present your recommendations for the best five starting players, but also think about what other important information they would want to know, and how it is best to present that information to them.  
 
- 
+```{r Bulls logo small-5-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
 
+ ***
+<br>
 6. Summary 
 
 Provide a brief summary which describes the key points and findings from your project. It will also be important to acknowledge any limitations of your model and overall approach to answering the question asked of you by the general manager.
 
- 
+```{r Bulls logo small-6-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+
+ ***
 
 7. Reference List
 
 Provide a reference list of any sources you used in the development of your report and justification of your arguments. Please use the Vancouver reference style (Links to an external site.) for the reference list and in-text references. 
 
-
-
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-
-
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-## References:
-
+# References:

@@ -1,32 +1,43 @@
 ----
 # Bulls Project: Player Analysis and Recomendations.
 ### u125511
-
+<br/>
 
 # Introduction
 <br/>
-<br/>
-<br/>
-<br/>
 
-This GitHub repo makes up a reproducible data analysis project, which is part of the Data Analysis in Sport course at the University of Canberra.
-This project is based around the "Moneyball" theory of using statistical analysis to provide a greater insight into sport performances, in this case the selection/purchase of players from the 2018-19 season of the NBA who would help produce greater results for the Chicago Bulls organisation to improve on their past season result (finishing 13th in the Eastern Conference, and 27th overall for Win-Loss ration) and provide an improved result for the upcoming 2019-2020 NBA season.  \
-<br/>  
+This GitHub repo comprises of all the components for a reproducible data analysis project, which was initially created as part of the Data Analysis in Sport course at the University of Canberra.  \
+
+This project is based around the "Moneyball" theory of using statistical analysis to provide a greater insight into sport performances, in this case the selection/purchase of players from the 2018-19 season of the NBA who would help produce greater results for the Chicago Bulls organisation to improve on their past season result (finishing 13th in the Eastern Conference, and 27th overall on Win-Loss ratio) and provide an improved result for the upcoming 2019-2020 NBA season.  \
 \
-The task detailed the following:
+The assigned task incldued the following:
   * The assessment of potential players to purchase or retain for the Chicago Bulls organisation for the 2019-20 NBA season.
   * Projection of expected results with selected players.
   * Selection of 5 players, one from each position (Centre, Power Forward, Small Forward, Shooting Guard, Point Guard).
   * Ensure purchase of the 5 players was within the allotted budget of $118 million dollars.
-  * The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total)
+  * The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total).
+<br/> 
 
-# This file covers the following:
+### This file covers the following:
 
   * File locations
   * Data sources
   * Definitions used for each data base
   * Relevant calculations
   *
+
+### File Locations
+
+  1. Rmarkdown -> Bulls_Player_Report_u125511.R 
+  2. Data = 
+    + Project-data
+    + Tidy_data
+  3. Rscript files (in descending operational order)
+    + Bulls_Fresh_start.R
+    + Teams_wins_loss_df.R
+    + Exploratory_Analysis_2.R
+    + Bulls_multi_reg.R
+  4. Figures 
 
 
 ## Data sources
@@ -262,8 +273,9 @@ knitr::include_graphics("CodeCogsEqn.gif")
   eFG(%)\left = \frac{FG+(0.5*3P)}/{FGA}
 \end{equation}`
 
+```
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" title="\LARGE eFG% = (FG+(0.5*3P))/FGA" /></a>
-
+```
  `$$eFG(%) = \{FG+(0.5*3P)}/{FGA}$$`
 
 where:

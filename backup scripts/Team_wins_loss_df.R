@@ -13,7 +13,7 @@ library(ggrepel)
 ## Reading in data
 ## player_stats_tidy
 player_stats_tidy <- read_csv("data/tidy_data/player_stats_tidy.csv")
-
+View(player_stats_tidy)
 ## Df_team_Stats1
 df_Stats1_Tm_W <- read_csv("data/tidy_data/df_team_Stats1.csv")
 ## 18-19 Stats 1
@@ -21,7 +21,7 @@ df_Stats2_Tm_W <- read_csv("data/tidy_data/df_team_Stats2.csv")
 ## df_TOT_players
 df_TOT_players_Tm_W <- read_csv("data/tidy_data/df_TOT_players.csv")
 
-## rename team stats with T_var in Stats1
+## rename team stats with T_var in Stats2
 df_Stats1_Tm_W[df_Stats1_Tm_W$Team == "Milwaukee Bucks", "Team"] <- "MIL"
 df_Stats1_Tm_W[df_Stats1_Tm_W$Team == "Golden State Warriors", "Team"] <- "GSW"
 df_Stats1_Tm_W[df_Stats1_Tm_W$Team == "Philadelphia 76ers", "Team"] <- "PHI"
