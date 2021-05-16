@@ -1,0 +1,29 @@
+## References for Bulls Project
+
+
+To include bibliography, insert below in YAML
+
+output: html_document
+bibliography: references.bib  
+
+
+@MISC{Xie2020-dl,
+  title        = "{R} Markdown Cookbook",
+  author       = "Xie, Yihui and Dervieux, Christophe and Riederer, Emily",
+  abstract     = "This book showcases short, practical examples of lesser-known
+                  tips and tricks to helps users get the most out of these
+                  tools. After reading this book, you will understand how R
+                  Markdown documents are transformed from plain text and how
+                  you may customize nearly every step of this processing. For
+                  example, you will learn how to dynamically create content
+                  from R code, reference code in other documents or chunks,
+                  control the formatting with customer templates, fine-tune how
+                  your code is processed, and incorporate multiple languages
+                  into your analysis.",
+  month        =  nov,
+  year         =  2020,
+  howpublished = "\url{https://bookdown.org/yihui/rmarkdown-cookbook/}",
+  note         = "Accessed: 2021-4-19"
+}
+
+

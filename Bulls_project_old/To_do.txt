@@ -1,0 +1,24 @@
+##To do list for Bulls Project
+
+It is highly recommended you have completed the Moneyball case studies (part 1 and part 2 ) to help you with this project.
+
+Positions:
+PG = Point guard
+SG = Shooting guard
+C = Centre
+PF = Power forward
+SF = Small forward
+
+# Minutes played - regular season vs post season?
+
+
+
+#Duplicates in df1819Stats
+Players that were traded during the season may appear more than once (on more than one row) in the 2018-19_nba_player-statistics.csv data set, so it is important to handle these duplicates appropriately.
+
+#Points to consider
+Think about: how will you determine which metrics are more important to each position?
+You can find information about each position in basketball here. 
+
+
+Refer to the marking rubric for a guide on how this assignment will be assessed.

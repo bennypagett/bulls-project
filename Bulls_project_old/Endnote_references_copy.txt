@@ -1,0 +1,301 @@
+## References for Bulls Project
+
+
+@inproceedings{vaz2008can,
+  title={Can complex network metrics predict the behavior of nba teams?},
+  author={Vaz de Melo, Pedro OS and Almeida, Virgilio AF and Loureiro, Antonio AF},
+  booktitle={Proceedings of the 14th ACM SIGKDD international conference on Knowledge discovery and data mining},
+  pages={695--703},
+  year={2008}
+}
+
+
+@MISC{Fromal2012-yb,
+  title        = "Understanding the {NBA}: Explaining Advanced Offensive Stats
+                  and Metrics",
+  author       = "Fromal, Adam",
+  month        =  jan,
+  year         =  2012,
+  howpublished = "\url{https://bleacherreport.com/articles/1039116-understanding-the-nba-explaining-advanced-offensive-stats-and-metrics}",
+  note         = "Accessed: 2021-5-11"
+}
+
+@MISC{Schuhmann2021-zn,
+  title        = "Power Rankings Notebook: How James Harden trade impacts all 4
+                  teams",
+  author       = "Schuhmann, John",
+  abstract     = "Breaking down the trade with stats, film and analysis on
+                  Brooklyn, Houston, Cleveland and Indiana.",
+  publisher    = "NBA.com",
+  month        =  jan,
+  year         =  2021,
+  howpublished = "\url{https://www.nba.com/news/power-rankings-notebook-week-4}",
+  note         = "Accessed: 2021-5-9"
+}
+
+@MISC{noauthor_2017-ug,
+  title        = "Trade Value",
+  abstract     = "Trade Value estimates how much value a player has left in his
+                  career.",
+  month        =  may,
+  year         =  2017,
+  howpublished = "\url{https://www.nbastuffer.com/analytics101/trade-value/}",
+  note         = "Accessed: 2021-5-9",
+  language     = "en"
+}
+
+@MISC{noauthor_2017-qp,
+  title        = "Approximate Value ({AV})",
+  abstract     = "Approximate value is the metric which is an estimate of a
+                  player's value.",
+  month        =  may,
+  year         =  2017,
+  howpublished = "\url{https://www.nbastuffer.com/analytics101/approximate-value/}",
+  note         = "Accessed: 2021-5-9",
+  language     = "en"
+}
+
+@MISC{Wikipedia_contributors2020-va,
+  title        = "Performance Index Rating",
+  booktitle    = "Wikipedia, The Free Encyclopedia",
+  author       = "{Wikipedia contributors}",
+  abstract     = "Performance Index Rating (PIR) is a basketball mathematical
+                  statistical formula that is used by the Euroleague Basketball
+                  Company's first and second tier competitions, the EuroLeague
+                  and the EuroCup, as well as various European national
+                  domestic and regional leagues. It is a part of the Tendex
+                  basketball rating system. It is also variously referred to as
+                  Performance Index Ranking, Rating, Ranking, Evaluation,
+                  Valuation, and Efficiency. It is similar to, but not exactly
+                  the same as, the NBA's Efficiency (EFF) stat.",
+  month        =  jan,
+  year         =  2020,
+  howpublished = "\url{https://en.wikipedia.org/w/index.php?title=Performance_Index_Rating&oldid=934242904}",
+  note         = "Accessed: 2021-5-8"
+}
+
+@MISC{Wikipedia_contributors2021-mv,
+  title        = "Efficiency (basketball)",
+  booktitle    = "Wikipedia, The Free Encyclopedia",
+  author       = "{Wikipedia contributors}",
+  abstract     = "In professional basketball, the most commonly used
+                  statistical benchmark for comparing the overall value of
+                  players is called efficiency. It is a composite basketball
+                  statistic that is derived from basic individual statistics:
+                  points, rebounds, assists, steals, blocks, turnovers and shot
+                  attempts. The efficiency stat, in theory, accounts for both a
+                  player's offensive contributions (points, assists) and their
+                  defensive contributions (steals, blocks), but it is generally
+                  thought that efficiency ratings favor offense-oriented
+                  players over those who specialize in defense, as defense is
+                  difficult to quantify with currently tabulated statistics.",
+  month        =  apr,
+  year         =  2021,
+  howpublished = "\url{https://en.wikipedia.org/w/index.php?title=Efficiency_(basketball)&oldid=1019192874}",
+  note         = "Accessed: 2021-5-8"
+}
+
+@MISC{Fein2009-pb,
+  title        = "Cracking the Code: How to Calculate Hollinger's {PER} Without
+                  All the Mess",
+  booktitle    = "Bleacher Report",
+  author       = "Fein, Zach",
+  month        =  jan,
+  year         =  2009,
+  howpublished = "\url{https://bleacherreport.com/articles/113144-cracking-the-code-how-to-calculate-hollingers-per-without-all-the-mess}",
+  note         = "Accessed: 2021-5-8"
+}
+
+@MISC{noauthor_undated-du,
+  title        = "What are the best metrics to evaluate basketball players for
+                  your fantasy team? - Quora",
+  howpublished = "\url{https://www.quora.com/What-are-the-best-metrics-to-evaluate-basketball-players-for-your-fantasy-team}",
+  note         = "Accessed: 2021-5-8"
+}
+
+@MISC{Schuhmann2021-te,
+  title        = "Power Rankings Notebook: How James Harden trade impacts all 4
+                  teams",
+  author       = "Schuhmann, John",
+  abstract     = "Breaking down the trade with stats, film and analysis on
+                  Brooklyn, Houston, Cleveland and Indiana.",
+  publisher    = "NBA.com",
+  month        =  jan,
+  year         =  2021,
+  howpublished = "\url{https://www.nba.com/news/power-rankings-notebook-week-4}",
+  note         = "Accessed: 2021-5-8"
+}
+
+@MISC{Schuhmann2021-am,
+  title        = "Power Rankings Notebook: How James Harden trade impacts all 4
+                  teams",
+  author       = "Schuhmann, John",
+  abstract     = "Breaking down the trade with stats, film and analysis on
+                  Brooklyn, Houston, Cleveland and Indiana.",
+  publisher    = "NBA.com",
+  month        =  jan,
+  year         =  2021,
+  howpublished = "\url{https://www.nba.com/news/power-rankings-notebook-week-4}",
+  note         = "Accessed: 2021-5-8"
+}
+
+@MISC{noauthor_2017-oi,
+  title        = "Trade Value",
+  abstract     = "Trade Value estimates how much value a player has left in his
+                  career.",
+  month        =  may,
+  year         =  2017,
+  howpublished = "\url{https://www.nbastuffer.com/analytics101/trade-value/}",
+  note         = "Accessed: 2021-5-8",
+  language     = "en"
+}
+
+@MISC{noauthor_2017-id,
+  title        = "Trade Value",
+  abstract     = "Trade Value estimates how much value a player has left in his
+                  career.",
+  month        =  may,
+  year         =  2017,
+  howpublished = "\url{https://www.nbastuffer.com/analytics101/trade-value/}",
+  note         = "Accessed: 2021-5-7",
+  language     = "en"
+}
+
+@MISC{noauthor_undated-jg,
+  title        = "2018-19 {NBA} Season Summary",
+  abstract     = "Statistics, leaders, and more for the 2018-19 NBA season",
+  howpublished = "\url{https://www.basketball-reference.com/leagues/NBA_2019.html}",
+  note         = "Accessed: 2021-4-21"
+}
+
+@MISC{noauthor_undated-jx,
+  title        = "2018-19 {NBA} Season Summary",
+  abstract     = "Statistics, leaders, and more for the 2018-19 NBA season",
+  howpublished = "\url{https://www.basketball-reference.com/leagues/NBA_2019.html}",
+  note         = "Accessed: 2021-4-21"
+}
+
+@MISC{noauthor_undated-xt,
+  title        = "{NBA} Salaries",
+  abstract     = "Hoopshype salaries of all NBA teams",
+  publisher    = "HoopsHype",
+  howpublished = "\url{https://hoopshype.com/salaries/}",
+  note         = "Accessed: 2021-4-21"
+}
+
+@MISC{noauthor_undated-vm,
+  title        = "{NBA} Salaries",
+  abstract     = "Hoopshype salaries of all NBA teams",
+  publisher    = "HoopsHype",
+  howpublished = "\url{https://hoopshype.com/salaries/}",
+  note         = "Accessed: 2021-4-21"
+}
+
+@MISC{noauthor_undated-st,
+  title        = "2018-19 {NBA} Player Stats: Totals",
+  abstract     = "Player stat totals for the 2018-19 NBA season",
+  howpublished = "\url{https://www.basketball-reference.com/leagues/NBA_2019_totals.html}",
+  note         = "Accessed: 2021-4-21"
+}
+
+@MISC{Xie2020-dl,
+  title        = "{R} Markdown Cookbook",
+  author       = "Xie, Yihui and Dervieux, Christophe and Riederer, Emily",
+  abstract     = "This book showcases short, practical examples of lesser-known
+                  tips and tricks to helps users get the most out of these
+                  tools. After reading this book, you will understand how R
+                  Markdown documents are transformed from plain text and how
+                  you may customize nearly every step of this processing. For
+                  example, you will learn how to dynamically create content
+                  from R code, reference code in other documents or chunks,
+                  control the formatting with customer templates, fine-tune how
+                  your code is processed, and incorporate multiple languages
+                  into your analysis.",
+  month        =  nov,
+  year         =  2020,
+  howpublished = "\url{https://bookdown.org/yihui/rmarkdown-cookbook/}",
+  note         = "Accessed: 2021-4-19"
+}
+
+
+
+
+
+@MISC{Xie2020-dl,
+  title        = "{R} Markdown Cookbook",
+  author       = "Xie, Yihui and Dervieux, Christophe and Riederer, Emily",
+  abstract     = "This book showcases short, practical examples of lesser-known
+                  tips and tricks to helps users get the most out of these
+                  tools. After reading this book, you will understand how R
+                  Markdown documents are transformed from plain text and how
+                  you may customize nearly every step of this processing. For
+                  example, you will learn how to dynamically create content
+                  from R code, reference code in other documents or chunks,
+                  control the formatting with customer templates, fine-tune how
+                  your code is processed, and incorporate multiple languages
+                  into your analysis.",
+  month        =  nov,
+  year         =  2020,
+  howpublished = "\url{https://bookdown.org/yihui/rmarkdown-cookbook/}",
+  note         = "Accessed: 2021-4-19"
+}
+
+
+@MISC{NBA_Season_2018-19_data,
+  title        = "2018-19 {NBA} Season Summary",
+  abstract     = "Statistics, leaders, and more for the 2018-19 NBA season",
+  howpublished = "\url{https://www.basketball-reference.com/leagues/NBA_2019.html}",
+  note         = "Accessed: 2021-4-21"
+}
+
+@MISC{noauthor_undated-jx,
+  title        = "2018-19 {NBA} Season Summary",
+  abstract     = "Statistics, leaders, and more for the 2018-19 NBA season",
+  howpublished = "\url{https://www.basketball-reference.com/leagues/NBA_2019.html}",
+  note         = "Accessed: 2021-4-21"
+}
+
+@MISC{noauthor_undated-xt,
+  title        = "{NBA} Salaries",
+  abstract     = "Hoopshype salaries of all NBA teams",
+  publisher    = "HoopsHype",
+  howpublished = "\url{https://hoopshype.com/salaries/}",
+  note         = "Accessed: 2021-4-21"
+}
+
+@MISC{noauthor_undated-vm,
+  title        = "{NBA} Salaries",
+  abstract     = "Hoopshype salaries of all NBA teams",
+  publisher    = "HoopsHype",
+  howpublished = "\url{https://hoopshype.com/salaries/}",
+  note         = "Accessed: 2021-4-21"
+}
+
+
+@MISC{noauthor_undated-st,
+  title        = "2018-19 {NBA} Player Stats: Totals",
+  abstract     = "Player stat totals for the 2018-19 NBA season",
+  howpublished = "\url{https://www.basketball-reference.com/leagues/NBA_2019_totals.html}",
+  note         = "Accessed: 2021-4-21"
+}
+
+
+
+@MISC{Xie2020-dl,
+  title        = "{R} Markdown Cookbook",
+  author       = "Xie, Yihui and Dervieux, Christophe and Riederer, Emily",
+  abstract     = "This book showcases short, practical examples of lesser-known
+                  tips and tricks to helps users get the most out of these
+                  tools. After reading this book, you will understand how R
+                  Markdown documents are transformed from plain text and how
+                  you may customize nearly every step of this processing. For
+                  example, you will learn how to dynamically create content
+                  from R code, reference code in other documents or chunks,
+                  control the formatting with customer templates, fine-tune how
+                  your code is processed, and incorporate multiple languages
+                  into your analysis.",
+  month        =  nov,
+  year         =  2020,
+  howpublished = "\url{https://bookdown.org/yihui/rmarkdown-cookbook/}",
+  note         = "Accessed: 2021-4-19"
+}

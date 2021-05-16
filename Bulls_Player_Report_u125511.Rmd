@@ -4,25 +4,20 @@ author: "Benny Pagett"
 student ID: "u125511"
 date: "16/05/2021"
 output: 
-    rmdformats::readthedown:
-      highlight: kate
-      df_print: knitr::kable
-
-     bibliography: references_copy.bibtex 
-     csl: sage-vancouver.csl
-      css: Css_background.css
-      toc: true
-      toc_depth: 2
-      toc_float:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: 
       collapsed: false
       smooth_scroll: false
-      number_section: true
-     df_print: knitr::kable
-      highlight: tango
-      code_download: true
 ---
 
-
+df_print: knitr::kable
+csl: sage-vancouver.csl
+css: Css_background.css
+code_download: true
+theme: united
+highlight: tango
 
 ```{css, eval= TRUE, echo=FALSE, include = FALSE}
 #header {
