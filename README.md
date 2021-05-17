@@ -147,7 +147,6 @@ The following *.csv files will be exported locally into the data/tidy_data folde
   * **[Usage Rate](https://www.nbastuffer.com/analytics101/usage-rate/)** is a calculation of the percentage a player is used by the team.
   
     It is calculated by:   
-$$100*((FGA+0.44*FTA+TO)*(TMP/5))/(MP*(TFGA+0.44*TFTA+TTO))$$
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;Usage%&space;=&space;100*((FGA&plus;0.44*FTA&plus;TOV)*(TM\_MP/5))/(MP*(TM\_FGA&plus;0.44*TM\_FTA&plus;TM\_TOV))" title="\large Usage% = 100*((FGA+0.44*FTA+TOV)*(TM\_MP/5))/(MP*(TM\_FGA+0.44*TM\_FTA+TM\_TOV))" />
@@ -158,9 +157,6 @@ $$100*((FGA+0.44*FTA+TO)*(TMP/5))/(MP*(TFGA+0.44*TFTA+TTO))$$
   * **[Effective Field Goal Percentage (eFGp)](https://www.basketball-reference.com/about/glossary.html#:~:text=eFG%25%20%2D%20Effective%20Field%20Goal%20Percentage,for%2010%20with%200%20threes.)** A statistic that adjusts field goal percentage to account for the fact that three-point field goals count for three points while field goals only count for two points.  
 
     It is calculated by: 
-$$
-eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
-$$
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA))" title="\large eFGp% = (FG+(0.5*3P)/FGA))" />
@@ -171,9 +167,6 @@ $$
   * **[Efficiency Value](https://www.nbastuffer.com/analytics101/nba-efficiency/)**, is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates player’s linear efficiency.
 
     It is calculated by: 
-$$
-EFF = (PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP 
-$$
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;EFF&space;=&space;(PTS&space;&plus;&space;REB&space;&plus;&space;AST&space;&plus;&space;STL&space;&plus;&space;BLK&space;-(FGA-FG)-(FTA-FT)&space;-&space;TOV)&space;/&space;GP" title="\large EFF = (PTS + REB + AST + STL + BLK -(FGA-FG)-(FTA-FT) - TOV) / GP" />
@@ -184,12 +177,9 @@ $$
   * **[Trade Value](https://www.nbastuffer.com/analytics101/trade-value/)** is the estimate using a player’s age and his approximate value to determine how much value a player has left in his career. Invented by Bill James.
   
     It is calculated by: 
-$$
-Trade Value Formula=[(Approximate Value- 27-0.75*Age)2(27-0.75*Age +1)*Approximate Value]/190+(Approximate Value)*2/13
-$$
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;Trade&space;Value&space;Formula=[(Approximate&space;Value-&space;27-0.75*Age)2(27-0.75*Age&space;&plus;1)*Approximate&space;Value]/190&plus;(Approximate&space;Value)*2/13" title="\large Trade Value Formula=[(Approximate Value- 27-0.75*Age)2(27-0.75*Age +1)*Approximate Value]/190+(Approximate Value)*2/13" />
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;TrV&space;=[(AV&space;Formula-&space;27-0.75*Age)2(27-0.75*Age&space;&plus;1)*AV&space;Formula]/190&plus;(AV&space;Formula)*2/13" title="\large Trade Value Formula=[(AV Formula- 27-0.75*Age)2(27-0.75*Age +1)*AV Formula]/190+(AV Formula)*2/13" />
 </p>
 
   * **Approximate Value**
@@ -197,9 +187,6 @@ $$
     * **[Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/)** is the metric which is an estimate of a player’s value, making no fine distinctions, but, rather, distinguishing easily between very good seasons, average seasons, and poor seasons.
 
     It is calculated by:  
-$$
-AV Formula = (Credits(3/4) )/21
-$$
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;AV&space;Formula&space;=&space;(Credits(3/4))/21" title="\large AV Formula = (Credits(3/4))/21" />
@@ -210,9 +197,6 @@ $$
     * **[Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/)** is an aggregation of observations from a standard game/season, in combination used within the approximate value calculation.
 
     It is calculated by:   
-$$
-Credits Formula = (Points)+(Rebounds)+(Assists)+(Steal)+(Blocks)-(Field Goals Missed)-(Free Throws Missed)-(Turnovers)
-$$
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;Credits&space;Formula&space;=&space;(PTS)&plus;(TRB)&plus;(AST)&plus;(STL)&plus;(BLK)-(FGA-FG)-(FTA-FT)-(TOV)" title="\large Credits Formula = (PTS)+(TRB)+(AST)+(STL)+(BLK)-(FGA-FG)-(FTA-FT)-(TOV)" />
