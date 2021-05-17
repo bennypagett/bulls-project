@@ -52,7 +52,7 @@ The purpose and problem that this method of analysis provides is a way to see th
 **Points per minute**
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;PTS\_per\_MP{_{\beta1}}&space;=&space;-0.382&space;&plus;&space;0.699&space;*&space;eFGp&space;&plus;&space;-0.0330&space;*&space;TRB_MP&space;&plus;&space;2.39&space;*&space;Tm\_use\_total&space;&plus;&space;0.00000965&space;*&space;EFF&space;&plus;&space;-0.00000803&space;*&space;TrV" title="\large PTS\_per\_MP{_{\beta1}} = -0.382 + 0.699 * eFGp + -0.0330 * TRB_MP + 2.39 * Tm\_use\_total + 0.00000965 * EFF + -0.00000803 * TrV" />
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;PTS\_per\_MP{_{\beta1}}&space;=&space;-0.382&space;&plus;&space;0.699&space;*&space;eFGp&space;&plus;&space;-0.0330&space;*&space;TRB_MP&space;&plus;&space;2.39&space;*&space;Tm\_use\_total&space;&plus;&space;0.00000965&space;*&space;EFF&space;&plus;&space;-0.00000803&space;*&space;TrV"" title="PTS\_per\_MP{_{\beta1}} = -0.382 + 0.699 * eFGp + -0.0330 * TRB_MP + 2.39 * Tm\_use\_total + 0.00000965 * EFF + -0.00000803 * TrV"" />
 </p>
 
 I hope you enjoy this project as much as I did. Although challenging in the initial cleaning/set up/modeling, it is engaging when looking through final product and to see the results.

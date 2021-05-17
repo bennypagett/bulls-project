@@ -1,0 +1,955 @@
+---
+title: "Chicago Bulls Prospective <br> Player Analysis `19-20"
+author: "Benny Pagett - u125511"
+student ID: "u125511"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::readthedown: 
+    css: custom_copy.css
+    highlight: kate
+    fig_caption: yes
+bibliography: references_copy.bibtex 
+csl: vancouver_access_date.csl
+df_print: knitr::kable
+code_download: true
+self_contained: false
+mathjax: "http://example.com/MathJax.js"
+
+---
+
+
+```{r setup, include=FALSE}
+library(knitr)
+library(rmdformats)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(broom)
+library(performance)
+library(psych)
+library(ggrepel)
+library(plotly)
+library(DT)
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=FALSE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+
+```
+
+```{r project data loading, cache=TRUE, include=FALSE}
+
+## Reading in Raw Project data
+## 18-19 Player salaries
+dfsal <- read_csv("data/project-data/2018-19_nba_player-salaries.csv")
+## 18-19Player Stats
+df_ind_stats <- read_csv("data/project-data/2018-19_nba_player-statistics.csv")
+## 18-19 Stats 1
+df_team_Stats1 <- read_csv("data/project-data/2018-19_nba_team-statistics_1.csv")
+## 18-19 Stats 2
+df_team_Stats2 <- read_csv("data/project-data/2018-19_nba_team-statistics_2.csv")
+## 2019-20 Pay roll team
+dfPay <- read_csv("data/project-data/2019-20_nba_team-payroll.csv")
+```
+
+```{r process_data, include=FALSE, cache=TRUE}
+
+## NBA 18-19 Player stats and salaries
+player_stats_tidy <- readr::read_csv("data/tidy_data/player_stats_tidy.csv")
+## NBA 18-19 Transfer Player Stats
+df_ind_stats <- readr::read_csv("data/tidy_data/df_TOT_players.csv")
+## 18-19 NBA Stats 1
+df_team_Stats1 <- readr::read_csv("data/tidy_data/df_team_Stats2.csv")
+## 18-19 NBA Stats 2
+df_team_Stats2 <- readr::read_csv("data/tidy_data/df_team_Stats1.csv")
+## 2019-20 Pay roll team
+dfPay <- readr::read_csv("data/project-data/2019-20_nba_team-payroll.csv")# runs code but not in final document
+```
+
+
+
+```{r Tidy_data, cache=TRUE, include=FALSE}
+## player_stats_tidy
+player_stats_tidy <- readr::read_csv("data/tidy_data/player_stats_tidy.csv")
+## Teams Stats for Win percentage 
+df_Stats1_Tm_W <- readr::read_csv("data/tidy_data/df_team_Stats1.csv")
+## 18-19 Stats 1
+df_Stats2_Tm_W <- readr::read_csv("data/tidy_data/df_team_Stats2.csv")
+## df_nonTOT_players
+df_nonTOT_players_clean <- read_csv("data/tidy_data/df_nonTOT_clean.csv")
+```
+
+
+```{r Bulls logo7G, echo=FALSE, fig.retina = 2, fig.cap="1", out.width = '30%',fig.width = 6, fig.asp = 0.618, fig.align = "center"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+
+*** 
+#### Relevant calculations
+***
+
+**Usage rate equation** (TM_use_total)
+
+  * **[Usage Rate](https://www.nbastuffer.com/analytics101/usage-rate/)** is a calculation of the percentage a player is used by the team.
+  
+    It is calculated by:   
+$$100*((FGA+0.44*FTA+TOV)*(TM\_MP/5))/(MP*(TM\_FGA+0.44*TM\_FTA+TM\_TOV))$$
+  
+**Effective field goal percentage** (eFGp)
+
+  * **[Effective Field Goal Percentage (eFGp)](https://www.basketball-reference.com/about/glossary.html#:~:text=eFG%25%20%2D%20Effective%20Field%20Goal%20Percentage,for%2010%20with%200%20threes.)** A statistic that adjusts field goal percentage to account for the fact that three-point field goals count for three points while field goals only count for two points.  
+
+    It is calculated by: 
+$$
+eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
+$$
+
+ **Efficiency Value** 
+
+  * **[Efficiency Value](https://www.nbastuffer.com/analytics101/nba-efficiency/)**, is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates player’s linear efficiency.
+
+    It is calculated by: 
+$$
+EFF = (PTS + TRB + AST + STL + BLK − (FGA-FG) − (FTA-FT) - TOV) / GP 
+$$
+
+**Trade Value**
+
+  * **[Trade Value](https://www.nbastuffer.com/analytics101/trade-value/)** is the estimate using a player’s age and his approximate value to determine how much value a player has left in his career. Invented by Bill James.
+  
+    It is calculated by: 
+$$
+TrV=[(AV Formula - 27-0.75*Age)^2(27-0.75*Age +1)*AV Formula]/190+(AV Formula)*2/13
+$$
+  * **Approximate Value**
+  
+      * **[Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/)** are metrics which are an estimate of a player’s value, making no fine distinctions, but, rather, distinguishing easily between very good seasons, average seasons, and poor seasons.
+
+    It is calculated by:  
+$$
+AV Formula = (Credits^{3/4})/21
+$$
+  * **Credits Formula** 
+
+     * **[Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/)** is an aggregation of observations from a standard game/season, in combination used within the approximate value calculation.
+
+    It is calculated by:   
+$$
+Credits Formula = (PTS)+(TRB)+(AST)+(STL)+(BLK)-(FGA-FG)-(FTA-FT)-(TOV)
+$$
+
+
+
+
+
+[@Chicago_Logo-eh]
+
+# Chicago Bulls NBA 2019-2020 Prospetive Player Report {.emphasized}  
+
+# Introduction:
+
+## Introduction 
+
+[@Vaz_de_Melo2008-bg]
+
+[@Xie2020-dl]
+
+[@NBA_Season_2018-19_data]
+
+
+
+[@Fromal2012-yb]
+
+
+<br>
+
+# 1. Introduction:
+
+This GitHub repo comprises of all the components for a reproducible data analysis project, which was initially created as part of the Data Analysis in Sport course at the University of Canberra.  
+
+***
+##### Background
+***
+This project is based around the "Moneyball" theory of using statistical analysis to provide a greater insight into sport performances, in this case the selection/purchase of players from the 2018-19 season of the NBA who would help produce greater results for the Chicago Bulls organisation to improve on their past season result (finishing 13th in the Eastern Conference, and 27th overall on Win-Loss ratio) and provide an improved result for the upcoming 2019-2020 NBA season.  
+  
+The assigned task included the following:  
+
+  * The assessment of potential players to purchase or retain for the Chicago Bulls organisation for the 2019-20 NBA season.  
+  * Projection of expected results with selected players.    
+  * Selection of 5 players, one from each position:
+      * Center = C
+      * Power Forward = PF
+      * Small Forward = SF
+      * Shooting Guard = SG
+      * Point Guard = PG  
+  * Ensure purchase of the 5 players was within the allotted budget of $118 million dollars.  
+  * The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total).  
+  
+The use of statistics in sport is not a new phenomenon, partly due to people like Bill James and John Hollinger who implemented and revolutionised the use of statistical analysis, and is now common within sports like basketball and in particular the North American basketball league the NBA. John Hollinger created the all in one metric the Player Efficiency Rating or PER, which allowed for the collection of several variables (i.e both positive and negative outcomes e.g turnovers/)
+
+The hypothesis for this project is based on the use of a combination of known analysis methods to create a predictive equation to aid in the selection of appropriate players for the Chicago Bulls 19/20 season in the NBA. 
+
+The variables were used to show an association with an increase in overall Win% due to an increase of points per minute played. 
+
+The variables used for the predictive value were:  
+
+  * Effective Field Goal Percentage (eFGp)  
+  * Trade Value (TrV)  
+  * Efficiency rate (EFF)  
+  * Usage Rate (Tm_use)  
+  * Total Rebounds per minute (TRB_MP)  
+  * Points per minute (PTS_per_MP)  
+<br> 
+
+I believe that using a multifaceted approach to the analysis of player performance decreases the disparity between observed results and predictive results.
+
+This project highlighted several trends within the NBA data and the NBA overall standings results. This mode of retrospective/prospective analysis still relies on the game based execution of set actions/reactions. This can be seen within the confidence intervals within each predictive variable, showing the margin for difference between expected and observed.
+
+The purpose and problem that this method of analysis provides is a way to see through the inflated market values for athletes and highlight the true value of players based on their repeated trends.I believe that the predictive formula of:  
+  
+**Points per minute**
+$$
+\beta_1 = -0.382 + 0.699 * eFGp + -0.0330 * TRB_MP + 2.39 * Tm_use_total + 0.00000965 * EFF + -0.00000803 * TrV
+$$
+
+I hope you enjoy this project as much as I did. Although challenging in the initial cleaning/set up/modeling, it is engaging when looking through final product and to see the results.
+<br/>  
+<br/>  
+
+#### Credits: 
+**Dr. Jocelyn Mara:** Data Analysis in Sport PG, University of Canberra, 2021   
+**Martin Manley:** Kansas City sports reporter and statistician, EFF calculation.    
+**Bill James:** Statistician, Trade Value calculation, Approximate Value calculation, Credits Calculation.  
+**John Hollinger:** Effective Field Goal percentage and Usage Rate calculation  
+**Dean Oliver:** Effective Field Goal percentage and Usage Rate calculation  
+[**Basketball-reference.com**](https://www.basketball-reference.com/)
+<br>
+<br>
+
+
+
+
+
+
+<br>
+This project is based around the “Moneyball” theory of using statistical analysis to provide a greater insight into sport performances, in this case the selection/purchase of players from the 2018-19 season of the NBA who would help produce greater results for the Chicago Bulls organisation to improve on their past season result (finishing 13th in the Eastern Conference, and 27th overall on Win-Loss ratio) and provide an improved result for the upcoming 2019-2020 NBA season.
+
+The assigned task included the following:
+  * The assessment of potential players to purchase or retain for the Chicago Bulls organisation for the 2019-20 NBA season.
+  * Projection of expected results with selected players.
+  * Selection of 5 players, one from each position (Centre, Power Forward, Small Forward, Shooting Guard, Point Guard).
+  * Ensure purchase of the 5 players was within the allotted budget of $118 million dollars.
+  * The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total). 
+
+[@Chicago_Logo-eh]
+
+The use of statistics in sport is not a new phenomeno `[@Noauthor_undated-pl]' , partly due to people like Bill James and John Hollinger who implemented and revolutionised the use of statistical analysis, and is now common within sports like basketball and in particular the North American basketball league the NBA. John Hollinger created the all in one metric the Player Efficiency Rating or PER, which allowed for the collection of several variables (i.e both positive and negative outcomes e.g turnovers/)
+
+The hypothesis for this project is based on the use of a combination of known analysis methods to create a predictive equation to aid in the selection of appropriate players for the Chicago Bulls 19/20 season in the NBA.
+
+The variables were used to show an association of an increase in overall Win% due to an increase of points per minute played. The variables used for the predictive value were:
+
+Effective Field Goal Percentage (eFGp)
+Trade Value (TrV)
+Efficiency rate (EFF)
+Usage Rate (Tm_use)
+Total Rebounds per minute (TRB_MP)
+Points per minute (PTS_per_MP)
+
+
+
+This section should provide relevant background information and justification for the project, including:  
+
+  a) relevant background information of basketball, including key metrics, position requirements etc  
+
+Key metrics:
+  * Minutes played
+  * Offensive value
+  * Deffensive value (Rebounds)
+  * Offensive value vs Defensive value
+  * Assists
+  * Points
+  * Points per minute played
+  * Rebounds
+  * Offensive rebound %
+  * Deffensive rebound %
+  * Turnovers
+  * Free Throw attempts
+  * Free throw percentage
+  * Attempts in the paint
+  * Fouls
+  * Regular season vs post season
+
+** PER = Player efficiency rating
+*
+
+
+From Wikipedia, the free encyclopedia
+Jump to navigationJump to search
+In basketball, effective field goal percentage (abbreviated eFG%) is a statistic that adjusts field goal percentage to account for the fact that three-point field goals count for three points while field goals only count for two points. [1] Its goal is to show what field goal percentage a two-point shooter would have to shoot at to match the output of a player who also shoots three-pointers. [2]
+
+It is calculated by: 
+$$
+eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
+$$
+
+
+```{r eFG equation, echo=FALSE, fig.cap="eDG% calculation", out.width = '100%'}
+knitr::include_graphics(rep("figs/CodeCogsEqn.gif"))
+```
+<br/>
+<br/>
+<br/>
+<br/>
+```{r TRB_MP equaiton, echo=FALSE, fig.cap="Total Rebounds/Minute", out.width = '100%'}
+knitr::include_graphics(rep("images/CodeCogsEqn_TRB.gif"))
+```
+
+
+where:
+
+FG = field goals made
+3P = 3-point field goals made,
+FGA = field goal attempts,
+[3]
+
+
+A rough approximation can also be had by: 
+
+$$
+eFG(\%) =\frac{\frac{PPG-FT}{2}}{FGA}
+$$
+
+
+where:
+
+PPG = points per game
+FT = the free throws made
+FGA = field goal attempts
+The advantage of this second formula is that it highlights the aforementioned logic behind the statistic, where it is pretended that a player only shot two-point shots (hence the division of non-free-throw points by 2).
+
+
+An additional formula that seems to be more in use by the statistics actually displayed on websites (but less cited by said websites) is:
+$$
+eFG(\%) =\frac{2FG + (1.5*3FG)}{FGA}
+
+$$
+
+
+
+# where:
+
+2FG = 2-point field goals made
+3FG = 3-point field goals made
+FGA = field goal attempts
+
+
+## Usage rate:  
+Usage rate, a.k.a., usage percentage is an estimate of the percentage of team plays used by a player while he was on the floor.
+
+Usage Rate Formula
+
+100*((Player’s Field Goal Attempts)+0.44*(Player’s Free Throw Attempts)+(Player’s Turnovers))*(Team’s Total Minutes)
+/
+((Team’s Total Field Goal Attempts)+0.44*(Team’s Total Free Throw Attempts)+Team’s Total Turnovers))*5*(Player’s Minutes)
+
+By balancing usage rates and the varying offensive ratings of the five players on the court, a team can achieve optimal offensive output. The stats show that, for all players, as the player uses more possessions, his efficiency decreases. What defines a superstar, in Dean Oliver‘s statistical analysis, is that he can shoulder a larger proportion of a team’s possessions with only a relatively small drop in efficiency. Meanwhile, the opposite is also true: Players perform more efficiently when they are asked to use fewer of their team’s possessions. As a result, the greater burden on the superstar means that supporting players maintain low usage rates, allowing them to operate closer to their peak efficiency.
+
+In an effort to determine how much impact players have on their teams, sports statisticians have developed metrics such as Usage Percentage. Examining Usage Percentage gives us an indication of how efficient a player is given the amount of possessions he uses.
+
+What defines a quality player is someone who can have a high Usage Percentage, but still plays at a high rate of efficiency. Teams can look at the Usage Percentage of players on their team, and determine how to balance usage across their lineup to maximize team efficiency.
+
+Although the formula itself looks a bit more complicated, the basic idea is to look at a player's combination of field goal attempts, free throw attempts and turnovers, and find the percentage of the team totals he uses in those same categories.
+
+Some of the all-time leaders in this category include Michael Jordan, Allen Iverson, George Gervin, Dominique Wilkins and Shaquille O'Neal.
+
+[@usage-percentage-ref-pl]
+
+
+
+
+# 2. Report scenario:
+  This report forms the tangible component of a reproducible data analysis project of a task given to the data analytics team by the Chicago Bulls GM . The task detailed the assessment of potential players to join/retain for the Chicago Bulls organisation for the 2019-20 NBA season. 
+  
+  The projected budget for player contracts for the 2019-20 season is $118 million dollars. 
+
+# The aim of the project
+
+  This report and analysis aims to provide five starting players (PG, C, SG, PF & SF) of the highest value based upon a cost-benefit analysis. The purchase of the proposed athletes/players still allows sufficient budget to complete the remaining roster.
+
+## Justification and importance
+  
+  The previous 2018-19 season saw the Chicago Bulls finish 27th out of 30 teams in the NBA (on win-loss record). The Chicago Bulls organisation has aspirations to rebuild their line-up and field a team with championship title potential for the upcoming 2019-20 season.
+
+Note that you may choose a different order to present each of the elements listed above. 
+### 
+```{r Bulls logo small7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+
+ ***
+<br>
+## 2. Reading and cleaning the raw data
+
+This section should document the process used to read and clean the raw data. It should also include a description of the data sets used and variables in each. For brevity, you could provide a link to the specific variable descriptions, rather than writing these out in full within your report. 
+
+## Data sources:  
+
+
+##### Data sources
+
+1. [2018-19_nba_player-statistics.csv](https://www.basketball-reference.com/leagues/NBA_2019_totals.html)  
+
+2. [2018-19_nba_player-salaries.csv](https://hoopshype.com/salaries/)  
+
+3. [2019-20_nba_team-payroll.csv](https://hoopshype.com/salaries/)  
+
+4. [2018-19_nba_team-statistics_1.csv](https://www.basketball-reference.com/leagues/NBA_2019.html)  
+
+5. [2018-19_nba_team-statistics_2.csv](https://www.basketball-reference.com/leagues/NBA_2019.html)  
+<br>
+
+##### File Locations
+Located within the Chicago_Bulls_u125511 folder 
+
+  * Rmarkdown -> Chicago_Bulls_u125511
+  * Data:
+    * Project-data
+    * Tidy_data
+  * Funcs -> Rscript files (in descending operational order)  
+    * Bulls_Fresh_start.R  
+    * Teams_wins_loss_df.R  
+    * Exploratory_Analysis_2.R  
+    * Bulls_multi_reg.R  
+  * Figures 
+  * Images  
+  * Funcs  
+  * References  
+
+##### Operational order: 
+
+Scripts to be loaded and run through Rstudio program:  
+
+  1. Bulls_Project_Fresh_start.R  
+  2. Team_wins_loss_df.R  
+  3. Explortory_Analysis_2.R  
+  4. Bulls_Multi_reg R  
+  
+##### Tidy data/created *.csv files
+The following *.csv files will be exported locally into the data/tidy_data folder: 
+
+  * player_stats_tidy.csv  
+  * df_team_Stats1.csv  
+  * df_team_Stats2.csv  
+  * df_TOT_players.csv  
+  * df_nonTOT_clean.csv  
+  * datC.csv  
+  * datPF.csv  
+  * datPG.csv  
+  * datSF.csv  
+  * datSG.csv  
+
+
+
+```{r data_sources, echo=FALSE}
+
+
+```
+
+
+
+```{r Bulls logo small-2-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+
+ ***
+<br>
+
+# 3. Exploratory analysis: 
+
+```{r NBA_player_group, echo=FALSE, cache=TRUE}
+
+source("funcs/Bulls_Project_Fresh_start.R", local = TRUE)
+
+```
+
+
+
+```{r source_bulls_multi_reg1, include=FALSE, cache = TRUE, dependson = "...."}  
+
+source("funcs/Bulls_multi_reg.R", local = TRUE)
+
+
+```
+### NBA player group
+```{r athlete_table, echo=FALSE}
+DT::datatable(model_testing %>% 
+  select(player_name, Tm, Age, Pos, salary, TrV, EFF, Tm_use_total,PTS_per_MP, TRB_MP, exp_PTS_per_MP) %>% 
+  arrange(desc(exp_PTS_per_MP), salary))
+
+rm(at_table)
+
+```
+
+# linear
+
+```{r source_linear_analysis, echo=FALSE, include=FALSE}
+
+source("funcs/Exploratory_Analysis_2.R", local = TRUE)
+
+```
+
+```{r eFG_histogram, echo=FALSE}
+
+ggplot(data = df_nonTOT_clean) +
+  geom_histogram(mapping = aes(x = eFGp), colour = "black", fill = "dodgerblue")
+
+```
+
+This section should document your exploratory data analysis and may include but is not limited to:
+
+#### Cleaning steps
+
+The following steps were carried out to ensure the data was clean and processible ready for analysis:
+
+  1. Error checking and missing values
+  2. Convert NA values to 
+  2. Comparison across data frames for common variable names
+  3. Fix spelling/abbreviations of player names to ensure accuracte data matching across data sets
+  4. Fix team names to match abbreviations across data sets checking for errors and missing values within the data sets
+
+b) checking the distribution of variables
+
+## c) checking for relationships between variables, or differences between groups
+
+### d) justification for decisions made about data modelling
+
+Note that this section and the data cleaning section may be an iterative process, as you might find things about the data that need to be 'cleaned up' once you have explored the data further. 
+
+```{r Bulls logo small-3-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+
+ ***
+<br>
+
+# 4. Data modelling and results:  
+
+## This section may include but is not limited to:
+
+  a) data modeling (e.g. creating a linear regression)
+  
+## need to check source   
+  
+```{r source_bulls_multi_reg, include=FALSE, cache = TRUE, dependson = "...."}  
+
+source("funcs/Bulls_multi_reg.R", local = TRUE)
+
+library(knitr)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(broom)
+library(performance)
+library(psych)
+library(ggrepel)
+library(plotly)
+library(DT)
+
+
+```
+
+
+```{r pairs, fig.retina = 2, echo=FALSE}
+pairs(formula = ~ PTS_per_MP + eFGp + TRB_MP + Tm_use_total + EFF + TrV, data = df_nonTOT_clean)
+
+```
+
+```{r lin_mod_multi, echo=FALSE}
+lm_bb_hr <- lm(PTS_per_MP ~  eFGp + TRB_MP + Tm_use_total + EFF + TrV, data = df_nonTOT_clean)
+knitr::kable(tidy(lm_bb_hr, conf.int = TRUE))
+```
+
+```{r fit, echo=FALSE}
+
+fit <- lm(PTS_per_MP ~ eFGp + TRB_MP + Tm_use_total + EFF + TrV,
+          data = df_nonTOT_clean)
+knitr::kable(tidy(fit, conf.int = TRUE))
+```
+
+```{r predictive_formula, echo=FALSE}
+# as such if 
+#eFG = 0.55
+#TRB_MP = .2
+#Tm_use_total = 0.2
+#EFF = 1500
+#TrV = 600
+#Predictive formula to PTS_per_MP
+-0.382 + 0.699 * 0.55 + -0.0330 * 0.2 + 2.39 * 0.20 + 0.00000965 * 1500 + -0.00000803 * 600
+## [1] 0.483507
+
+```
+
+### Predictive formula based off multiple regression model:  
+  
+  * eFG = 0.55
+  * TRB_MP = .2
+  * Tm_use_total = 0.2
+  * EFF = 1500
+  * TrV = 600
+
+$$
+\beta_1 = -0.382 + 0.699 * 0.55 + -0.0330 * 0.2 + 2.39 * 0.20 + 0.00000965 * 1500 + -0.00000803 * 600
+$$
+
+  b) assumption checking
+
+  c) model output and interpretation of your model
+
+```{r Bulls logo small-4-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+
+<br>
+
+# 5. Player Analysis:
+<br>
+
+## Points per/min vs Salary:  
+
+```{r gg2, echo=FALSE}
+library(plotly)
+gg2 <- ggplot(data = model_testing, aes(x = Tm_exp_Pts_per_MP, y = WinP_Tm, label = Tm, group = 1,
+                                        text = paste("Team: =", Tm,
+                                                     "<br>Win%: ", round(WinP_Tm, digits = 4),
+                                                     "<br>Actual Points: ", round(Tm_Pts_per_MP, digits = 4),"Pts/min",
+                                                     "<br>Expected Points: ", round(Tm_exp_Pts_per_MP, digits = 4), "Pts/min")
+        )) +
+  geom_point(colour = "black", aes(Tm_Pts_per_MP, WinP_Tm)) +
+  geom_point(colour = "#1dcae0") +
+  geom_text(nudge_x = .00002, nudge_y = 1, cex = 3) +
+  labs(title = "Team Win Percentage vs Expected points/minute", 
+       subtitle = "Teams with increased pts/min have a higher winning % ", 
+       caption = "Data sourced from the NBA stats packages, see reference list",
+       colour = "Actual pts/min",
+       fill = "Expected pts/min") +
+  xlab("Pts per minute (Expected/Actual)") +
+  ylab("Win Percentage") +
+  theme_light()
+
+ggplotly(gg2, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", 
+                                       "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
+```
+<br>
+
+```{r source_bulls_multi_reg2, include=FALSE, cache = TRUE, dependson = "...."}  
+
+source("funcs/Bulls_multi_reg.R", local = TRUE)
+
+
+```
+
+
+***
+
+## Player vs Salary analysis:
+
+<br>
+
+```{r gg, echo=FALSE}
+library(plotly)
+gg <- ggplot(data = model_testing, aes(x = salary/1000000, y = exp_PTS_per_MP, color = Pos, label = Tm, group = 1,
+                                       text = paste("Name:", player_name,
+                                                    "<br>Team: =", Tm,
+                                                    "<br>Salary: ", salary,
+                                                    "<br>Trade Value: ", TrV,
+                                                    "<br>Efficiency: ", EFF,
+                                                    "<br>Expected Points: ", round(Tm_exp_Pts_per_MP, digits = 4), "Pts/min",
+                                                    "<br>Team Usage %:", Tm_use_total,
+                                                    "<br>Total Rebounds/min:", TRB_MP))) + 
+  labs(title = "Player Salary vs Expected points/minute", 
+       subtitle = "Teams have increased winning % with an increased pts/min", 
+       caption = "Data sourced from the fNBA stats package....",
+       colour = "Position") +
+  geom_point() +
+  xlab("Salary (Millions)") +
+  ylab("Expected Points/min")
+
+ggplotly(gg, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", 
+                                       "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
+
+```
+
+
+***
+
+<br>
+
+## Trade Value vs Salary: 
+
+```{r gg3, echo=FALSE, fig.retina=2}
+library(plotly)
+gg3 <- ggplot(data = model_testing, aes(x = salary/1000000, y = TrV, color = Pos, label = Tm, group = 1,
+                                        text = paste("Name:", player_name,
+                                                     "<br>Team: =", Tm,
+                                                     "<br>Salary: ", salary,
+                                                     "<br>Trade Value: ", TrV,
+                                                     "<br>Efficiency: ", EFF,
+                                                     "<br>Expected Points: ", round(Tm_exp_Pts_per_MP, digits = 4), "Pts/min",
+                                                     "<br>Team Usage %:", Tm_use_total,
+                                                     "<br>Total Rebounds/min:", TRB_MP))) + 
+  labs(title = "Player Trade Value vs Player Salary", 
+       subtitle = "Teams have increased winning % with an increased pts/min", 
+       caption = "Data sourced from the fNBA stats package....",
+       colour = "Position") +
+  geom_point() +
+  xlab("Salary (Millions)") +
+  ylab("Trade Value")
+
+ggplotly(gg, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", 
+                                       "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
+
+```
+  \
+  \
+```{r Bulls logo small-7-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+
+ ***
+ 
+<br>  
+
+# 6. Player recommendations:
+
+This section will be the key part that is presented to the general manager. Here you should present your recommendations for the best five starting players, but also think about what other important information they would want to know, and how it is best to present that information to them.  
+
+```{r Bulls logo small-5-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+
+ ***
+<br>
+
+# 7. Summary:
+
+Provide a brief summary which describes the key points and findings from your project. It will also be important to acknowledge any limitations of your model and overall approach to answering the question asked of you by the general manager.
+
+```{r Bulls logo small-6-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+
+ ***
+<br/>
+
+# 8. Glossary:
+
+**NBA standard terms:**  
+
+  *  [Glossary of NBA Statistics](https://www.basketball-reference.com/about/glossary.html)   
+  *  [Basteball Positions](https://en.wikipedia.org/wiki/Basketball_positions)  
+
+**Project specific:** 
+
+  * Pos = Position  
+  * Tm = Team, abbreviated to three letters, i.e Chicago = CHI, Houston = HOU etc.  
+  * '..._MP' = Statistic at a per minute rate  
+  * 'TM_...' = Statistic as a team total  
+  * Tm_use_total = Total use by the team as a percentage across the total number of minutes played  
+
+**Data frame specific**  
+
+[2018-19_nba_player-statistics.csv](https://www.basketball-reference.com/leagues/NBA_2019_totals.html)  
+
+This data file provides total statistics for individual NBA players during the 2018-19 season.  
+The variables consist:  
+
+  * player_name : Player Name
+  * Pos :  (PG = point guard, SG = shooting guard, SF = small forward, PF = power forward, C = center) 
+  * Age : Age of Player at the start of February 1st of that season.
+  * Tm : Team
+  * G : Games
+  * GS : Games Started
+  * MP : Minutes Played
+  * FG : Field Goals
+  * FGA : Field Goal Attempts
+  * FG% : Field Goal Percentage
+  * 3P : 3-Point Field Goals
+  * 3PA : 3-Point Field Goal Attempts
+  * 3P% : FG% on 3-Pt FGAs
+  * 2P : 2-Point Field Goals
+  * 2PA : 2-point Field Goal Attempts
+  * 2P% : FG% on 2-Pt FGAs
+  * eFG% : Effective Field Goal Percentage
+  * FT : Free Throws
+  * FTA : Free Throw Attempts
+  * FT% : Free Throw Percentage
+  * ORB : Offensive Rebounds
+  * DRB : Defensive Rebounds
+  * TRB : Total Rebounds
+  * AST : Assists
+  * STL : Steals
+  * BLK : Blocks
+  * TOV : Turnovers
+  * PF : Personal Fouls
+  * PTS : Points  
+  <br>
+    * NB: Players that were traded during the season may appear more than once (on more than one row) so it is important to handle these duplications appropriately.
+<br>
+
+[2018-19_nba_player-salaries.csv](https://hoopshype.com/salaries/)  
+
+This data file contains the salary for individual players during the 2018-19 NBA season.   
+The variables consist:  
+
+  * player_id : unique player identification number
+  * player_name : player name
+  * salary : year salary in $USD
+<br>
+
+[2019-20_nba_team-payroll.csv](https://hoopshype.com/salaries/)  
+
+This data file contains the team payroll budget for the 2019-20 NBA season.  
+The variables consist:  
+
+  * team_id : unique team identification number
+  * team : team name
+  * salary : team payroll budget in 2019-20 in $USD
+<br>
+
+[2018-19_nba_team-statistics_1.csv](https://www.basketball-reference.com/leagues/NBA_2019.html)  
+
+This data file contains miscellaneous team statistics for the 2018-19 season. 
+
+  The variables consist:  
+
+  * Rk : Rank
+  * Age : Mean Age of Player at the start of February 1st of that season.
+  * W : Wins
+  * L : Losses
+  * PW : Pythagorean wins, i.e., expected wins based on points scored and allowed
+  * PL : Pythagorean losses, i.e., expected losses based on points scored and allowed
+  * MOV : Margin of Victory
+  * SOS : Strength of Schedule; a rating of strength of schedule. The rating is denominated in points above/below average, where zero is average.
+  * SRS : Simple Rating System; a team rating that takes into account average point differential and strength of schedule. The rating is denominated in points above/below average, where zero is average.
+  * ORtg : Offensive Rating; An estimate of points produced (players) or scored (teams) per 100 possessions
+  * DRtg : Defensive Rating; An estimate of points allowed per 100 possessions
+  * NRtg : Net Rating; an estimate of point differential per 100 possessions.
+  * Pace : Pace Factor: An estimate of possessions per 48 minutes
+  * FTr : Free Throw Attempt Rate; Number of FT Attempts Per FG Attempt
+  * 3PAr : 3-Point Attempt Rate; Percentage of FG Attempts from 3-Point Range
+  * TS% : True Shooting Percentage; A measure of shooting efficiency that takes into account 2-point field goals, 3-point field goals, and free throws.
+* eFG% : Effective Field Goal Percentage; This statistic adjusts for the fact that a 3-point field goal is worth one more point than a 2-point field goal.
+* TOV% : Turnover Percentage; An estimate of turnovers committed per 100 plays.
+* ORB% : Offensive Rebound Percentage; An estimate of the percentage of available offensive rebounds a player grabbed while he was on the floor.
+* FT/FGA : Free Throws Per Field Goal Attempt
+* DRB% : Defensive Rebound Percentage
+<br>
+
+[2018-19_nba_team-statistics_2.csv](https://www.basketball-reference.com/leagues/NBA_2019.html)  
+
+This data file contains total team statistics for the 2018-19 NBA season.  
+
+The variables consist:  
+
+  * Team : Team name  
+  * Rk : Ranking  
+  * MP : Minutes Played  
+  * G : Games  
+  * FG : Field Goals  
+  * FGA : Field Goal Attempts  
+  * FG% : Field Goal Percentage  
+  * 3P : 3-Point Field Goals  
+  * 3PA : 3-Point Field Goal Attempts  
+  * 3P% : FG% on 3-Pt FGAs  
+  * 2P : 2-Point Field Goals  
+  * 2PA : 2-point Field Goal Attempts  
+  * 2P% : FG% on 2-Pt FGAs  
+  * FT : Free Throws  
+  * FTA : Free Throw Attempts  
+  * FT% : Free Throw Percentage  
+  * ORB : Offensive Rebounds  
+  * DRB : Defensive Rebounds  
+  * TRB : Total Rebounds  
+  * AST : Assists  
+  * STL : Steals  
+  * BLK : Blocks  
+  * TOV : Turnovers  
+  * PF : Personal Fouls 
+  * PTS : Points  
+<br/>
+
+
+```{r Bulls logo small-8-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+```
+ 
+***
+<br>
+
+
+
+***
+### How to use this repo/project:  
+***
+This project was designed and built through **[RStudio](https://www.rstudio.com/)**, Version 1.4.1103, © 2009-2021 RStudio, PBC  
+<br>
+
+##### This Readme file and GitHub repo covers the following:
+***
+  * Data sources
+    * Raw data
+  * File locations
+  * Operational order
+  * Tidy data/created *.csv files
+  * Glossary of definitions and abbreviations used for each data base
+  * Relevant calculations
+  
+
+7. Reference List
+
+Provide a reference list of any sources you used in the development of your report and justification of your arguments. Please use the Vancouver reference style (Links to an external site.) for the reference list and in-text references. 
+
+Roses are $\color{red}{\text{beautiful red}}$, 
+violets are $\color{blue}{\text{lovely blue}}$.
+
+<span style="color: red;">text</span> 
+To put multiple plots in a single row I set the out.width to 50% for two plots, 33% for 3 plots, or 25% to 4 plots, and set fig.align = "default". Depending on what I’m trying to illustrate (e.g. show data or show plot variations), I’ll also tweak fig.width, as discussed below.
+
+If you find that you’re having to squint to read the text in your plot, you need to tweak fig.width. If fig.width is larger than the size the figure is rendered in the final doc, the text will be too small; if fig.width is smaller, the text will be too big
+
+fig.show = "hold"
+fig.cap = "" this will give caption and change figure to floating rather than inline
+
+may need to re-add data frames between steps. If so, using cache = TRUe, dependson = "....") allows that 
+{r figure, include=FALSE}
+fig.width = 6 (6") and fig.asp = 0.618
+out.width = "70%" and fig.align = "center"
+
+##```{r Table1 test, echo=FALSE}
+knitr::kable((model_testing),
+  select(player_name, Tm, Age, Pos, salary, TrV, EFF, Tm_use_total,PTS_per_MP, TRB_MP, exp_PTS_per_MP) %>% 
+  arrange(desc(exp_PTS_per_MP), salary) %>%
+  top_n(20), caption = "Top 20 player selections.") # initial table
+
+
+
+
+# References:
