@@ -161,6 +161,10 @@ $$
 eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
 $$
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" title="\LARGE eFG% = (FG+(0.5*3P))/FGA" /></a>
+
+
+
 https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA))
 
 `\begin{equation}\\ 
