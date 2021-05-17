@@ -50,9 +50,10 @@ This project highlighted several trends within the NBA data and the NBA overall 
 The purpose and problem that this method of analysis provides is a way to see through the inflated market values for athletes and highlight the true value of players based on their repeated trends.I believe that the predictive formula of:  
   
 **Points per minute**
-$$
-\beta_1 = -0.382 + 0.699 * eFGp + -0.0330 * TRB_MP + 2.39 * Tm_use_total + 0.00000965 * EFF + -0.00000803 * TrV
-$$
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;PTS\_per\_MP{_{\beta1}}&space;=&space;-0.382&space;&plus;&space;0.699&space;*&space;eFGp&space;&plus;&space;-0.0330&space;*&space;TRB_MP&space;&plus;&space;2.39&space;*&space;Tm\_use\_total&space;&plus;&space;0.00000965&space;*&space;EFF&space;&plus;&space;-0.00000803&space;*&space;TrV" title="\large PTS\_per\_MP{_{\beta1}} = -0.382 + 0.699 * eFGp + -0.0330 * TRB_MP + 2.39 * Tm\_use\_total + 0.00000965 * EFF + -0.00000803 * TrV" />
+</p>
 
 I hope you enjoy this project as much as I did. Although challenging in the initial cleaning/set up/modeling, it is engaging when looking through final product and to see the results.
 <br/>  
@@ -147,11 +148,11 @@ The following *.csv files will be exported locally into the data/tidy_data folde
   
     It is calculated by:   
 $$100*((FGA+0.44*FTA+TO)*(TMP/5))/(MP*(TFGA+0.44*TFTA+TTO))$$
-  
-`![alt text](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA) "Logo Title Text") 1")`
-  
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
-  
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;Usage%&space;=&space;100*((FGA&plus;0.44*FTA&plus;TOV)*(TM\_MP/5))/(MP*(TM\_FGA&plus;0.44*TM\_FTA&plus;TM\_TOV))" title="\large Usage% = 100*((FGA+0.44*FTA+TOV)*(TM\_MP/5))/(MP*(TM\_FGA+0.44*TM\_FTA+TM\_TOV))" />
+<p/>
+
 **Effective field goal percentage** (eFGp)
 
   * **[Effective Field Goal Percentage (eFGp)](https://www.basketball-reference.com/about/glossary.html#:~:text=eFG%25%20%2D%20Effective%20Field%20Goal%20Percentage,for%2010%20with%200%20threes.)** A statistic that adjusts field goal percentage to account for the fact that three-point field goals count for three points while field goals only count for two points.  
@@ -161,32 +162,10 @@ $$
 eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
 $$
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA))" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA))" title="\large eFGp% = (FG+(0.5*3P)/FGA))" /></a>
-
-
-<p align="center">
-  <img width="460" height="300" src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA)>
-</p>
-
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA))" title="\large eFGp% = (FG+(0.5*3P)/FGA))" />
 </p>
 
-
-`<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" title="\LARGE eFG% = (FG+(0.5*3P))/FGA" /></a>`
-
-$\large eFGp% = (FG+(0.5*3P)/FGA))$ 
-
-`https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA))`
-
-`\begin{equation}\\ 
-  eFG(%)\left = \frac{FG+(0.5*3P)}/{FGA}
-\end{equation}`
-
-`<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" title="\LARGE eFG% = (FG+(0.5*3P))/FGA" /></a>`
-
- `$$eFG(%) = \{FG+(0.5*3P)}/{FGA}$$`
- 
  **Efficiency Value** 
 
   * **[Efficiency Value](https://www.nbastuffer.com/analytics101/nba-efficiency/)**, is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates player’s linear efficiency.
@@ -195,6 +174,10 @@ $\large eFGp% = (FG+(0.5*3P)/FGA))$
 $$
 EFF = (PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP 
 $$
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;EFF&space;=&space;(PTS&space;&plus;&space;REB&space;&plus;&space;AST&space;&plus;&space;STL&space;&plus;&space;BLK&space;-(FGA-FG)-(FTA-FT)&space;-&space;TOV)&space;/&space;GP" title="\large EFF = (PTS + REB + AST + STL + BLK -(FGA-FG)-(FTA-FT) - TOV) / GP" />
+</p>
 
 **Trade Value**
 
@@ -205,6 +188,10 @@ $$
 Trade Value Formula=[(Approximate Value- 27-0.75*Age)2(27-0.75*Age +1)*Approximate Value]/190+(Approximate Value)*2/13
 $$
 
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;Trade&space;Value&space;Formula=[(Approximate&space;Value-&space;27-0.75*Age)2(27-0.75*Age&space;&plus;1)*Approximate&space;Value]/190&plus;(Approximate&space;Value)*2/13" title="\large Trade Value Formula=[(Approximate Value- 27-0.75*Age)2(27-0.75*Age +1)*Approximate Value]/190+(Approximate Value)*2/13" />
+</p>
+
   * **Approximate Value**
   
     * **[Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/)** is the metric which is an estimate of a player’s value, making no fine distinctions, but, rather, distinguishing easily between very good seasons, average seasons, and poor seasons.
@@ -214,6 +201,10 @@ $$
 AV Formula = (Credits(3/4) )/21
 $$
 
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;AV&space;Formula&space;=&space;(Credits(3/4))/21" title="\large AV Formula = (Credits(3/4))/21" />
+</p>
+
   * **Credits Formula** 
 
     * **[Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/)** is an aggregation of observations from a standard game/season, in combination used within the approximate value calculation.
@@ -222,6 +213,10 @@ $$
 $$
 Credits Formula = (Points)+(Rebounds)+(Assists)+(Steal)+(Blocks)-(Field Goals Missed)-(Free Throws Missed)-(Turnovers)
 $$
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;Credits&space;Formula&space;=&space;(PTS)&plus;(TRB)&plus;(AST)&plus;(STL)&plus;(BLK)-(FGA-FG)-(FTA-FT)-(TOV)" title="\large Credits Formula = (PTS)+(TRB)+(AST)+(STL)+(BLK)-(FGA-FG)-(FTA-FT)-(TOV)" />
+</p>
 
 ***
 #### Glossary:
