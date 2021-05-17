@@ -149,7 +149,7 @@ The following *.csv files will be exported locally into the data/tidy_data folde
     It is calculated by:   
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;Usage%&space;=&space;100*((FGA&plus;0.44*FTA&plus;TOV)*(TM\_MP/5))/(MP*(TM\_FGA&plus;0.44*TM\_FTA&plus;TM\_TOV))" title="\large Usage% = 100*((FGA+0.44*FTA+TOV)*(TM\_MP/5))/(MP*(TM\_FGA+0.44*TM\_FTA+TM\_TOV))" />
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;Usage(%)&space;=&space;100*((FGA&plus;0.44*FTA&plus;TOV)*(TM\_MP/5))/(MP*(TM\_FGA&plus;0.44*TM\_FTA&plus;TM\_TOV))" title="Usage(%) = 100*((FGA+0.44*FTA+TOV)*(TM\_MP/5))/(MP*(TM\_FGA+0.44*TM\_FTA+TM\_TOV))" />
 <p/>
 
 **Effective field goal percentage** (eFGp)
@@ -159,8 +159,7 @@ The following *.csv files will be exported locally into the data/tidy_data folde
     It is calculated by: 
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA))" title="\large eFGp% = (FG+(0.5*3P)/FGA))" />
-</p>
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;eFG(\%)&space;=\frac{(FG&plus;(0.5*3P))}{FGA}" title="eFG(\%) =\frac{(FG+(0.5*3P))}{FGA}" />
 
  **Efficiency Value** 
 
@@ -169,7 +168,7 @@ The following *.csv files will be exported locally into the data/tidy_data folde
     It is calculated by: 
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;EFF&space;=&space;(PTS&space;&plus;&space;REB&space;&plus;&space;AST&space;&plus;&space;STL&space;&plus;&space;BLK&space;-(FGA-FG)-(FTA-FT)&space;-&space;TOV)&space;/&space;GP" title="\large EFF = (PTS + REB + AST + STL + BLK -(FGA-FG)-(FTA-FT) - TOV) / GP" />
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;EFF&space;=&space;(PTS&space;&plus;&space;REB&space;&plus;&space;AST&space;&plus;&space;STL&space;&plus;&space;BLK&space;-&space;(FGA-FG)-(FTA-FT)&space;-&space;TO)&space;/&space;GP" title="EFF = (PTS + REB + AST + STL + BLK - (FGA-FG)-(FTA-FT) - TO) / GP" />
 </p>
 
 **Trade Value**
@@ -179,7 +178,7 @@ The following *.csv files will be exported locally into the data/tidy_data folde
     It is calculated by: 
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;TrV&space;=[(AV&space;Formula-&space;27-0.75*Age)2(27-0.75*Age&space;&plus;1)*AV&space;Formula]/190&plus;(AV&space;Formula)*2/13" title="\large Trade Value Formula=[(AV Formula- 27-0.75*Age)2(27-0.75*Age +1)*AV Formula]/190+(AV Formula)*2/13" />
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;TrV&space;=[(AV&space;Formula&space;-&space;27-0.75*Age)^{2}(27-0.75*Age&space;&plus;1)*AV&space;Formula]/190&plus;(AV&space;Formula)*2/13" title="TrV =[(AV Formula - 27-0.75*Age)^{2}(27-0.75*Age +1)*AV Formula]/190+(AV Formula)*2/13" />
 </p>
 
   * **Approximate Value**
@@ -189,7 +188,7 @@ The following *.csv files will be exported locally into the data/tidy_data folde
     It is calculated by:  
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;AV&space;Formula&space;=&space;(Credits(3/4))/21" title="\large AV Formula = (Credits(3/4))/21" />
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;AV&space;Formula&space;=&space;(Credits^{3/4}&space;)/21" title="AV Formula = (Credits^{3/4} )/21" />
 </p>
 
   * **Credits Formula** 
@@ -199,7 +198,7 @@ The following *.csv files will be exported locally into the data/tidy_data folde
     It is calculated by:   
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;Credits&space;Formula&space;=&space;(PTS)&plus;(TRB)&plus;(AST)&plus;(STL)&plus;(BLK)-(FGA-FG)-(FTA-FT)-(TOV)" title="\large Credits Formula = (PTS)+(TRB)+(AST)+(STL)+(BLK)-(FGA-FG)-(FTA-FT)-(TOV)" />
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;Credits&space;Formula&space;=&space;(PTS)&plus;(TRB)&plus;(AST)&plus;(STL)&plus;(BLK)-(FGA-FG)-(FTA-FT)-(TOV)" title="Credits Formula = (PTS)+(TRB)+(AST)+(STL)+(BLK)-(FGA-FG)-(FTA-FT)-(TOV)" />
 </p>
 
 ***
