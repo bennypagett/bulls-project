@@ -175,17 +175,25 @@ pre code {
 <p><strong>u125511</strong> <br /></p>
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
+<hr />
 <p>This GitHub repo comprises of all the components for a reproducible data analysis project, which was initially created as part of the Data Analysis in Sport course at the University of Canberra.</p>
+<hr />
 <div id="background" class="section level5">
 <h5>Background</h5>
-<p>This project is based around the “Moneyball” theory of using statistical analysis to provide a greater insight into sport performances, in this case the selection/purchase of players from the 2018-19 season of the NBA who would help produce greater results for the Chicago Bulls organisation to improve on their past season result (finishing 13th in the Eastern Conference, and 27th overall on Win-Loss ratio) and provide an improved result for the upcoming 2019-2020 NBA season.<br />
-<br />
-The assigned task included the following:<br />
-* The assessment of potential players to purchase or retain for the Chicago Bulls organisation for the 2019-20 NBA season.<br />
-* Projection of expected results with selected players.<br />
-* Selection of 5 players, one from each position (Centre, Power Forward, Small Forward, Shooting Guard, Point Guard).<br />
-* Ensure purchase of the 5 players was within the allotted budget of $118 million dollars.<br />
-* The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total). <br></p>
+<hr />
+<p>This project is based around the “Moneyball” theory of using statistical analysis to provide a greater insight into sport performances, in this case the selection/purchase of players from the 2018-19 season of the NBA who would help produce greater results for the Chicago Bulls organisation to improve on their past season result (finishing 13th in the Eastern Conference, and 27th overall on Win-Loss ratio) and provide an improved result for the upcoming 2019-2020 NBA season.</p>
+<p>The assigned task included the following:</p>
+<ul>
+<li>The assessment of potential players to purchase or retain for the Chicago Bulls organisation for the 2019-20 NBA season.<br />
+</li>
+<li>Projection of expected results with selected players.<br />
+</li>
+<li>Selection of 5 players, one from each position (Center, Power Forward, Small Forward, Shooting Guard, Point Guard).<br />
+</li>
+<li>Ensure purchase of the 5 players was within the allotted budget of $118 million dollars.<br />
+</li>
+<li>The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total).</li>
+</ul>
 <p>The use of statistics in sport is not a new phenomenon, partly due to people like Bill James and John Hollinger who implemented and revolutionised the use of statistical analysis, and is now common within sports like basketball and in particular the North American basketball league the NBA. John Hollinger created the all in one metric the Player Efficiency Rating or PER, which allowed for the collection of several variables (i.e both positive and negative outcomes e.g turnovers/)</p>
 <p>The hypothesis for this project is based on the use of a combination of known analysis methods to create a predictive equation to aid in the selection of appropriate players for the Chicago Bulls 19/20 season in the NBA.</p>
 <p>The variables were used to show an association of an increase in overall Win% due to an increase of points per minute played. The variables used for the predictive value were:</p>
@@ -200,9 +208,17 @@ The assigned task included the following:<br />
 </li>
 <li>Total Rebounds per minute (TRB_MP)<br />
 </li>
-<li>Points per minute (PTS_per_MP)</li>
+<li>Points per minute (PTS_per_MP)<br />
+<br></li>
 </ul>
-<p><br /></p>
+<p>I believe that using a multifaceted approach to the analysis of player performance decreases the disparity between observed results and predictive results.</p>
+<p>This project highlighted several trends within the NBA data and the NBA overall standings results. This mode of retrospective/prospective analysis still relies on the game based execution of set actions/reactions. This can be seen within the confidence intervals within each predictive variable, showing the margin for difference between expected and observed.</p>
+<p>The purpose and problem that this method of analysis provides is a way to see through the inflated market values for athletes and highlight the true value of players based on their repeated trends.I believe that the predictive formula of:</p>
+<p><strong>Points per minute</strong> <span class="math display">\[
+\beta_1 = -0.382 + 0.699 * eFGp + -0.0330 * TRB_MP + 2.39 * Tm_use_total + 0.00000965 * EFF + -0.00000803 * TrV
+\]</span></p>
+<p>I hope you enjoy this project as much as I did. Although challenging in the initial cleaning/set up/modeling, it is engaging when looking through final product and to see the results. <br /><br />
+<br /></p>
 </div>
 <div id="credits" class="section level4">
 <h4>Credits:</h4>
@@ -210,86 +226,198 @@ The assigned task included the following:<br />
 <strong>Martin Manley:</strong> Kansas City sports reporter and statistician, EFF calculation.<br />
 <strong>Bill James:</strong> Statistician, Trade Value calculation, Approximate Value calculation, Credits Calculation.<br />
 <strong>John Hollinger:</strong> Effective Field Goal percentage and Usage Rate calculation<br />
-<strong>Dean Olliver:</strong> Effective Field Goal percentage and Usage Rate calculation<br />
-<a href="https://www.basketball-reference.com/"><strong>Basketball-reference.com</strong></a> <br></p>
+<strong>Dean Oliver:</strong> Effective Field Goal percentage and Usage Rate calculation<br />
+<a href="https://www.basketball-reference.com/"><strong>Basketball-reference.com</strong></a> <br> <br></p>
+<hr />
 </div>
-<div id="how-to-use-this-project" class="section level4">
-<h4>How to use this project:</h4>
-<p>This project was designed and build through RStudio, Version 1.4.1103, © 2009-2021 RStudio, PBC<br />
+</div>
+<div id="how-to-use-this-project" class="section level3">
+<h3>How to use this project:</h3>
+<hr />
+<p>This project was designed and built through RStudio, Version 1.4.1103, © 2009-2021 RStudio, PBC<br />
 <br></p>
 <div id="this-readme-file-and-github-repo-covers-the-following" class="section level5">
 <h5>This Readme file and GitHub repo covers the following:</h5>
+<hr />
 <ul>
-<li>File locations</li>
-<li>Operational order</li>
 <li>Data sources
 <ul>
 <li>Raw data</li>
-<li>Tidy data</li>
 </ul></li>
+<li>File locations</li>
+<li>Operational order</li>
+<li>Tidy data/created *.csv files</li>
 <li>Glossary of definitions and abbreviations used for each data base</li>
 <li>Relevant calculations</li>
-<li></li>
 </ul>
 </div>
-</div>
-</div>
-<div id="file-locations" class="section level3">
-<h3>File Locations</h3>
-<ol style="list-style-type: decimal">
-<li>Rmarkdown -&gt; Chicago_Bulls_u125511</li>
-<li>Data: * Project-data * Tidy_data</li>
-<li>Funcs -&gt; Rscript files (in descending operational order) * Bulls_Fresh_start.R * Teams_wins_loss_df.R * Exploratory_Analysis_2.R * Bulls_multi_reg.R</li>
-<li>Figures</li>
-<li>Images</li>
-<li>Funcs</li>
-<li>References</li>
-</ol>
-<div id="operational-order" class="section level4">
-<h4>Operational order:</h4>
-<p>Scripts to be loaded and run through Rstudio program 1. Bulls_Project_Fresh_start.R 2. Team_wins_loss_df.R 3. Explortory_Analysis_2.R 4. Bulls_Multi_reg R</p>
-</div>
-<div id="produced-.csv-data-frames" class="section level4">
-<h4>Produced &quot;*.csv&quot; data frames</h4>
-<p>The following <em>.csv files will be exported locally into the data/tidy_data folder:<br />
-</em> player_stats_tidy.csv * df_team_Stats1.csv * df_team_Stats2.csv * df_TOT_players.csv * df_nonTOT_clean.csv * datC.csv * datPF.csv * datPG.csv * datSF.csv * datSG.csv</p>
-</div>
-</div>
-<div id="data-sources" class="section level3">
-<h3>Data sources</h3>
+<div id="data-sources" class="section level5">
+<h5>Data sources</h5>
 <ol style="list-style-type: decimal">
 <li><p><a href="https://www.basketball-reference.com/leagues/NBA_2019_totals.html">2018-19_nba_player-statistics.csv</a></p></li>
 <li><p><a href="https://hoopshype.com/salaries/">2018-19_nba_player-salaries.csv</a></p></li>
 <li><p><a href="https://hoopshype.com/salaries/">2019-20_nba_team-payroll.csv</a></p></li>
 <li><p><a href="https://www.basketball-reference.com/leagues/NBA_2019.html">2018-19_nba_team-statistics_1.csv</a></p></li>
-<li><p><a href="https://www.basketball-reference.com/leagues/NBA_2019.html">2018-19_nba_team-statistics_2.csv</a></p></li>
+<li><p><a href="https://www.basketball-reference.com/leagues/NBA_2019.html">2018-19_nba_team-statistics_2.csv</a><br />
+<br></p></li>
 </ol>
 </div>
-<div id="glossary" class="section level3">
-<h3>Glossary:</h3>
-<p><strong>NBA standard terms:</strong><br />
-* <a href="https://www.basketball-reference.com/about/glossary.html">Glossary of NBA Statistics</a><br />
-* <a href="https://en.wikipedia.org/wiki/Basketball_positions">Basteball Positions</a></p>
-<p><strong>Project specific:</strong><br />
-* Pos = Position<br />
-* Tm = Team, abbreviated to three letters, i.e Chicago = CHI, Houston = HOU etc.<br />
-* ‘…<em>MP’ = Statistic at a per minute rate<br />
-* ’TM</em>…’ = Statistic as a team total<br />
-* Tm_use_total = Total use by the team as a percentage across the total number of minutes played</p>
-<p>What was your motivation? Why did you build this project? What problem does it solve? What did you learn? What makes your project stand out? If your project has a lot of features, consider adding a “Features” section and listing them here.</p>
-<p>Provide instructions and examples so users/contributors can use the project. This will make it easy for them in case they encounter a problem – they will always have a place of reference.</p>
-<p>You can also include screenshots to show examples of the running project.</p>
-<p>Key Topics The following topics will be covered in this unit:</p>
-<p>What does it mean to be a full-stack web developer? What is the relationship between HTML and CSS? What is Git workflow? Learning Objectives You will be employer-competitive if you are able to:</p>
+<div id="file-locations" class="section level5">
+<h5>File Locations</h5>
+<p>Located within the Chicago_Bulls_u125511 folder</p>
+<ul>
+<li>Rmarkdown -&gt; Chicago_Bulls_u125511</li>
+<li>Data:
+<ul>
+<li>Project-data</li>
+<li>Tidy_data</li>
+</ul></li>
+<li>Funcs -&gt; Rscript files (in descending operational order)
+<ul>
+<li>Bulls_Fresh_start.R<br />
+</li>
+<li>Teams_wins_loss_df.R<br />
+</li>
+<li>Exploratory_Analysis_2.R<br />
+</li>
+<li>Bulls_multi_reg.R<br />
+</li>
+</ul></li>
+<li>Figures</li>
+<li>Images<br />
+</li>
+<li>Funcs<br />
+</li>
+<li>References</li>
+</ul>
 </div>
+<div id="operational-order" class="section level5">
+<h5>Operational order:</h5>
+<p>Scripts to be loaded and run through Rstudio program:</p>
+<ol style="list-style-type: decimal">
+<li>Bulls_Project_Fresh_start.R<br />
+</li>
+<li>Team_wins_loss_df.R<br />
+</li>
+<li>Explortory_Analysis_2.R<br />
+</li>
+<li>Bulls_Multi_reg R</li>
+</ol>
 </div>
-<div id="observations-defitions" class="section level2">
-<h2>Observations defitions:</h2>
+<div id="tidy-datacreated-.csv-files" class="section level5">
+<h5>Tidy data/created *.csv files</h5>
+<p>The following *.csv files will be exported locally into the data/tidy_data folder:</p>
+<ul>
+<li>player_stats_tidy.csv<br />
+</li>
+<li>df_team_Stats1.csv<br />
+</li>
+<li>df_team_Stats2.csv<br />
+</li>
+<li>df_TOT_players.csv<br />
+</li>
+<li>df_nonTOT_clean.csv<br />
+</li>
+<li>datC.csv<br />
+</li>
+<li>datPF.csv<br />
+</li>
+<li>datPG.csv<br />
+</li>
+<li>datSF.csv<br />
+</li>
+<li>datSG.csv</li>
+</ul>
+<hr />
 </div>
+<div id="relevant-calculations" class="section level4">
+<h4>Relevant calculations</h4>
+<hr />
+<ul>
+<li>Effective Field Goal Percentage (eFGp)</li>
+<li>Trade Value (TrV)</li>
+<li>Efficiency rate (EFF)</li>
+<li>Usage Rate (Tm_use)</li>
+</ul>
+<p><strong>Usage rate equation</strong> (TM_use_total)</p>
+<ul>
+<li><strong><a href="https://www.nbastuffer.com/analytics101/usage-rate/">Usage Rate</a></strong> is a calculation of the percentage a player is used by the team.</li>
+</ul>
+<p>It is calculated by:<br />
+<span class="math display">\[
+100*((FGA+0.44*FTA+TO)*(TMP/5))/(MP*(TFGA+0.44*TFTA+TTO))
+\]</span></p>
+<p><strong>Effective field goal percentage</strong> (eFGp)</p>
+<ul>
+<li><strong><a href="https://www.basketball-reference.com/about/glossary.html#:~:text=eFG%25%20%2D%20Effective%20Field%20Goal%20Percentage,for%2010%20with%200%20threes.">Effective Field Goal Percentage (eFGp)</a></strong> A statistic that adjusts field goal percentage to account for the fact that three-point field goals count for three points while field goals only count for two points.</li>
+</ul>
+<p>It is calculated by: <span class="math display">\[
+eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
+\]</span></p>
+<p><code>{r pressure, echo=FALSE, fig.cap=&quot;eDG% calculation&quot;, out.width = &#39;100%&#39;} knitr::include_graphics(&quot;CodeCogsEqn.gif&quot;)</code> <code>\begin{equation}\\    eFG(%)\left = \frac{FG+(0.5*3P)}/{FGA} \end{equation}</code></p>
+<p><code>&lt;a href=&quot;https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&amp;space;\bg_black&amp;space;\LARGE&amp;space;eFG%&amp;space;=&amp;space;(FG&amp;plus;(0.5*3P))/FGA&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;https://latex.codecogs.com/gif.latex?\dpi{150}&amp;space;\bg_black&amp;space;\LARGE&amp;space;eFG%&amp;space;=&amp;space;(FG&amp;plus;(0.5*3P))/FGA&quot; title=&quot;\LARGE eFG% = (FG+(0.5*3P))/FGA&quot; /&gt;&lt;/a&gt;</code></p>
+<p><code>$$eFG(%) = \{FG+(0.5*3P)}/{FGA}$$</code></p>
+<p><strong>Trade Value</strong></p>
+<ul>
+<li><strong><a href="https://www.nbastuffer.com/analytics101/trade-value/">Trade Value</a></strong> is the estimate using a player’s age and his approximate value to determine how much value a player has left in his career. Invented by Bill James.</li>
+</ul>
+<p>It is calculated by: <span class="math display">\[
+Trade Value Formula=[(Approximate Value- 27-0.75*Age)2(27-0.75*Age +1)*Approximate Value]/190+(Approximate Value)*2/13
+\]</span></p>
+<ul>
+<li><p><strong>Approximate Value</strong></p>
+<ul>
+<li><strong><a href="https://www.nbastuffer.com/analytics101/approximate-value/">Credit Formula and Approx Value</a></strong> is the metric which is an estimate of a player’s value, making no fine distinctions, but, rather, distinguishing easily between very good seasons, average seasons, and poor seasons.</li>
+</ul></li>
+</ul>
+<p>It is calculated by:<br />
+<span class="math display">\[
+AV Formula = (Credits(3/4) )/21
+\]</span></p>
+<ul>
+<li><p><strong>Credits Formula</strong></p>
+<ul>
+<li><strong><a href="https://www.nbastuffer.com/analytics101/approximate-value/">Credit Formula and Approx Value</a></strong> is an aggregation of observations from a standard game/season, in combination used within the approximate value calculation.</li>
+</ul></li>
+</ul>
+<p>It is calculated by:<br />
+<span class="math display">\[
+Credits Formula = (Points)+(Rebounds)+(Assists)+(Steal)+(Blocks)-(Field Goals Missed)-(Free Throws Missed)-(Turnovers)
+\]</span></p>
+<p><strong>Efficiency Value</strong></p>
+<ul>
+<li><strong><a href="https://www.nbastuffer.com/analytics101/nba-efficiency/">Efficiency Value</a></strong>, is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates player’s linear efficiency.</li>
+</ul>
+<p>It is calculated by: <span class="math display">\[
+EFF = (PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP 
+\]</span></p>
+<hr />
 </div>
-<div id="nba_player-statistics.csv" class="section level1">
-<h1>2018-19_nba_player-statistics.csv</h1>
-<p>This data file provides total statistics for individual NBA players during the 2018-19 season. The variables consist:</p>
+<div id="glossary" class="section level4">
+<h4>Glossary:</h4>
+<hr />
+<p><strong>NBA standard terms:</strong></p>
+<ul>
+<li><a href="https://www.basketball-reference.com/about/glossary.html">Glossary of NBA Statistics</a><br />
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Basketball_positions">Basteball Positions</a></li>
+</ul>
+<p><strong>Project specific:</strong></p>
+<ul>
+<li>Pos = Position<br />
+</li>
+<li>Tm = Team, abbreviated to three letters, i.e Chicago = CHI, Houston = HOU etc.<br />
+</li>
+<li>’…_MP’ = Statistic at a per minute rate<br />
+</li>
+<li>‘TM_…’ = Statistic as a team total<br />
+</li>
+<li>Tm_use_total = Total use by the team as a percentage across the total number of minutes played</li>
+</ul>
+<p><strong>Data frame specific</strong></p>
+<p><a href="https://www.basketball-reference.com/leagues/NBA_2019_totals.html">2018-19_nba_player-statistics.csv</a></p>
+<p>This data file provides total statistics for individual NBA players during the 2018-19 season.<br />
+The variables consist:</p>
 <ul>
 <li>player_name : Player Name</li>
 <li>Pos : (PG = point guard, SG = shooting guard, SF = small forward, PF = power forward, C = center)</li>
@@ -319,31 +447,31 @@ The assigned task included the following:<br />
 <li>BLK : Blocks</li>
 <li>TOV : Turnovers</li>
 <li>PF : Personal Fouls</li>
-<li>PTS : Points</li>
-<li>NB: Players that were traded during the season may appear more than once (on more than one row) so it is important to handle these duplications appropriately.</li>
+<li>PTS : Points<br />
+<br>
+<ul>
+<li>NB: Players that were traded during the season may appear more than once (on more than one row) so it is important to handle these duplications appropriately. <br></li>
+</ul></li>
 </ul>
-</div>
-<div id="nba_player-salaries.csv" class="section level1">
-<h1>2018-19_nba_player-salaries.csv</h1>
-<p>This data file contains the salary for individual players during the 2018-19 NBA season. The variables consist:</p>
+<p><a href="https://hoopshype.com/salaries/">2018-19_nba_player-salaries.csv</a></p>
+<p>This data file contains the salary for individual players during the 2018-19 NBA season.<br />
+The variables consist:</p>
 <ul>
 <li>player_id : unique player identification number</li>
 <li>player_name : player name</li>
-<li>salary : year salary in $USD</li>
+<li>salary : year salary in $USD <br></li>
 </ul>
-</div>
-<div id="nba_team-payroll.csv" class="section level1">
-<h1>2018-19_nba_team-payroll.csv</h1>
-<p>This data file contains the team payroll budget for the 2019-20 NBA season. The variables consist:</p>
+<p><a href="https://hoopshype.com/salaries/">2019-20_nba_team-payroll.csv</a></p>
+<p>This data file contains the team payroll budget for the 2019-20 NBA season.<br />
+The variables consist:</p>
 <ul>
 <li>team_id : unique team identification number</li>
 <li>team : team name</li>
-<li>salary : team payroll budget in 2019-20 in $USD</li>
+<li>salary : team payroll budget in 2019-20 in $USD <br></li>
 </ul>
-</div>
-<div id="nba_team-statistics_1.csv" class="section level1">
-<h1>2018-19_nba_team-statistics_1.csv</h1>
-<p>This data file contains miscellaneous team statistics for the 2018-19 season. The variables consist:</p>
+<p><a href="https://www.basketball-reference.com/leagues/NBA_2019.html">2018-19_nba_team-statistics_1.csv</a></p>
+<p>This data file contains miscellaneous team statistics for the 2018-19 season.</p>
+<p>The variables consist:</p>
 <ul>
 <li>Rk : Rank</li>
 <li>Age : Mean Age of Player at the start of February 1st of that season.</li>
@@ -365,68 +493,64 @@ The assigned task included the following:<br />
 <li>TOV% : Turnover Percentage; An estimate of turnovers committed per 100 plays.</li>
 <li>ORB% : Offensive Rebound Percentage; An estimate of the percentage of available offensive rebounds a player grabbed while he was on the floor.</li>
 <li>FT/FGA : Free Throws Per Field Goal Attempt</li>
-<li>DRB% : Defensive Rebound Percentage</li>
+<li>DRB% : Defensive Rebound Percentage <br></li>
 </ul>
-</div>
-<div id="nba_team-statistics_2.csv" class="section level1">
-<h1>2018-19_nba_team-statistics_2.csv</h1>
-<p>This data file contains total team statistics for the 2018-19 NBA season. The variables consist:</p>
+<p><a href="https://www.basketball-reference.com/leagues/NBA_2019.html">2018-19_nba_team-statistics_2.csv</a></p>
+<p>This data file contains total team statistics for the 2018-19 NBA season.</p>
+<p>The variables consist:</p>
 <ul>
-<li>Team : Team name</li>
-<li>Rk : Ranking</li>
-<li>MP : Minutes Played</li>
-<li>G : Games</li>
-<li>FG : Field Goals</li>
-<li>FGA : Field Goal Attempts</li>
-<li>FG% : Field Goal Percentage</li>
-<li>3P : 3-Point Field Goals</li>
-<li>3PA : 3-Point Field Goal Attempts</li>
-<li>3P% : FG% on 3-Pt FGAs</li>
-<li>2P : 2-Point Field Goals</li>
-<li>2PA : 2-point Field Goal Attempts</li>
-<li>2P% : FG% on 2-Pt FGAs</li>
-<li>FT : Free Throws</li>
-<li>FTA : Free Throw Attempts</li>
-<li>FT% : Free Throw Percentage</li>
-<li>ORB : Offensive Rebounds</li>
-<li>DRB : Defensive Rebounds</li>
-<li>TRB : Total Rebounds</li>
-<li>AST : Assists</li>
-<li>STL : Steals</li>
-<li>BLK : Blocks</li>
-<li>TOV : Turnovers</li>
+<li>Team : Team name<br />
+</li>
+<li>Rk : Ranking<br />
+</li>
+<li>MP : Minutes Played<br />
+</li>
+<li>G : Games<br />
+</li>
+<li>FG : Field Goals<br />
+</li>
+<li>FGA : Field Goal Attempts<br />
+</li>
+<li>FG% : Field Goal Percentage<br />
+</li>
+<li>3P : 3-Point Field Goals<br />
+</li>
+<li>3PA : 3-Point Field Goal Attempts<br />
+</li>
+<li>3P% : FG% on 3-Pt FGAs<br />
+</li>
+<li>2P : 2-Point Field Goals<br />
+</li>
+<li>2PA : 2-point Field Goal Attempts<br />
+</li>
+<li>2P% : FG% on 2-Pt FGAs<br />
+</li>
+<li>FT : Free Throws<br />
+</li>
+<li>FTA : Free Throw Attempts<br />
+</li>
+<li>FT% : Free Throw Percentage<br />
+</li>
+<li>ORB : Offensive Rebounds<br />
+</li>
+<li>DRB : Defensive Rebounds<br />
+</li>
+<li>TRB : Total Rebounds<br />
+</li>
+<li>AST : Assists<br />
+</li>
+<li>STL : Steals<br />
+</li>
+<li>BLK : Blocks<br />
+</li>
+<li>TOV : Turnovers<br />
+</li>
 <li>PF : Personal Fouls</li>
-<li>PTS : Points</li>
+<li>PTS : Points<br />
+<br /></li>
 </ul>
-<div id="usage-rate-equation" class="section level4">
-<h4>Usage rate equation</h4>
-<p><span class="math display">\[
-100*((FGA+0.44*FTA+TO)*(TMP/5))/(MP*(TFGA+0.44*TFTA+TTO))
-\]</span></p>
-<p>Where FGA=Field-Goal Attempts, FTA=Free-Throw Attempts, TO=Turnovers, TMP=Team Minutes Played, MP=Minutes Played, TFGA=Team Field-Goal Attempts, TFTA=Team Free-Throw Attempts, TTO=Team Turnovers</p>
 </div>
-<div id="effective-field-goal-percentage" class="section level2">
-<h2>Effective field goal percentage</h2>
-<p>From Wikipedia, the free encyclopedia Jump to navigationJump to search In basketball, effective field goal percentage (abbreviated eFG%) is a statistic that adjusts field goal percentage to account for the fact that three-point field goals count for three points while field goals only count for two points. [1] Its goal is to show what field goal percentage a two-point shooter would have to shoot at to match the output of a player who also shoots three-pointers. [2]</p>
-<p>It is calculated by: <span class="math display">\[
-eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
-\]</span></p>
-<p><code>{r pressure, echo=FALSE, fig.cap=&quot;eDG% calculation&quot;, out.width = &#39;100%&#39;} knitr::include_graphics(&quot;CodeCogsEqn.gif&quot;)</code> <code>\begin{equation}\\    eFG(%)\left = \frac{FG+(0.5*3P)}/{FGA} \end{equation}</code></p>
-<pre><code>&lt;a href=&quot;https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&amp;space;\bg_black&amp;space;\LARGE&amp;space;eFG%&amp;space;=&amp;space;(FG&amp;plus;(0.5*3P))/FGA&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;https://latex.codecogs.com/gif.latex?\dpi{150}&amp;space;\bg_black&amp;space;\LARGE&amp;space;eFG%&amp;space;=&amp;space;(FG&amp;plus;(0.5*3P))/FGA&quot; title=&quot;\LARGE eFG% = (FG+(0.5*3P))/FGA&quot; /&gt;&lt;/a&gt;</code></pre>
-<p><code>$$eFG(%) = \{FG+(0.5*3P)}/{FGA}$$</code></p>
-<p>where:</p>
-<p>FG = field goals made 3P = 3-point field goals made, FGA = field goal attempts, [3]</p>
-<p>A rough approximation can also be had by: <span class="math display">\[
-eFG(\%) =\frac{\frac{PPG-FT}{2}}{FGA}
-\]</span></p>
-<p>where:</p>
-<p>PPG = points per game FT = the free throws made FGA = field goal attempts The advantage of this second formula is that it highlights the aforementioned logic behind the statistic, where it is pretended that a player only shot two-point shots (hence the division of non-free-throw points by 2).</p>
-<p>An additional formula that seems to be more in use by the statistics actually displayed on websites (but less cited by said websites) is:</p>
-<p><span class="math display">\[
-eFG(\%) =\frac{2FG + (1.5*3FG)}{FGA}
-\]</span></p>
-<p>where:</p>
-<p>2FG = 2-point field goals made 3FG = 3-point field goals made FGA = field goal attempts</p>
+</div>
 </div>
 </div>
 

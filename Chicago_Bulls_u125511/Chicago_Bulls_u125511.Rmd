@@ -29,7 +29,6 @@ library(broom)
 library(performance)
 library(psych)
 library(ggrepel)
-library(rmdformats)
 library(plotly)
 library(DT)
 
@@ -404,6 +403,17 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 
 source("funcs/Bulls_multi_reg.R", local = TRUE)
 
+library(knitr)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(broom)
+library(performance)
+library(psych)
+library(ggrepel)
+library(plotly)
+library(DT)
+
 
 ```
 
@@ -575,7 +585,7 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 
  ***
  
-<br>  \
+<br>  
 
 # 6. Player recommendations:
 
