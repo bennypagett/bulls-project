@@ -1,14 +1,15 @@
 ---
 title: "Chicago Bulls Prospective <br> Player Analysis `19-20"
-author: "Benny Pagett"
+author: "Benny Pagett - u125511"
 student ID: "u125511"
 date: "`r Sys.Date()`"
 output:
   rmdformats::readthedown: 
     css: custom_copy.css
     highlight: kate
+    fig_caption: yes
 bibliography: references_copy.bibtex 
-csl: sage-vancouver.csl
+csl: vancouver_access_date.csl
 df_print: knitr::kable
 code_download: true
 self_contained: false
@@ -45,7 +46,7 @@ opts_knit$set(width=75)
 
 ```
 
-```{r project data loading, include=FALSE}
+```{r project data loading, cache=TRUE, include=FALSE}
 ## NBA 18-19 Player stats and salaries
 player_stats_tidy <- readr::read_csv("data/tidy_data/player_stats_tidy.csv")
 ## NBA 18-19 Transfer Player Stats
@@ -58,7 +59,7 @@ df_team_Stats2 <- readr::read_csv("data/tidy_data/df_team_Stats1.csv")
 dfPay <- readr::read_csv("data/project-data/2019-20_nba_team-payroll.csv")# runs code but not in final document
 ```
 
-```{r processed_data, cache = TRUE, dependson = "raw_data", include=FALSE}
+```{r processed_data, cache=TRUE, include=FALSE}
 ## player_stats_tidy
 player_stats_tidy <- readr::read_csv("data/tidy_data/player_stats_tidy.csv")
 ## Teams Stas for Win percentage 
@@ -69,17 +70,18 @@ df_Stats2_Tm_W <- readr::read_csv("data/tidy_data/df_team_Stats2.csv")
 df_nonTOT_players_clean <- read_csv("data/tidy_data/df_nonTOT_clean.csv")
 ```
 
-```{r Bulls logo7G, echo=FALSE, fig.retina = 2, fig.cap="", out.width = '30%',fig.width = 6, fig.asp = 0.618, fig.align = "center"}
+
+```{r Bulls logo7G, echo=FALSE, fig.retina = 2, fig.cap="1", out.width = '30%',fig.width = 6, fig.asp = 0.618, fig.align = "center"}
 knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 ```
- 
 
+[@Chicago_Logo-eh]
 
 # Chicago Bulls NBA 2019-2020 Prospetive Player Report {.emphasized}  
 
 # Introduction:
 
-## Introduction {.tabset}
+## Introduction 
 
 [@Vaz_de_Melo2008-bg]
 
@@ -88,22 +90,41 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 [@NBA_Season_2018-19_data]
 
 
+[@Mara_undated-by]
+
 
 [@Fromal2012-yb]
 
 
-Player and Team  | Position | Salary  | Trade Value  | Points/min |
----------------- | -------- | ------  | -----------  | ---------- |
----------------- | -------- | ------  | -----------  | ---------- |
-Benny Pagett     | Cell 2
-Cell 3           | Cell 4
--------------    | -------------
-Mel Crunkhorn    | Cell 2
-Cell 3           | Cell 4
-
 <br>
 
 # 1. Introduction:
+<br>
+This project is based around the “Moneyball” theory of using statistical analysis to provide a greater insight into sport performances, in this case the selection/purchase of players from the 2018-19 season of the NBA who would help produce greater results for the Chicago Bulls organisation to improve on their past season result (finishing 13th in the Eastern Conference, and 27th overall on Win-Loss ratio) and provide an improved result for the upcoming 2019-2020 NBA season.
+
+The assigned task included the following:
+  * The assessment of potential players to purchase or retain for the Chicago Bulls organisation for the 2019-20 NBA season.
+  * Projection of expected results with selected players.
+  * Selection of 5 players, one from each position (Centre, Power Forward, Small Forward, Shooting Guard, Point Guard).
+  * Ensure purchase of the 5 players was within the allotted budget of $118 million dollars.
+  * The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total). 
+
+[@Chicago_Logo-eh]
+
+The use of statistics in sport is not a new phenomeno `[@Noauthor_undated-pl]' , partly due to people like Bill James and John Hollinger who implemented and revolutionised the use of statistical analysis, and is now common within sports like basketball and in particular the North American basketball league the NBA. John Hollinger created the all in one metric the Player Efficiency Rating or PER, which allowed for the collection of several variables (i.e both positive and negative outcomes e.g turnovers/)
+
+The hypothesis for this project is based on the use of a combination of known analysis methods to create a predictive equation to aid in the selection of appropriate players for the Chicago Bulls 19/20 season in the NBA.
+
+The variables were used to show an association of an increase in overall Win% due to an increase of points per minute played. The variables used for the predictive value were:
+
+Effective Field Goal Percentage (eFGp)
+Trade Value (TrV)
+Efficiency rate (EFF)
+Usage Rate (Tm_use)
+Total Rebounds per minute (TRB_MP)
+Points per minute (PTS_per_MP)
+
+
 
 This section should provide relevant background information and justification for the project, including:  
 
@@ -191,6 +212,29 @@ $$
 FGA = field goal attempts
 
 
+## Usage rate:  
+Usage rate, a.k.a., usage percentage is an estimate of the percentage of team plays used by a player while he was on the floor.
+
+Usage Rate Formula
+
+100*((Player’s Field Goal Attempts)+0.44*(Player’s Free Throw Attempts)+(Player’s Turnovers))*(Team’s Total Minutes)
+/
+((Team’s Total Field Goal Attempts)+0.44*(Team’s Total Free Throw Attempts)+Team’s Total Turnovers))*5*(Player’s Minutes)
+
+By balancing usage rates and the varying offensive ratings of the five players on the court, a team can achieve optimal offensive output. The stats show that, for all players, as the player uses more possessions, his efficiency decreases. What defines a superstar, in Dean Oliver‘s statistical analysis, is that he can shoulder a larger proportion of a team’s possessions with only a relatively small drop in efficiency. Meanwhile, the opposite is also true: Players perform more efficiently when they are asked to use fewer of their team’s possessions. As a result, the greater burden on the superstar means that supporting players maintain low usage rates, allowing them to operate closer to their peak efficiency.
+
+In an effort to determine how much impact players have on their teams, sports statisticians have developed metrics such as Usage Percentage. Examining Usage Percentage gives us an indication of how efficient a player is given the amount of possessions he uses.
+
+What defines a quality player is someone who can have a high Usage Percentage, but still plays at a high rate of efficiency. Teams can look at the Usage Percentage of players on their team, and determine how to balance usage across their lineup to maximize team efficiency.
+
+Although the formula itself looks a bit more complicated, the basic idea is to look at a player's combination of field goal attempts, free throw attempts and turnovers, and find the percentage of the team totals he uses in those same categories.
+
+Some of the all-time leaders in this category include Michael Jordan, Allen Iverson, George Gervin, Dominique Wilkins and Shaquille O'Neal.
+
+[@usage-percentage-ref-pl]
+
+
+
 
 # 2. Report scenario:
   This report forms the tangible component of a reproducible data analysis project of a task given to the data analytics team by the Chicago Bulls GM . The task detailed the assessment of potential players to join/retain for the Chicago Bulls organisation for the 2019-20 NBA season. 
@@ -217,6 +261,93 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 
 This section should document the process used to read and clean the raw data. It should also include a description of the data sets used and variables in each. For brevity, you could provide a link to the specific variable descriptions, rather than writing these out in full within your report. 
 
+#### How to use this project:  
+
+This project was designed and build through RStudio, Version 1.4.1103, © 2009-2021 RStudio, PBC  
+<br>  
+
+##### This Readme file and GitHub repo covers the following:
+
+  * File locations
+  * Operational order
+  * Data sources
+    * Raw data
+    * Tidy data
+  * Glossary of definitions and abbreviations used for each data base
+  * Relevant calculations
+  * 
+
+### File Locations
+
+  1. Rmarkdown -> Chicago_Bulls_u125511  
+  2. Data:  
+    * Project-data  
+    * Tidy_data  
+  3. Funcs -> Rscript files (in descending operational order)  
+    * Bulls_Fresh_start.R  
+    * Teams_wins_loss_df.R  
+    * Exploratory_Analysis_2.R  
+    * Bulls_multi_reg.R  
+  4. Figures 
+  5. Images  
+  6. Funcs  
+  7. References  
+
+#### Operational order: 
+Scripts to be loaded and run through Rstudio program
+  1. Bulls_Project_Fresh_start.R
+  2. Team_wins_loss_df.R
+  3. Explortory_Analysis_2.R
+  4. Bulls_Multi_reg R
+  
+#### Produced "*.csv" data frames
+The following *.csv files will be exported locally into the data/tidy_data folder:  
+  * player_stats_tidy.csv
+  * df_team_Stats1.csv
+  * df_team_Stats2.csv
+  * df_TOT_players.csv
+  * df_nonTOT_clean.csv
+  * datC.csv
+  * datPF.csv
+  * datPG.csv
+  * datSF.csv
+  * datSG.csv
+  
+
+
+### Data sources
+
+1. [2018-19_nba_player-statistics.csv](https://www.basketball-reference.com/leagues/NBA_2019_totals.html)  
+
+2. [2018-19_nba_player-salaries.csv](https://hoopshype.com/salaries/)  
+
+3. [2019-20_nba_team-payroll.csv](https://hoopshype.com/salaries/)  
+
+4. [2018-19_nba_team-statistics_1.csv](https://www.basketball-reference.com/leagues/NBA_2019.html)  
+
+5. [2018-19_nba_team-statistics_2.csv](https://www.basketball-reference.com/leagues/NBA_2019.html)
+
+
+
+### Glossary:
+**NBA standard terms:**  
+    * [Glossary of NBA Statistics](https://www.basketball-reference.com/about/glossary.html)   
+    * [Basteball Positions](https://en.wikipedia.org/wiki/Basketball_positions)  
+
+**Project specific:**  
+  * Pos = Position  
+  * Tm = Team, abbreviated to three letters, i.e Chicago = CHI, Houston = HOU etc.  
+  * '..._MP' = Statistic at a per minute rate  
+  * 'TM_...' = Statistic as a team total  
+  * Tm_use_total = Total use by the team as a percentage across the total number of minutes played  
+  
+
+
+## Data sources:  
+
+  * 
+
+
 ```{r Bulls logo small-2-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
 knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 ```
@@ -239,16 +370,18 @@ DT::datatable(model_testing %>%
   arrange(desc(exp_PTS_per_MP), salary))
 ```
 
+# linear
+
 
 This section should document your exploratory data analysis and may include but is not limited to:
 
-a) checking for errors and missing values within the datasets
+a) checking for errors and missing values within the data sets
 
 b) checking the distribution of variables
 
-c) checking for relationships between variables, or differences between groups
+## c) checking for relationships between variables, or differences between groups
 
-d) justification for decisions made about data modelling
+### d) justification for decisions made about data modelling
 
 Note that this section and the data cleaning section may be an iterative process, as you might find things about the data that need to be 'cleaned up' once you have explored the data further. 
 
@@ -263,7 +396,7 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 
 ## This section may include but is not limited to:
 
-  a) data modelling (e.g. creating a linear regression)
+  a) data modeling (e.g. creating a linear regression)
   
 ## need to check source   
   

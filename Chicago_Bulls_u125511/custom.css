@@ -24,11 +24,16 @@ h1, h2, h3, h4, h5, h6, legend {
 
 #table-of-contents {
     color:black;
-    background-color: #111212
+    background-color: #1dcae0
     background-image: url("https://cdn.hipwallpaper.com/i/95/27/TlYZxr.jpg'");
     background-repeat: no-repeat;
     background-position: bottom;
 }
+
+background-image: url('https://cdn.hipwallpaper.com/i/95/27/TlYZxr.jpg');
+background-size: 30%;
+background-repeat: no-repeat;
+background-position: bottom;
 
 #table-of-contents h2 {
     background-color: #851511;
