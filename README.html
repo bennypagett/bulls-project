@@ -346,12 +346,6 @@ pre code {
 <div id="relevant-calculations" class="section level4">
 <h4>Relevant calculations</h4>
 <hr />
-<ul>
-<li>Effective Field Goal Percentage (eFGp)</li>
-<li>Trade Value (TrV)</li>
-<li>Efficiency rate (EFF)</li>
-<li>Usage Rate (Tm_use)</li>
-</ul>
 <p><strong>Usage rate equation</strong> (TM_use_total)</p>
 <ul>
 <li><strong><a href="https://www.nbastuffer.com/analytics101/usage-rate/">Usage Rate</a></strong> is a calculation of the percentage a player is used by the team.</li>
@@ -367,9 +361,17 @@ pre code {
 <p>It is calculated by: <span class="math display">\[
 eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
 \]</span></p>
-<p><code>{r pressure, echo=FALSE, fig.cap=&quot;eDG% calculation&quot;, out.width = &#39;100%&#39;} knitr::include_graphics(&quot;CodeCogsEqn.gif&quot;)</code> <code>\begin{equation}\\    eFG(%)\left = \frac{FG+(0.5*3P)}/{FGA} \end{equation}</code></p>
+<p><a href="https://latex.codecogs.com/gif.latex?\inline&amp;space;\dpi%7B200%7D&amp;space;\bg_black&amp;space;\large&amp;space;eFGp%&amp;space;=&amp;space" class="uri">https://latex.codecogs.com/gif.latex?\inline&amp;space;\dpi{200}&amp;space;\bg_black&amp;space;\large&amp;space;eFGp%&amp;space;=&amp;space</a>;(FG+(0.5*3P)/FGA))</p>
+<p><code>\begin{equation}\\    eFG(%)\left = \frac{FG+(0.5*3P)}/{FGA} \end{equation}</code></p>
 <p><code>&lt;a href=&quot;https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&amp;space;\bg_black&amp;space;\LARGE&amp;space;eFG%&amp;space;=&amp;space;(FG&amp;plus;(0.5*3P))/FGA&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;https://latex.codecogs.com/gif.latex?\dpi{150}&amp;space;\bg_black&amp;space;\LARGE&amp;space;eFG%&amp;space;=&amp;space;(FG&amp;plus;(0.5*3P))/FGA&quot; title=&quot;\LARGE eFG% = (FG+(0.5*3P))/FGA&quot; /&gt;&lt;/a&gt;</code></p>
 <p><code>$$eFG(%) = \{FG+(0.5*3P)}/{FGA}$$</code></p>
+<p><strong>Efficiency Value</strong></p>
+<ul>
+<li><strong><a href="https://www.nbastuffer.com/analytics101/nba-efficiency/">Efficiency Value</a></strong>, is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates player’s linear efficiency.</li>
+</ul>
+<p>It is calculated by: <span class="math display">\[
+EFF = (PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP 
+\]</span></p>
 <p><strong>Trade Value</strong></p>
 <ul>
 <li><strong><a href="https://www.nbastuffer.com/analytics101/trade-value/">Trade Value</a></strong> is the estimate using a player’s age and his approximate value to determine how much value a player has left in his career. Invented by Bill James.</li>
@@ -396,13 +398,6 @@ AV Formula = (Credits(3/4) )/21
 <p>It is calculated by:<br />
 <span class="math display">\[
 Credits Formula = (Points)+(Rebounds)+(Assists)+(Steal)+(Blocks)-(Field Goals Missed)-(Free Throws Missed)-(Turnovers)
-\]</span></p>
-<p><strong>Efficiency Value</strong></p>
-<ul>
-<li><strong><a href="https://www.nbastuffer.com/analytics101/nba-efficiency/">Efficiency Value</a></strong>, is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates player’s linear efficiency.</li>
-</ul>
-<p>It is calculated by: <span class="math display">\[
-EFF = (PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP 
 \]</span></p>
 <hr />
 </div>
@@ -494,7 +489,7 @@ The variables consist:</p>
 <li>PL : Pythagorean losses, i.e., expected losses based on points scored and allowed</li>
 <li>MOV : Margin of Victory</li>
 <li>SOS : Strength of Schedule; a rating of strength of schedule. The rating is denominated in points above/below average, where zero is average.</li>
-<li>SRS : Simple Rating System; a team rating that takes into account average point differential and strength of * schedule. The rating is denominated in points above/below average, where zero is average.</li>
+<li>SRS : Simple Rating System; a team rating that takes into account average point differential and strength of schedule. The rating is denominated in points above/below average, where zero is average.</li>
 <li>ORtg : Offensive Rating; An estimate of points produced (players) or scored (teams) per 100 possessions</li>
 <li>DRtg : Defensive Rating; An estimate of points allowed per 100 possessions</li>
 <li>NRtg : Net Rating; an estimate of point differential per 100 possessions.</li>

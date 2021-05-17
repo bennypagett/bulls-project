@@ -141,13 +141,6 @@ The following *.csv files will be exported locally into the data/tidy_data folde
 #### Relevant calculations
 ***
 
-
-* Effective Field Goal Percentage (eFGp)
-* Trade Value (TrV)
-* Efficiency rate (EFF)
-* Usage Rate (Tm_use)
-
-
 **Usage rate equation** (TM_use_total)
 
   * **[Usage Rate](https://www.nbastuffer.com/analytics101/usage-rate/)** is a calculation of the percentage a player is used by the team.
@@ -166,9 +159,8 @@ $$
 eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
 $$
 
-```{r pressure, echo=FALSE, fig.cap="eDG% calculation", out.width = '100%'}
-knitr::include_graphics("CodeCogsEqn.gif")
-```
+https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA))
+
 `\begin{equation}\\ 
   eFG(%)\left = \frac{FG+(0.5*3P)}/{FGA}
 \end{equation}`
@@ -176,6 +168,15 @@ knitr::include_graphics("CodeCogsEqn.gif")
 `<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\bg_black&space;\LARGE&space;eFG%&space;=&space;(FG&plus;(0.5*3P))/FGA" title="\LARGE eFG% = (FG+(0.5*3P))/FGA" /></a>`
 
  `$$eFG(%) = \{FG+(0.5*3P)}/{FGA}$$`
+ 
+ **Efficiency Value** 
+
+  * **[Efficiency Value](https://www.nbastuffer.com/analytics101/nba-efficiency/)**, is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates player’s linear efficiency.
+
+It is calculated by: 
+$$
+EFF = (PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP 
+$$
 
 **Trade Value**
 
@@ -202,15 +203,6 @@ $$
 It is calculated by:   
 $$
 Credits Formula = (Points)+(Rebounds)+(Assists)+(Steal)+(Blocks)-(Field Goals Missed)-(Free Throws Missed)-(Turnovers)
-$$
-
-**Efficiency Value** 
-
-  * **[Efficiency Value](https://www.nbastuffer.com/analytics101/nba-efficiency/)**, is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates player’s linear efficiency.
-
-It is calculated by: 
-$$
-EFF = (PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP 
 $$
 
 ***
@@ -304,7 +296,7 @@ This data file contains miscellaneous team statistics for the 2018-19 season.
   * PL : Pythagorean losses, i.e., expected losses based on points scored and allowed
   * MOV : Margin of Victory
   * SOS : Strength of Schedule; a rating of strength of schedule. The rating is denominated in points above/below average, where zero is average.
-  * SRS : Simple Rating System; a team rating that takes into account average point differential and strength of * schedule. The rating is denominated in points above/below average, where zero is average.
+  * SRS : Simple Rating System; a team rating that takes into account average point differential and strength of schedule. The rating is denominated in points above/below average, where zero is average.
   * ORtg : Offensive Rating; An estimate of points produced (players) or scored (teams) per 100 possessions
   * DRtg : Defensive Rating; An estimate of points allowed per 100 possessions
   * NRtg : Net Rating; an estimate of point differential per 100 possessions.
