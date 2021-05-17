@@ -4,6 +4,14 @@
 **u125511**
 <br/>
 
+### Table of contents:
+* **[Introduction](https://github.com/bennypagett/bulls-project#introduction)**
+  * **[Background](https://github.com/bennypagett/bulls-project#background)**
+* **[How to use this repo project](https://github.com/bennypagett/bulls-project#how-to-use-this-project)**
+* **[Relevant calculations](https://github.com/bennypagett/bulls-project#relevant-calculations)**
+* **[Glossary](https://github.com/bennypagett/bulls-project#glossary)**
+
+***
 ### Introduction  
 ***
 This GitHub repo comprises of all the components for a reproducible data analysis project, which was initially created as part of the Data Analysis in Sport course at the University of Canberra.  
