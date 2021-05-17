@@ -7,7 +7,7 @@
 ### Table of contents:
 * **[Introduction](https://github.com/bennypagett/bulls-project#introduction)**
   * **[Background](https://github.com/bennypagett/bulls-project#background)**
-* **[How to use this repo project](https://github.com/bennypagett/bulls-project#how-to-use-this-project)**
+* **[How to use this repo/project](https://github.com/bennypagett/bulls-project#how-to-use-this-project)**
 * **[Relevant calculations](https://github.com/bennypagett/bulls-project#relevant-calculations)**
 * **[Glossary](https://github.com/bennypagett/bulls-project#glossary)**
 
@@ -69,7 +69,7 @@ I hope you enjoy this project as much as I did. Although challenging in the init
 <br>
 
 ***
-### How to use this project:  
+### How to use this repo/project:  
 ***
 This project was designed and built through RStudio, Version 1.4.1103, © 2009-2021 RStudio, PBC  
 <br>
