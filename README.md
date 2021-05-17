@@ -71,7 +71,7 @@ I hope you enjoy this project as much as I did. Although challenging in the init
 ***
 ### How to use this repo/project:  
 ***
-This project was designed and built through RStudio, Version 1.4.1103, © 2009-2021 RStudio, PBC  
+This project was designed and built through **[RStudio](https://www.rstudio.com/)**, Version 1.4.1103, © 2009-2021 RStudio, PBC  
 <br>
 
 ##### This Readme file and GitHub repo covers the following:
@@ -145,16 +145,18 @@ The following *.csv files will be exported locally into the data/tidy_data folde
 
   * **[Usage Rate](https://www.nbastuffer.com/analytics101/usage-rate/)** is a calculation of the percentage a player is used by the team.
   
-It is calculated by:   
-$$
-100*((FGA+0.44*FTA+TO)*(TMP/5))/(MP*(TFGA+0.44*TFTA+TTO))
-$$
+    It is calculated by:   
+$$100*((FGA+0.44*FTA+TO)*(TMP/5))/(MP*(TFGA+0.44*TFTA+TTO))$$
+  
+`![alt text](https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;\large&space;eFGp%&space;=&space;(FG&plus;(0.5*3P)/FGA) "Logo Title Text") 1")`
+  
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
   
 **Effective field goal percentage** (eFGp)
 
   * **[Effective Field Goal Percentage (eFGp)](https://www.basketball-reference.com/about/glossary.html#:~:text=eFG%25%20%2D%20Effective%20Field%20Goal%20Percentage,for%2010%20with%200%20threes.)** A statistic that adjusts field goal percentage to account for the fact that three-point field goals count for three points while field goals only count for two points.  
 
-It is calculated by: 
+    It is calculated by: 
 $$
 eFG(\%) =\frac{FG+(0.5*3P)}{FGA}
 $$
@@ -173,7 +175,7 @@ https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&spa
 
   * **[Efficiency Value](https://www.nbastuffer.com/analytics101/nba-efficiency/)**, is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates player’s linear efficiency.
 
-It is calculated by: 
+    It is calculated by: 
 $$
 EFF = (PTS + REB + AST + STL + BLK − Missed FG − Missed FT - TO) / GP 
 $$
@@ -182,7 +184,7 @@ $$
 
   * **[Trade Value](https://www.nbastuffer.com/analytics101/trade-value/)** is the estimate using a player’s age and his approximate value to determine how much value a player has left in his career. Invented by Bill James.
   
-It is calculated by: 
+    It is calculated by: 
 $$
 Trade Value Formula=[(Approximate Value- 27-0.75*Age)2(27-0.75*Age +1)*Approximate Value]/190+(Approximate Value)*2/13
 $$
@@ -191,7 +193,7 @@ $$
   
     * **[Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/)** is the metric which is an estimate of a player’s value, making no fine distinctions, but, rather, distinguishing easily between very good seasons, average seasons, and poor seasons.
 
-It is calculated by:  
+    It is calculated by:  
 $$
 AV Formula = (Credits(3/4) )/21
 $$
@@ -200,7 +202,7 @@ $$
 
     * **[Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/)** is an aggregation of observations from a standard game/season, in combination used within the approximate value calculation.
 
-It is calculated by:   
+    It is calculated by:   
 $$
 Credits Formula = (Points)+(Rebounds)+(Assists)+(Steal)+(Blocks)-(Field Goals Missed)-(Free Throws Missed)-(Turnovers)
 $$

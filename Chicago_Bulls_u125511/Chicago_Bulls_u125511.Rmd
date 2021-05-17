@@ -354,7 +354,7 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
  ***
 <br>
 
-## 3. Exploratory analysis:
+# 3. Exploratory analysis: 
 
 ```{r source_bulls_multi_reg1, include=FALSE, cache = TRUE, dependson = "...."}  
 
@@ -371,10 +371,28 @@ DT::datatable(model_testing %>%
 
 # linear
 
+```{r source_linear_analysis, echo=FALSE, include=FALSE}
+
+source("funcs/Exploratory_Analysis_2.R", local = TRUE)
+
+```
+
+```{r eFG_histogram, echo=FALSE}
+
+ggplot(data = df_nonTOT_clean) +
+  geom_histogram(mapping = aes(x = eFGp), colour = "black", fill = "dodgerblue")
+
+```
 
 This section should document your exploratory data analysis and may include but is not limited to:
 
-a) checking for errors and missing values within the data sets
+#### Cleaning steps
+
+  1. Error checking, missing values, 
+  2. Comparison across data frames for common variable names
+  3. Fix spelling/abbreviations of player names to ensure accuracte data matching across data sets
+  4. Fix team names to match abbreviations across data sets
+  checking for errors and missing values within the data sets
 
 b) checking the distribution of variables
 
