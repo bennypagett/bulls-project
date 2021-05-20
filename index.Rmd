@@ -8,8 +8,8 @@ output:
     css: custom_copy.css
     highlight: kate
     fig_caption: yes
-bibliography: references_copy.bibtex 
-csl: vancouver_access_date.csl
+bibliography: references/references_copy.bibtex 
+csl: references/vancouver_access_date_superscipt.csl
 df_print: knitr::kable
 code_download: true
 self_contained: false
@@ -102,7 +102,7 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 
 # 1. Introduction:
 
-This interactive website is the tangible report component of a reproducible data analysis project based on the fictitious task given to the data analytics team for the Chicago Bulls organisation from the General Manager to help rebuild the team for next season. The task detailed the assessment of potential players to join/retain for the Chicago Bulls organisation for the 2019-20 NBA season. 
+This interactive website is the tangible report component of a reproducible data analysis project. The project is based upon a fictitious task given to the data analytics team for the Chicago Bulls NBA organisation to provide a prospective player analysis report for the General Manager to help rebuild the team for next season. The task detailed the assessment of potential players to join/retain for the Chicago Bulls organisation for the 2019-20 NBA season. 
 
 
 ```{r logo_intro, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
@@ -126,7 +126,7 @@ The assigned task included the following:
   * Ensure purchase of the 5 players was within the allotted budget of $118 million dollars.  
   * The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total).  
   
-The use of statistics in sport is not a new phenomenon [], partly due to influences from the likes of Bill James [Bill james basketball stats link] and John Hollinger [EFF link] who implemented and revolutionised the use of statistical analysis, which is now common within sports like basketball and in particular the North American basketball league the NBA. John Hollinger created the all in one metric the Player Efficiency Rating or PER, which allowed for the collection of several variables (i.e both positive and negative outcomes e.g turnovers/) to be used as an indicator of player performance, able to be used as an inter and intra reliable measure.
+The use of statistics in sport is not a new phenomenon [@Vaz_de_Melo2008-bg] [@Khan2013-vy], partly due to influences from the likes of Bill James [Bill james basketball stats link] and John Hollinger [@noauthor_undated-pl] who implemented and revolutionised the use of statistical analysis, which is now common within sports like basketball and in particular the North American basketball league the NBA. John Hollinger created the all in one metric the Player Efficiency Rating or PER, which allowed for the collection of several variables (i.e both positive and negative outcomes e.g points, turnovers, free throw misses, personal fouls etc.) to be used as an indicator of player performance, and especially be able to be used as an inter and intra reliable measure.
 
 ```{r logo_aim, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
 knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
@@ -135,11 +135,11 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 ***
 ## Project aim:
 
-The hypothesis for this project is based on the use of a combination of known analysis methods to create a predictive equation to aid in the selection of appropriate players for the Chicago Bulls 19/20 season in the NBA. 
+The hypothesis for this project is based on the use of a combination of known analysis methods/variables to create a predictive equation to aid in the selection of appropriate players for the Chicago Bulls 19/20 season in the NBA.[@noauthor_undated-du] 
 
 By selecting players that attained above specific values in the selected key metrics, it is hypothesized that an increase in points/min could be achieved which is associated to an increased win percentage. 
 
-As such, the project aims to prove that choosing players that contribute to increasing the team points per minute average, would equate to increased team wins, with a goal of achieving greater than 42 wins/50% win percentage and progressing to playoffs.
+As such, the project aims to prove that choosing players that contribute to increasing the team points per minute average, would equate to increased team wins, with a goal of achieving greater than 42 wins/50% win percentage and progressing to playoffs[@Fromal2012-yb].
 
 The purpose and problem that this method of analysis addresses is a way to see through the inflated market values for athletes and highlight the true value of players based on their repeated habits and trends of play. I believe that the predictive formula below can provide valuable insight into the real value and contribution players are making/could make in a new team.
 
@@ -188,7 +188,7 @@ The variables selected were used to show an association with an increase in over
   * **Total Rebounds per minute (TRB_MP)**    
   * **Points per minute (PTS_per_MP)**  
 
-Dean Oliver refers to the ["Four Factors"](http://www.rawbw.com/~deano/articles/20040601_roboscout.htm) of Basketball adding that metrics/ratings can be broken down into four elements of the game: shooting, turnovers, rebounding, and getting to the foul line.It is in this framework that I believe that using a multifaceted approach to the analysis of player performance decreases the disparity between observed results and predictive results.
+Dean Oliver[@noauthor_undated-ht] refers to the ["Four Factors"](http://www.rawbw.com/~deano/articles/20040601_roboscout.htm) of Basketball adding that metrics/ratings can be broken down into four elements of the game: shooting, turnovers, rebounding, and getting to the foul line. It is in this framework that I believe that using a multifaceted approach to the analysis of player performance decreases the disparity between observed results and predictive results.
   
 **Points per minute**
 $$
@@ -206,19 +206,15 @@ The previous 2018-19 season saw the Chicago Bulls finish 27th out of 30 teams in
 
 ### Background on variables:
 
-By balancing statistical variables such as usage rates, efficiency ratings and other varying offensive/defensive ratings of the five players on a basketball court, a team can achieve optimal offensive output. This can bee seen through repeated game stats and team habits on the court. 
+By balancing statistical variables such as usage rates, efficiency ratings and other varying offensive/defensive ratings of the five players on a basketball court, a team can achieve optimal offensive output. This can bee seen through repeated game stats and team habits on the court[@noauthor_2017-ev]. 
 
 Interestingly the trends show that, for all players, as a player uses more possessions, his efficiency decreases. In the eyes of some statistical analysts what defines a superstar, is someone who can carry a larger proportion of a teams possessions and produce points with only a relatively small drop in efficiency. Meanwhile, the opposite is also true: Players perform more efficiently when they are asked to use fewer of their teams possessions. As a result, the greater burden on the superstar means that supporting players maintain low usage rates, allowing them to operate closer to their peak efficiency.
 
-In an effort to determine how much impact players have on their teams, sports statisticians have developed metrics such as Usage Percentage. Examining Usage Percentage gives us an indication of how efficient a player is given the amount of possessions he uses.
+In an effort to determine how much impact players have on their teams, sports statisticians have developed metrics such as Usage Percentage. Examining Usage Percentage gives us an indication of how efficient a player is given the amount of possessions he uses.[@Schuhmann2021-am]
 
-What defines a quality player is someone who can have a high Usage Percentage, but still plays at a high rate of efficiency. Teams can look at the Usage Percentage of players on their team, and determine how to balance usage across their lineup to maximize team efficiency.
+What defines a quality player is someone who can have a high Usage Percentage, but still plays at a high rate of efficiency. Teams can look at the Usage Percentage of players on their team, and determine how to balance usage across their lineup to maximize team efficiency.[@Paine2015-mu]
 
-Although the formula itself looks a bit more complicated, the basic idea is to look at a player's combination of field goal attempts, free throw attempts and turnovers, and find the percentage of the team totals he uses in those same categories.
-
-Some of the all-time leaders in this category include Michael Jordan, Allen Iverson, George Gervin, Dominique Wilkins and Shaquille O'Neal.
-
-[@usage-percentage-ref-pl]  
+As with other combination metrics within sport, the aim of the predictive formula, albeit complicated on first glance, the basic idea is to look at a player's combination of independent and dependent metrics and find the percentage of the team totals he uses in those same categories.[@noauthor_undated-pl]  
   
 
 ```{r logo_calculations, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
@@ -256,7 +252,7 @@ $$
 
 **Efficiency Value**
 
-  * [Efficiency Value](https://www.nbastuffer.com/analytics101/nba-efficiency/), is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates a players linear efficiency.
+  * [Efficiency Value](https://www.nbastuffer.com/analytics101/nba-efficiency/), is a metric invented by Martin Manley, is being considered the first ever player evaluation metric which indicates a players linear efficiency.[@Wikipedia_contributors2021-mv]
 
     It is calculated by: 
 $$
@@ -267,7 +263,7 @@ $$
 
   **Trade Value**
   
-  * [Trade Value](https://www.nbastuffer.com/analytics101/trade-value/) is the estimate using a players age and his approximate value to determine how much value a player has left in his career. Invented by Bill James.
+  * [Trade Value](https://www.nbastuffer.com/analytics101/trade-value/) is the estimate using a players age and his approximate value to determine how much value a player has left in his career. Invented by Bill James.[@noauthor_2017-ug] [@noauthor_2017-id]
   
     It is calculated by: 
 $$
@@ -275,7 +271,7 @@ TrV = \frac{[(AV Formula - 27-0.75*Age)^2(27-0.75*Age +1)*AV Formula]}{190}+(AV 
 $$
   **Approximate Value**
   
-  * [Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/) are metrics which are an estimate of a players value, making no fine distinctions, but, rather, distinguishing easily between very good seasons, average seasons, and poor seasons.
+  * [Credit Formula and Approx Value](https://www.nbastuffer.com/analytics101/approximate-value/) are metrics which are an estimate of a players value, making no fine distinctions, but, rather, distinguishing easily between very good seasons, average seasons, and poor seasons[@noauthor_2017-qp].
 
     It is calculated by:  
 $$
@@ -340,14 +336,15 @@ This section details the process undertaken for the reading, cleaning and export
 #### 1. Data sources
 <br> 
 
-  * [www.basketball-reference.com](https://www.basketball-reference.com/leagues/NBA_2019_totals.html) Player statistics 2018-19 NBA season.
-  * [www.hoopshype.com](https://hoopshype.com/salaries/) Player salaries/year in $USD.
+  * [www.basketball-reference.com](https://www.basketball-reference.com/leagues/NBA_2019_totals.html) Player statistics 2018-19 NBA season.[@noauthor_undated-st]
+  
+  * [www.hoopshype.com](https://hoopshype.com/salaries/) Player salaries/year in $USD.[@noauthor_undated-xt]
 
-  * [www.hoopshype.com](https://hoopshype.com/salaries/) Oranisation/Team Payroll for 2018-19
+  * [www.hoopshype.com](https://hoopshype.com/salaries/) Oranisation/Team Payroll for 2018-19 [@noauthor_undated-vm]
 
   * [basketball-reference.com](https://www.basketball-reference.com/leagues/NBA_2019.html) Team statistics 2018-19 NBA season.
 
-  * [basketball-reference.com](https://www.basketball-reference.com/leagues/NBA_2019.html) Team statistics 2018-19 NBA season.
+  * [basketball-reference.com](https://www.basketball-reference.com/leagues/NBA_2019.html) Team statistics 2018-19 NBA season.[@noauthor_undated-jx]
   
 #### 2. Cleaning process  
 <br>
@@ -580,13 +577,11 @@ source("funcs/Bulls_multi_reg.R", local = TRUE)
 
 
 ### 4. Linear model assessments 
-
-#### Searching for confounding variables and single linear model:
 <br>
 
-#### Relationship between points per min and team winning percentage:
+#### Searching for confounding variables and single linear model:
 
-<br>  
+#### Relationship between points per min and team winning percentage:
 
 ```  {r Lin_relationship, echo=FALSE}
 library(ggplot2)
@@ -697,7 +692,7 @@ ggplot(data = NULL, aes(x = points, y = hats)) +
 
 There are no hat values greater than 1, however it will be useful to investigate the points above 0.025, as they appear to stand out from the rest of the values. 
 
-Next step would be to investigate points above 0.025.
+A need to investigate the points above 0.025.
 
 ```{r hat_labels, echo=FALSE}
 hat_labels <- if_else(hats >= 0.025, paste(points), "")
@@ -706,7 +701,7 @@ ggplot(data = NULL, aes(x = points, y = hats)) +
   geom_text(aes(label = hat_labels), nudge_y = 0.005)
 ```
 
-There are 5 points that could be influencing the model (1, 13, 45,104, 200) Determine if the points could be considered high influence
+There are 5 points that could be influencing the model (1, 13, 45,104, 200). Determine if the points could be considered high influence
 
 
 ```{r cook_linear, echo=FALSE}
@@ -720,7 +715,7 @@ ggplot(data = NULL, aes(x = points, y = cook)) +
 cook_labels <- if_else(cook >= 0.015, paste(points), "")
 ```
 
-Investigate points above 0.015 that are standing out above the rest
+A need to investigate points above 0.015 that are standing out above the rest.
 
 ```{r cook_labels2, echo=FALSE}
 cook_labels <- if_else(cook >= 0.015, paste(points), "")
@@ -747,7 +742,7 @@ df_LinR_filtered <- df_nonTOT_clean%>%
   filter(!player_name %in% outliers)
 ```
 
-re-run linear regression with filtered_df
+A re-run of the linear regression with filtered_df
 
 ```{r fit2, echo=FALSE}
 fit2 <- lm(WinP_Tm ~ PTS_per_MP, data = df_LinR_filtered)
@@ -771,13 +766,10 @@ ggplot(data = df_LinR_filtered, aes(x = PTS_per_MP, y = WinP_Tm)) +
   geom_hline(yintercept = 50, colour = "black", linetype = "dashed")
 ```
 
-the graph show a more even spread, and less influenced by the high points. 
+The graph show a more even spread, and less influenced by the high points. 
 
 ### 9. Test for homoscedasticity within data set
-
-homoscedasticity - test for homoscedasticity by plotting the residuals against the 
-fitted values.
-
+<br>
 
 ```{r res_fit, echo=FALSE}
 res <- residuals(fit)
@@ -791,7 +783,7 @@ ggplot(data = NULL, aes(x = fitted, y =res)) +
   geom_hline(yintercept = 0, colour = "red", linetype = "dashed")
 ```
 
-There does not appear to be evidence of heteroscedasticity
+A test for homoscedasticity shows that the assumption for homoscedasticity is upheld by plotting the residuals against the fitted values. As such, there does not appear to be evidence of heteroscedasticity.
 
 
 ### 10. Assesment of normality
@@ -848,7 +840,7 @@ tidy(fit, conf.int = TRUE)
 ### 12. Justification for data modelling  
 <br>
 
-In an effort to determine how much impact players have on their teams, the use of multiple developed metrics such as Usage Percentage, Efficiency Rate, Effective Field Goal Percentage, Trade Value combined with hard points per minute data i.e Points per minute and Total Rebounds per minute gives a well rounded assessment of a players value, and future worth to an organisation. 
+In an effort to determine how much impact players have on their teams, the use of multiple developed metrics such as Usage Percentage, Efficiency Rate, Effective Field Goal Percentage, Trade Value combined with hard points per minute data i.e Points per minute and Total Rebounds per minute gives a well rounded assessment of a players value, and future worth to an organisation[@noauthor_2017-ev]. 
 
 By selecting players that featured in greater than 40 games in the season and above select values in the selected key metrics, it is hypothesized that an increase in points/min could be achieved which is associated to an increased win percentage. 
 
@@ -946,7 +938,8 @@ library(DT)
 
 ### Assumption testing
 <br>
-### Added-Variable Plots
+
+#### Added-Variable Plots
 
 ```{r avPlot, echo=FALSE}
 car::avPlots(fit)
@@ -965,7 +958,7 @@ pairs(formula = ~ PTS_per_MP + eFGp + TRB_MP + Tm_use_total + EFF + TrV, data = 
 
 #### Variance inflation factor
 
-[Variance Inflation Factor](https://en.wikipedia.org/wiki/Variance_inflation_factor#:~:text=In%20statistics%2C%20the%20variance%20inflation,ordinary%20least%20squares%20regression%20analysis.) was assessed to identify the correlation between predictors (i.e. independent variables) in a model; its presence can adversely affect your regression results. The VIF estimates how much the variance of a regression coefficient is inflated due to the variables being too alike/related to each other.
+[Variance Inflation Factor](https://en.wikipedia.org/wiki/Variance_inflation_factor#:~:text=In%20statistics%2C%20the%20variance%20inflation,ordinary%20least%20squares%20regression%20analysis.) [@Stephanie2015-nd] was assessed to identify the correlation between predictors (i.e. independent variables) in a model; its presence can adversely affect your regression results. The VIF estimates how much the variance of a regression coefficient is inflated due to the variables being too alike/related to each other.
 
 ```{r car_fit, echo=FALSE, cache=FALSE}
 library(knitr)
@@ -1208,7 +1201,7 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 ```
 
  ***
-# 7. Player recommendations:
+# 7. Player Analysis and Recommendations:
 ```{r source_6_multi, dependson="source_bulls_multi_reg2", include=FALSE}
 source("funcs/Bulls_multi_reg.R", local = TRUE)
 
@@ -1246,9 +1239,13 @@ ggplotly(WinP_v_Tm_Pts, tooltip = "text") %>%
 
 The graphs below are an interactive representation of the players and their respective metrics utilised within our predictive model.
 
+```{r Bulls_logo_PA, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+
+```
+
 ***
 
-# 8. Player Analysis and Recommendations:
 <br>
 
 ## Points per/min vs Win percentage:  
@@ -1282,7 +1279,7 @@ ggplotly(gg2, tooltip = "text") %>%
 ```
 <br>
 
-```{r Bulls_logo_PA, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+```{r Bulls_logo_sal, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
 knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 
 ```
@@ -1425,6 +1422,16 @@ DT::datatable((model_testing) %>%
   arrange(desc(exp_PTS_per_MP), EFF, caption = "Player selections.")) # initial table
 ```
 
+
+
+```{r Bulls_logo_recom, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+
+```
+
+***
+<br>
+
 The players presented below both individually and collectively will see an increase in the Chicago Bulls points per minute rate and in doing so give the organisation the best chance to consistently play at above a 50% Win rate to progress through to playoffs. The players 
 
 ```{r source_player_reco, include=FALSE, cache=TRUE}
@@ -1441,32 +1448,32 @@ DT::datatable(player_reco)
 ```
 
 
-Key figures of listed of players:
+#### Key figures of listed of players:
 
-  * SG = Devin Booker (PHO): 
+  * **SG = Devin Booker (PHO):** 
       * Highest points/min and points/game   
       * Efficiency rating  >1700 
       * Trade value  >700  
       * Utilised >30% in Team usage   
       * Salary = 3.3 Million  
-      
-  * SF = Kawhi Leonard = (TOR):  
+      <br>
+  * **SF = Kawhi Leonard (TOR):**  
       * Highest PT_per_MP for role   
       * EFficiency rating >1700   
       * Trade Value >600    
       * High quantity of Games and Games Started with an eFGP of 54%   
       * Good age for Small Forward   
-      * Salary = 23 Million - Identified as marque player  
-      
-  * PG = Ben Simmons (PHI):  
+      * Salary = 23 Million - Identified as marque player 
+      <br>  
+  * **PG = Ben Simmons (PHI):**  
       * Highest Trade Value   
       * Efficiency rating > 2000   
       * Utilised 22% usage rating  
       * Above 50% eFGp = 0.56   
       * Scoring at good rate combined with high efficiency rate for role, PTS_per_MP = .49   
       * Salary = 6.4 Million  
-      
-  * PF = Julius Randle (NOP):     
+      <br>
+  * **PF = Julius Randle (NOP):**     
       * Started more than 50% of games and played in 73 overall  
       * Ranked 4th for Pts/min for position = Pts_per_MP .70  
       * 3rd highest for Efficiency 1873 for role   
@@ -1474,15 +1481,16 @@ Key figures of listed of players:
       * eFGp of 55%  
       * Salary = 8.6 Million  
       * Utilised > 21% usage rating  
-      * Top 10 for total rebounds per minute for PF role = .28  
-      
-  * C = Karl-Anthony Towns (MIN):   
+      * Top 10 for total rebounds per minute for PF role = .28   
+      <br>
+  * **C = Karl-Anthony Towns (MIN):**   
       * Trade Value >700 = 3rd highest for position  
       * Efficiency rating, highest for position >1700   
       * Utilised >.21 usage rate   
       * Above average eFGp = > .58 eFGP   
       * 3rd highest for Points/min >.73 and >24 PTS/game   
       * Salary = 7.8 Million  
+      
 
 The combined cost of the above mentioned 5 players totals equals:
 
@@ -1492,7 +1500,7 @@ kable((7839435	+ 8641000	+ 6434520	+ 3314365	+ 23114066), col.names = c('Total C
   
 ```
 
-The required amount to purchase 5 new starting players ($49,343,386 USD) leaves a residual amount of \$68, 656,614 USD in the budget to purchase/retain the remaining 10 players needed for a full NBA roster for the 2019-20 season. On average that equates to 6.8 million USD per player, which given the analysis provided is ample to continue to field a robust and extremely competitive new team for the Chicago Bulls organisation.
+The required amount to purchase 5 new starting players ($49,343,386 USD) leaves a residual amount of \$68, 656,614 USD in the budget to purchase/retain the remaining 10 players needed for a full NBA roster for the 2019-20 season. On average, the residual equates to 6.8 million USD per player, which given the analysis provided is ample to continue to field a robust and extremely competitive new team for the Chicago Bulls organisation.
 
 
 ```{r logo_limit, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
@@ -1500,11 +1508,17 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 ```
 
  ***
-# 9. Limitations:  
+# 8. Limitations:  
 
-This predictive model slightly overestimated the winning percentage for the Chicago Bulls team, and thus there are some limitations that exist with this project that may have influenced the results and hence the player recommendations. There is inherent bias present within the predictive model, whereby explanatory variables that demonstrate correlation are included in the modeling and analysis. Using known calculations, and condensing the data points are another limitation of the analysis. In terms of team selection, there is an element of survivorship, where we are selecting the best of the best players. Players who played multiple positions and for multiple teams during the 2018/2019 season were excluded from the analysis. The data set was filtered to display players who had played for 40 or more games, which is equal to 50% of the games for the season, as it was evident that the better performing players in each position played the vast majority of the 82 games of the season. There were some team specific metrics included in the analysis, and this could influence the perception of the individual player performance, as there could be a really good player, playing on a poorly performing team, or an average player playing on one of the top teams, which may impact on their metrics.  
+Albeit satisfying the majority of assumptions within acceptable levels, there are inherent biases within this project/model. Several teams throughout their season achieved greater than predicted scoring ratios as such highlighting that there are elements of game play that have not been accurately recorded/reported, in combination with injuries/illnesses that may affect the actual starting line-up of a team, these factors amongst others may be a contribution to varying of results.
 
+There is inherent bias present within the predictive model; utilising explanatory variables that demonstrate correlation carries with it the dependency of execution of said trend, i.e. if a player is out of favour with a coach and not seeing game time can therefore not perform (for example the transfer players), or a certain player has a dependency on another player delivering him the ball in his key position will impact on the modeling and analysis.[@noauthor_2021-au] 
 
+An element of survivorhsip bias is present, as the NBA hosts the best of the best players in the world and then using numeric trends to separate them could higlight a lack of independence of data/variables. 
+
+The selection of players who played multiple positions and for multiple teams during the 2018/2019 season were excluded from the analysis. The data set was filtered to display players who had played for 40 or more games, which is just under 50% of the games for the season, as it was evident that the better performing players in each position played the vast majority of the 82 games of the season. 
+
+Lastly, the inlcusion of some team specific factors within metrics could influence the perception of the individual player's performance. For example, a really good player who's usage rating is high may have a lower efficiency or poor eFG % due to lack of possession of the ball in scoring opportunities[@noauthor_2017-om]. Conversely, you may have an average player in a very good team. This limitation was attempted to be addressed in the decision to bring the statistics down to a minute played ratio, to aid in the reduction of bias.
 
 <br>
 
@@ -1515,12 +1529,22 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
  ***
 <br>
 
-# 10. Summary:
+# 9. Summary:
 
 This project highlighted several trends within the NBA data and the NBA overall standings results. This mode of retrospective/prospective analysis still relies on the game based execution of set actions/reactions. This can be seen within the confidence intervals within each predictive variable, showing the margin for difference between expected and observed.
 
-What Basketball on Paper also adds is that these ratings can be broken down into four elements of the game: shooting, turnovers, rebounding, and getting to the foul line. It is those four elements, or "Four Factors," that really start allowing a strategic understanding of the game. Basketball on Paper describes those Four Factors, but only touches on some of the strategy that can be built by looking at them. [dean oliver article]
+As mentioned before, Dean Oliver refers to the ["Four Factors"](http://www.rawbw.com/~deano/articles/20040601_roboscout.htm) of Basketball adding that metrics/ratings can be broken down into four elements of the game:
 
+  * **Shooting**   
+  * **Turnovers**  
+  * **Rebounding**, and   
+  * **Getting to the foul line** 
+  
+These four elements, or "Four Factors," allow a strategic framework of understanding to be extracted from the game.
+
+It is in this framework that I believe that using a multifaceted approach to the analysis of player performance decreases the disparity between observed results and predictive results.
+
+The purpose and problem that this method of analysis addresses is a way to see through the inflated market values for athletes and highlight the true value of players based on their repeated habits and trends of play. I believe that the predictive formula created in this analysis can provide valuable insight into the real value and contribution players are making/could make in a new team.
 
 ```{r Bulls logo small-6-7G, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
 knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
@@ -1529,7 +1553,7 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
  ***
 <br/>
 
-# 11. Glossary:
+# 10. Glossary:
 
 **NBA standard terms:**  
 
@@ -1676,13 +1700,22 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
  
 ***
 ***
-**Dr. Jocelyn Mara:** Data Analysis in Sport PG, University of Canberra, 2021   
+**Dr. Jocelyn Mara:** Data Analysis in Sport PG[@Mara_undated-by], University of Canberra, 2021   
 **Martin Manley:** Kansas City sports reporter and statistician, EFF calculation.    
 **Bill James:** Statistician, Trade Value calculation, Approximate Value calculation, Credits Calculation.  
 **John Hollinger:** Effective Field Goal percentage and Usage Rate calculation  
 **Dean Oliver:** Effective Field Goal percentage and Usage Rate calculation  
-[**Basketball-reference.com**](https://www.basketball-reference.com/)
+[**Basketball-reference.com**](https://www.basketball-reference.com/)  
+[**Chicago Bulls Logo**](https://www.gerbenlaw.com/trademarks/nba/chicago-bulls/) 
 
+
+```{r bulls_logo_ref, echo=FALSE, fig.cap="", out.width = '7.5%',fig.width = 6, fig.asp = 0.618, fig.align = "right"}
+knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
+
+```
+
+***
+<br>
 This project was designed and built through **[RStudio](https://www.rstudio.com/)**, Version 1.4.1103, © 2009-2021 RStudio, PBC  
 <br>
 
@@ -1696,4 +1729,4 @@ knitr::include_graphics(rep("images/Chicago_bulls_logo7G.jpeg"))
 ***
 <br>
 
-# 12. References:
+# 11. References:
