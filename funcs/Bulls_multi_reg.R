@@ -273,6 +273,10 @@ ggplot(df_nonTOT_clean, aes(x = EFF, y = PTS_per_MP)) +
   geom_point(alpha = 0.5, colour = "dodgerblue") +
   geom_smooth(method = "lm")
 
+ggplot(df_nonTOT_clean, aes(x = TRB_MP, y = PTS_per_MP)) +
+  geom_point(alpha = 0.5, colour = "dodgerblue") +
+  geom_smooth(method = "lm")
+
 
 ## Pairs plot for visualizing relationship between > 2 variables
 
@@ -337,9 +341,12 @@ car::avPlots(fit)
 
 #VIF - variance inflation factor.
 car::vif(fit)
+car_fit <-car::vif(fit)
 # next step - need to square root output to find actual variance
 
 sqrt(car::vif(fit))
+
+sqrt_fit <- sqrt(car::vif(fit))
 
 # looking aware for values close to 5 for VIF as would imply high multicolinearity
 
@@ -462,7 +469,164 @@ gg2 +
   guides(colour = guide_legend("Points per/min"),
          fill = guide_legend("Points per/min"))
 
+### EFF vs eFGp interactive
 
+eff_v_eFGp <- eff_v_eFGp <- ggplot(data = df_nonTOT_clean, aes(x = EFF, y = eFGp, color = Pos, label = Tm, group = 1, 
+                                   text = paste("Name:", player_name,
+                                                "<br>Team: =", Tm,
+                                                "<br>Salary: ", salary,
+                                                "<br>Trade Value: ", TrV,
+                                                "<br>Efficiency: ", EFF,
+                                                "<br>Points/min: ", round(PTS_per_MP, digits = 4), "Pts/min",
+                                                "<br>Team Usage %:", Tm_use_total,
+                                                "<br>Total Rebounds/min:", TRB_MP))) + 
+  labs(title = "EFF vs eFGp", 
+       subtitle = "Teams have increased winning % with an increased pts/min", 
+       caption = "compiled from data sources",
+       colour = "Position") +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  xlab("Efficiency Rate") +
+  ylab("Effective Field Goal (%)")
+
+ggplotly(eff_v_eFGp, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
+
+
+## Interactive Team win % and Team pts
+
+WinP_v_Tm_Pts <- ggplot(data = model_testingTM_plot, aes(x = Tm_Pts_per_MP, y = WinP_Tm, color = Tm, label = Tm, group = 1, 
+                                                         text = paste("Team:", Tm,
+                                                                      "<br>Win %: =", WinP_Tm,
+                                                                      "<br>Points/min: ", round(Tm_Pts_per_MP, digits = 4), "Pts/min"))) + 
+  labs(title = "Relationship between Team Win % and Team Points/min", 
+       subtitle = "Teams have increased winning % with an increased pts/min", 
+       caption = "compiled from data sources",
+       colour = "Team") +
+  geom_point() +
+  geom_smooth(method = "lm", colour = "magenta", se = FALSE) +
+  geom_hline(yintercept = 50, colour = "black", linetype = "dashed") +
+  xlab("Team Points/min") +
+  ylab("Team Win (%)")
+  
+  ggplotly(WinP_v_Tm_Pts, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
+
+  
+  
+  ## Interactive eFGp v WinP_Tm
+  ggplot(df_nonTOT_clean, aes(x = eFGp, y = WinP_Tm)) +
+    geom_point(alpha = 0.5, colour = "dodgerblue") +
+    geom_smooth(method = "lm")
+  #strong positive relationship. 
+  
+  eFGp_v_WinP_Tm <- ggplot(data = df_nonTOT_clean, aes(x = eFGp, y = WinP_Tm, color = Pos, label = Tm, group = 1, 
+                                                           text = paste("Name:", player_name,
+                                                                        "<br>Team: =", Tm,
+                                                                        "<br>Salary: ", salary,
+                                                                        "<br>Trade Value: ", TrV,
+                                                                        "<br>Efficiency: ", EFF,
+                                                                        "<br>eFGp %: ", round(eFGp, digits = 4), "%",
+                                                                        "<br>Points/min: ", round(PTS_per_MP, digits = 4), "Pts/min",
+                                                                        "<br>Team Usage %:", Tm_use_total,
+                                                                        "<br>Total Rebounds/min:", TRB_MP))) + 
+    labs(title = "Relationship between eFG % and Team Win %", 
+         subtitle = "Teams have increased winning % with an increased eFG %", 
+         caption = "compiled from data sources",
+         colour = "Pos") +
+    geom_point() +
+    geom_smooth(method = "lm", colour = "magenta", se = FALSE) +
+    geom_hline(yintercept = 50, colour = "black", linetype = "dashed") +
+    xlab("Effective Field Goal %") +
+    ylab("Team Win (%)")
+  
+  ggplotly(eFGp_v_WinP_Tm, tooltip = "text") %>% 
+    config(displayModeBar = "static", displaylogo = FALSE, 
+           modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                         "hoverClosestCartesian", "hoverCompareCartesian", "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
+  
+  
+
+
+## Interactive eFGp v WinP_Tm  
+  ggplot(df_nonTOT_clean, aes(x = Age, y = WinP_Tm)) +
+    geom_point(alpha = 0.5, colour = "dodgerblue") +
+    geom_smooth(method = "lm")
+
+## Interactive eFGp v WinP_Tm 
+  ggplot(df_nonTOT_clean, aes(x = PTS_per_MP, y = WinP_Tm)) +
+    geom_point(alpha = 0.5, colour = "darkgreen") +
+    geom_smooth(method = "lm")
+  
+## Interactive eFF v PTS_per_MP
+  ggplot(df_nonTOT_clean, aes(x = EFF, y = PTS_per_MP)) +
+    geom_point(alpha = 0.5, colour = "dodgerblue") +
+    geom_smooth(method = "lm")
+  
+  EFF_v_PTS_per_MP <- ggplot(data = df_nonTOT_clean, aes(x = EFF, y = PTS_per_MP, color = Pos, label = Tm, group = 1, 
+                                                       text = paste("Name:", player_name,
+                                                                    "<br>Team: =", Tm,
+                                                                    "<br>Salary: ", salary,
+                                                                    "<br>Trade Value: ", TrV,
+                                                                    "<br>Efficiency: ", EFF,
+                                                                    "<br>eFGp %: ", round(eFGp, digits = 4), "%",
+                                                                    "<br>Points/min: ", round(PTS_per_MP, digits = 4), "Pts/min",
+                                                                    "<br>Team Usage %:", Tm_use_total,
+                                                                    "<br>Total Rebounds/min:", TRB_MP))) + 
+    labs(title = "Relationship between EFF and Points/min", 
+         subtitle = "Teams have increased Points/min with an increased EFF", 
+         caption = "compiled from data sources",
+         colour = "Pos") +
+    geom_point() +
+    geom_smooth(method = "lm", colour = "magenta", se = FALSE) +
+    xlab("Points/min") +
+    ylab("Efficiency Rating")
+  
+  ggplotly(EFF_v_PTS_per_MP, tooltip = "text") %>% 
+    config(displayModeBar = "static", displaylogo = FALSE, 
+           modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                         "hoverClosestCartesian", "hoverCompareCartesian", "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
+  
+  
+  
+
+## Interactive eFGp v WinP_Tm 
+  ggplot(df_nonTOT_clean, aes(x = TRB_MP, y = PTS_per_MP)) +
+    geom_point(alpha = 0.5, colour = "dodgerblue") +
+    geom_smooth(method = "lm")  
+  
+  
+## Model testing interactive
+  
+  ## model testing with Tm_exp_Pts_per_MP and Tm_Pts_per_MP
+gg_model_testing <- ggplot(model_testing, aes(Tm_exp_Pts_per_MP, Tm_Pts_per_MP, label = Tm, color = Tm, label = Tm, group = 1, 
+                                              text = paste("Team:", Tm,
+                                                           "<br>Win%: ", round(WinP_Tm, digits = 4),
+                                                           "<br>Actual Points: ", round(Tm_Pts_per_MP, digits = 4),"Pts/min",
+                                                           "<br>Expected Points: ", round(Tm_exp_Pts_per_MP, digits = 4), "Pts/min"))) + 
+  labs(title = "Model testing between Expected Points/min and Actual Points/min", 
+       subtitle = "Points above the line = under estimated, below the line = over estimated", 
+       caption = "compiled from data sources",
+       colour = "Tm") +
+  geom_point() +
+  xlab("Expected Points/min") +
+  ylab("Actual Points/min") +
+  geom_point(alpha = 0.5) +
+  geom_text(nudge_x = 0.005, cex = 3) +
+  geom_abline(linetype = "dashed", colour = "magenta")
+
+ggplotly(gg_model_testing, tooltip = "text") %>% 
+  config(displayModeBar = "static", displaylogo = FALSE, 
+         modeBarButtonsToRemove = list("sendDataToCloud", "toImage", "autoScale2d", "resetScale2d", 
+                                       "hoverClosestCartesian", "hoverCompareCartesian", "select2d", "lasso2d", "zoomIn2d", "zoomOut2d", "toggleSpikelines"))
+
+
+    
+  
 ## Salary and player finder
 
 gg <- ggplot(data = model_testing, aes(x = salary/1000000, y = exp_PTS_per_MP, color = Pos, label = Tm, group = 1,

@@ -29,11 +29,11 @@ The assigned task included the following:
   * Ensure purchase of the 5 players was within the allotted budget of $118 million dollars.  
   * The proposed purchases must allow enough budget to still field the other remaining players required for an NBA team (NBA teams are allowed 15 players total).  
   
-The use of statistics in sport is not a new phenomenon, partly due to people like Bill James and John Hollinger who implemented and revolutionised the use of statistical analysis, and is now common within sports like basketball and in particular the North American basketball league the NBA. John Hollinger created the all in one metric the Player Efficiency Rating or PER, which allowed for the collection of several variables (i.e both positive and negative outcomes e.g turnovers/)
+The use of statistics in sport is not a new phenomenon, partly due to people like Bill James and John Hollinger who implemented and revolutionised the use of statistical analysis, and is now common within sports like basketball and in particular the North American basketball league the NBA. John Hollinger created the all in one metric the Player Efficiency Rating or PER, which allowed for the collection of several variables (i.e both positive and negative outcomes e.g turnovers/) to be used as an indicator of player performance, able to be used as an inter and intra reliable measure.
 
-The hypothesis for this project is based on the use of a combination of known analysis methods to create a predictive equation to aid in the selection of appropriate players for the Chicago Bulls 19/20 season in the NBA. 
+The hypothesis for this project is based on the use of a combination of known analysis methods to create a predictive equation to aid in the selection of appropriate players for the Chicago Bulls 19/20 season in the NBA. By selecting players that attained above certain values in our key metrics, it was hypothesized that an increase in points/min could be achieved which is associated to an increased win percentage. As such, choosing players that contributed to increasing the team points per minute average, would equate to increased team wins, with a goal of achieving greater than 42 wins/50% win percentage and progressing to playoffs.
 
-The variables were used to show an association of an increase in overall Win% due to an increase of points per minute played. The variables used for the predictive value were:  
+The variables used to show an association of an increase in overall Win% due to an increase of points per minute played. The variables used for the predictive value were:  
 
   * Effective Field Goal Percentage (eFGp)  
   * Trade Value (TrV)  
@@ -47,13 +47,15 @@ I believe that using a multifaceted approach to the analysis of player performan
 
 This project highlighted several trends within the NBA data and the NBA overall standings results. This mode of retrospective/prospective analysis still relies on the game based execution of set actions/reactions. This can be seen within the confidence intervals within each predictive variable, showing the margin for difference between expected and observed.
 
-The purpose and problem that this method of analysis provides is a way to see through the inflated market values for athletes and highlight the true value of players based on their repeated trends.I believe that the predictive formula of:  
+The purpose and problem that this method of analysis addresses is a way to see through the inflated market values for athletes and highlight the true value of players based on their repeated trends.I believe that the predictive formula of:  
   
 **Points per minute**
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\dpi{200}&space;\bg_black&space;PTS\_per\_MP{_{\beta1}}&space;=&space;-0.382&space;&plus;&space;0.699&space;*&space;eFGp&space;&plus;&space;-0.0330&space;*&space;TRB_MP&space;&plus;&space;2.39&space;*&space;Tm\_use\_total&space;&plus;&space;0.00000965&space;*&space;EFF&space;&plus;&space;-0.00000803&space;*&space;TrV"" title="PTS\_per\_MP{_{\beta1}} = -0.382 + 0.699 * eFGp + -0.0330 * TRB_MP + 2.39 * Tm\_use\_total + 0.00000965 * EFF + -0.00000803 * TrV"" />
 </p>
+
+Can provide valuable insight into the real value and contribution players are making/could make in a new team.
 
 I hope you enjoy this project as much as I did. Although challenging in the initial cleaning/set up/modeling, it is engaging when looking through final product and to see the results.
 <br/>  

@@ -66,6 +66,8 @@ df_ind_stats <- replace_na(df_ind_stats, list("FG%" = 0,
                                               "FT%" = 0))
 sum(is.na(df_ind_stats))
 
+
+
 ## NA 1819Stats1
 sum(is.na(df_team_Stats1))
 which(is.na(df_team_Stats1), arr.ind = TRUE)
@@ -75,6 +77,10 @@ df_team_Stats1 <- replace_na(df_team_Stats1, list("X23" = 0,
                                               "X24" = 0,
                                               "X25" = 0))
 sum(is.na(df_team_Stats1))
+
+##Drop rows 23,24,25
+
+df_team_Stats1 <- df_team_Stats1[-c(23, 24, 25)]
 
 
 ## NA values Team stats 2
@@ -197,8 +203,8 @@ sum(is.na(df_joined))
 which(is.na(df_joined), arr.ind = TRUE)
 
 ## NA in salary
-df_joined %>%
-  sum(is.na())
+
+sum(is.na(df_joined))
 which(is.na(df_joined), arr.ind = TRUE)
 filter(df_joined, is.na(df_joined$salary))
 
@@ -210,8 +216,7 @@ sum(is.na(df_joined))
 
 ## player_id NA's
 ## NA
-df_joined %>%
-  sum(is.na())
+sum(is.na(df_joined))
   which(is.na(df_joined), arr.ind = TRUE)
   filter(df_joined, is.na(df_joined$player_id))
 
@@ -234,10 +239,7 @@ data_na
 df_joined <- replace_na(df_joined, list(G = "unknown"))
 sum(is.na(df_joined))
 
-
-
-df_joined %>%
-  sum(is.na())
+sum(is.na(df_joined))
   which(is.na(df_joined), arr.ind = TRUE)
   filter(df_joined, is.na(df_joined$G))
 
